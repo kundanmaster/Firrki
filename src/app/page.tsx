@@ -1,113 +1,282 @@
-import Image from "next/image";
+"use client";
+import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/dist/client/components/navigation";
+import { Button } from "@nextui-org/button";
+import {
+  Avatar,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Input,
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+} from "@nextui-org/react";
+import {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardBody,
+  Image,
+} from "@nextui-org/react";
+import { CircularProgress, Chip } from "@nextui-org/react";
+import hero from "../../public/assets/hero-card.jpeg";
+import HeaderLayout from "./components/HeaderLayout";
+import { FaUserTie } from "react-icons/fa";
+import ProductPage from "./components/ProductPage";
+import { FcShop } from "react-icons/fc";
+import FirrkiLogo from "../../public/assets/spool-of-thread.png";
+import { TbNeedleThread } from "react-icons/tb";
 
 export default function Home() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div>{session ? <AuthorizedUser session={session} /> : <Guest />}</div>
+  );
+}
+// Guest user
+interface AuthorizedUserProps {
+  session: {
+    user?: {
+      // Make user object optional
+      name?: string | null | undefined;
+      email?: string | null | undefined;
+      image?: string | null | undefined;
+      // Add other optional properties if present in your session user object
+    };
+  };
+}
+function Guest() {
+  return (
+    <main
+      className="min-h-screen bg-gradient-to-r from-indigo-100 from-10% via-sky-200 via-30% to-emerald-100 to-90% ..."
+      // className="flex min-h-screen flex-col items-center justify-between p-24 bg-gradient-to-r from-indigo-100 from-10% via-sky-200 via-30% to-emerald-100 to-90% ..."
+    >
+      <Navbar
+        isBordered
+        className="backdrop-blur-sm data-[menu-open=true]:backdrop-blur-sm backdrop-saturate-50 bg-background/10"
+      >
+        <NavbarContent className="hidden sm:flex gap-3">
+          <NavbarBrand className="mr-4">
+            {/* <AcmeLogo /> */}
+            <p className="hidden sm:block font-bold text-inherit">Firrki</p>
+          </NavbarBrand>
+          <NavbarItem>
+            <Link
+              color="foreground"
+              href="#"
+              className="hover:bg-slate-400/10 rounded-md p-2"
+            >
+              Cushions
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive>
+            <Link
+              href="#"
+              aria-current="page"
+              color="secondary"
+              className="hover:bg-slate-400/10 rounded-md p-2"
+            >
+              Decore
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive>
+            <Link href="/">
+              <Avatar
+                radius="md"
+                icon={<TbNeedleThread size={25} />}
+                classNames={{
+                  base: "bg-gradient-to-br from-bg-slate-200 to-bg-slate-300",
+                  icon: "text-black/100 ",
+                }}
+              />
+              {/* <Image src="../../public/assets/spool-of-thread.png" width={20} height={20} alt="threads"/> */}
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              color="foreground"
+              href="#"
+              className="hover:bg-slate-400/10 rounded-md p-2"
+            >
+              Design
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              color="foreground"
+              href="#"
+              className="hover:bg-slate-400/10 rounded-md p-2"
+            >
+              Bedding
+            </Link>
+          </NavbarItem>
+        </NavbarContent>
+
+        <NavbarContent as="div" className="items-center" justify="end">
+          <Input
+            classNames={{
+              base: "max-w-full sm:max-w-[10rem] h-10",
+              mainWrapper: "h-full",
+              input: "text-small",
+              inputWrapper:
+                "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+            }}
+            placeholder="Type to search..."
+            size="sm"
+            // startContent={<SearchIcon size={18} />}
+            type="search"
+          />
+          <div>Guest</div>
+          <Link href={"/login"}>
+            <Button color="default" variant="flat" aria-label="Login">
+              <FaUserTie />
+            </Button>
+          </Link>
+          {/* <Link href={'/Signup'}> 
+          <Button color="primary" variant="flat">
+            Signup
+          </Button>
+          </Link> */}
+          {/* <Dropdown placement="bottom-end">
+            <DropdownTrigger>
+              <Avatar
+                isBordered
+                as="button"
+                className="transition-transform"
+                color="secondary"
+                name="Kundan"
+                size="sm"
+                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                // src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              />
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Profile Actions" variant="flat">
+              <DropdownItem key="profile" className="h-8 gap-2">
+                Guest
+              </DropdownItem>
+
+              <DropdownItem key="profile" className="h-14 gap-2">
+                <p className="font-semibold">Signed in as</p>
+                <p className="font-semibold">guest@gmail.com</p>
+              </DropdownItem>
+              <DropdownItem key="settings">My Settings</DropdownItem>
+              <DropdownItem key="team_settings">Team Settings</DropdownItem>
+              <DropdownItem key="analytics">Analytics</DropdownItem>
+              <DropdownItem key="system">System</DropdownItem>
+              <DropdownItem key="configurations">Configurations</DropdownItem>
+              <DropdownItem key="help_and_feedback">
+                Help & Feedback
+              </DropdownItem>
+              <DropdownItem
+                key="logout"
+                color="danger"
+                onClick={() => signOut()}
+              >
+                Log Out
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown> */}
+        </NavbarContent>
+      </Navbar>
+
+      {/* <h1 className="text-3xl font-bold">Authorized User Page</h1> */}
+
+      <div className="details">
+        <ProductPage />
+      </div>
+      <div className="flex justify-center">
+        <Button
+          onClick={() => signOut()}
+          className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+          aria-label="Sign Out"
+        >
+          Sign Out
+        </Button>
       </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="flex justify-center">
+        <Link
+          href={"/products"}
+          className="mt-5 px-10 py-1 rounded-sm bg-indigo-500 text-gray"
+        >
+          Profile
+        </Link>
       </div>
+    </main>
+  );
+}
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+// Authorized User
+function AuthorizedUser({ session }: AuthorizedUserProps) {
+  return (
+    <main className="min-h-screen bg-gradient-to-r from-indigo-100 from-10% via-sky-200 via-30% to-emerald-100 to-90% ...">
+      <HeaderLayout OtherPage={<ProductPage />}>
+        <NavbarContent justify="start">
+          <NavbarBrand className="mr-4">
+            {/* <AcmeLogo /> */}
+            <p className="hidden sm:block font-bold text-inherit">Firrki</p>
+          </NavbarBrand>
+          <NavbarContent className="hidden sm:flex gap-3">
+            <NavbarItem>
+              <Link
+                color="foreground"
+                href="#"
+                className="hover:bg-slate-400/10 rounded-md p-2"
+              >
+                Cushions
+              </Link>
+            </NavbarItem>
+            <NavbarItem isActive>
+              <Link
+                href="#"
+                aria-current="page"
+                color="secondary"
+                className="hover:bg-slate-400/10 rounded-md p-2"
+              >
+                Decore
+              </Link>
+            </NavbarItem>
+            <NavbarItem isActive>
+              <Link href="/">
+                <Avatar
+                  radius="md"
+                  icon={<TbNeedleThread size={25} />}
+                  classNames={{
+                    base: "bg-gradient-to-br from-bg-slate-200 to-bg-slate-300",
+                    icon: "text-black/100 ",
+                  }}
+                />
+                {/* <Image src="../../public/assets/spool-of-thread.png" width={20} height={20} alt="threads"/> */}
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link
+                color="foreground"
+                href="#"
+                className="hover:bg-slate-400/10 rounded-md p-2"
+              >
+                Design
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link
+                color="foreground"
+                href="#"
+                className="hover:bg-slate-400/10 rounded-md p-2"
+              >
+                Bedding
+              </Link>
+            </NavbarItem>
+          </NavbarContent>
+        </NavbarContent>
+      </HeaderLayout>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      
     </main>
   );
 }
