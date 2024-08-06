@@ -154,11 +154,11 @@ const Signup = () => {
 
           <div className="input-button">
             {loading ? (
-              <Button type="submit" isLoading isDisabled>
+              <Button type="submit" isLoading isDisabled className={styles.button}>
                 Registering...
               </Button>
             ) : (
-              <Button type="submit">Register</Button>
+              <Button type="submit" className={styles.button}>Register</Button>
             )}
           </div>
         </form>

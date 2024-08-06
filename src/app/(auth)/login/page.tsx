@@ -14,11 +14,13 @@ import { useEffect } from "react";
 import { useFormik } from "formik";
 import Login_validate from "../../../lib/validation";
 import { toast } from "sonner";
+import { Button } from "@nextui-org/react";
 
 const Login = () => {
   // const { data: session, status } = useSession();
   const router = useRouter();
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -30,6 +32,7 @@ const Login = () => {
   // console.log(formik.errors);
 
   async function onSubmit(values: any) {
+    setLoading(true);
     const status = await signIn("credentials", {
       redirect: false,
       email: values.email,
@@ -40,6 +43,7 @@ const Login = () => {
 
     if (status?.ok) {
       toast.success("Login successful");
+      setLoading(false);
       router.push("/");
     }
   }
@@ -124,12 +128,20 @@ const Login = () => {
           ) : (
             <></>
           )}
-
-          <div className="input-button">
+            <div className="input-button">
+            {loading ? (
+              <Button type="submit" isLoading isDisabled className={styles.button}>
+                Logging in...
+              </Button>
+            ) : (
+              <Button className={styles.button} type="submit">Login</Button>
+            )}
+          </div>
+          {/* <div className="input-button">
             <button type="submit" className={styles.button}>
               Login
             </button>
-          </div>
+          </div> */}
           <div className="input-button">
             <button
               type="button"
