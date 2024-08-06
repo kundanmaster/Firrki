@@ -2,12 +2,17 @@ import React from "react";
 import ImageSlider from "./ImageSlider";
 import { Card, CardHeader, CardFooter, Button,CardBody,
     Image, } from "@nextui-org/react";
+import Footer from "./DashComponents/Footer";
+import LandingPage1 from "./DashComponents/LandingPage1";
+import LandingPage2 from "./DashComponents/LandingPage2";
+import LandingPage3 from "./DashComponents/LandingPage3";
+import Maincontent from "./DashComponents/Maincontent";
 
 function ProductPage() {
   const images = [
-    "/assets/decore (1).jpg",
+    "/assets/dashboard/master1.jpeg",
     "/assets/decore (2).jpg",
-    "/assets/decore (3).jpg",
+    "/assets/dashboard/master4.jpeg",
   ];
 
   return (
@@ -15,7 +20,7 @@ function ProductPage() {
     <div>
       <ImageSlider images={images} />
     </div>
-    <div className="max-w-[900px] gap-2 grid grid-cols-12 grid-rows-2 px-8">
+    {/* <div className="max-w-[900px] gap-2 grid grid-cols-12 grid-rows-2 px-8">
         <Card className="col-span-12 sm:col-span-4 h-[300px]">
           <CardHeader className="absolute z-10 top-1 flex-col !items-start">
             <p className="text-tiny text-white/60 uppercase font-bold">
@@ -130,7 +135,12 @@ function ProductPage() {
             </Button>
           </CardFooter>
         </Card>
-      </div>
+      </div> */}
+      <LandingPage2 />
+        <LandingPage3 />
+        <LandingPage1 />
+        <Maincontent />
+        <Footer />
     </>
   );
 }

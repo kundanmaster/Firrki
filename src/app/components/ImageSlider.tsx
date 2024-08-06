@@ -6,7 +6,7 @@ interface ImageSliderProps {
   interval?: number; // Interval time in milliseconds
 }
 
-const ImageSlider: React.FC<ImageSliderProps> = ({ images, interval = 3000 }) => {
+const ImageSlider: React.FC<ImageSliderProps> = ({ images, interval = 6000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, interval = 3000 }) =>
   };
 
   return (
-    <div className="relative w-full h-screen" style={{top:"-4rem"}}>
+    <div className="relative w-full h-[60vh]">
       <div className="overflow-hidden relative h-full">
         <div
           className="flex transition-transform ease-out duration-300 h-full"
@@ -50,13 +50,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, interval = 3000 }) =>
 
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 focus:outline-none"
+        className="absolute top-1/2 w-24 h-full transform -translate-y-1/2 text-white bg-black bg-opacity-5 p-2 hover:bg-opacity-25 focus:outline-none"
       >
         &#10094;
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 focus:outline-none"
+        className="absolute top-1/2 w-24 h-full right-0 transform -translate-y-1/2 text-white bg-black bg-opacity-5 p-2 hover:bg-opacity-25 focus:outline-none"
       >
         &#10095;
       </button>
@@ -65,10 +65,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, interval = 3000 }) =>
         {images.map((_, index) => (
           <button
             key={index}
-            className={`h-2 w-2 rounded-full ${
+            className={`h-2 w-24 rounded-full ${
               index === currentIndex
-                ? 'bg-white'
-                : 'bg-gray-400 hover:bg-gray-600'
+                ? 'bg-white bg-opacity-40'
+                : 'bg-gray-400 bg-opacity-25 hover:bg-white'
             } focus:outline-none`}
             onClick={() => setCurrentIndex(index)}
           />
