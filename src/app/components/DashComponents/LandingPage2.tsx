@@ -105,7 +105,7 @@ const HeroSection2: React.FC = () => {
       <div
         className="relative w-full bg-no-repeat text-center flex items-center justify-center  md:h-[35vh] sm:h-[20vh]"
         style={{
-          backgroundImage: "url(/assets/dashboard/fontback.png)",
+          backgroundImage: "url(/assets/dashboard/frontback.jpg)",
           backgroundSize: "100% auto",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -191,7 +191,7 @@ const HeroSection2: React.FC = () => {
       <div
         className="relative w-full bg-no-repeat text-center flex items-center justify-center  md:h-[35vh] sm:h-[20vh]"
         style={{
-          backgroundImage: "url(/assets/dashboard/fontback.png)",
+          backgroundImage: "url(/assets/dashboard/frontback.jpg)",
           backgroundSize: "100% auto",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
