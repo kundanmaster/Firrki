@@ -1,5 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @import url(https://db.onlinewebfonts.com/c/c16f02403a88325b8a8a28f0ddb5e540?family=MSung+HK+Light);
 
-
+@font-face {
+    font-family: "MSung HK Light";
+    src: url("https://db.onlinewebfonts.com/t/c16f02403a88325b8a8a28f0ddb5e540.eot");
+    src: url("https://db.onlinewebfonts.com/t/c16f02403a88325b8a8a28f0ddb5e540.eot?#iefix") format("embedded-opentype"),
+         url("https://db.onlinewebfonts.com/t/c16f02403a88325b8a8a28f0ddb5e540.woff2") format("woff2"),
+         url("https://db.onlinewebfonts.com/t/c16f02403a88325b8a8a28f0ddb5e540.woff") format("woff"),
+         url("https://db.onlinewebfonts.com/t/c16f02403a88325b8a8a28f0ddb5e540.ttf") format("truetype"),
+         url("https://db.onlinewebfonts.com/t/c16f02403a88325b8a8a28f0ddb5e540.svg#MSung HK Light") format("svg");
+  }
+  
+  .msung-hk-light {
+    font-family: "MSung HK Light", sans-serif;
+  } */

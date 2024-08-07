@@ -37,7 +37,7 @@ interface AuthorizedUserProps {
 }
 function Guest() {
   return (
-    <main className="min-h-screen bg-gradient-to-r from-indigo-100 from-10% via-sky-200 via-30% to-emerald-100 to-90% ...">
+    <main className="min-h-screen  ...">
         <div className="text-center py-4 text-base font-normal text-white bg-[#9F7F7E]">
           Free Shipping on all domestic orders - Shop Now
         </div>

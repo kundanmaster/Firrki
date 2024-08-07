@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
               <li><a href="#table-linen" className="text-gray-700 hover:text-gray-900 font-semibold">Table Linen</a></li>
               <li><a href="#gifting" className="text-gray-700 hover:text-gray-900 font-semibold">Gifting</a></li>
               <li><a href="#personalization" className="text-gray-700 hover:text-gray-900 font-semibold">Personalization</a></li>
-            </ul>
+            </ul>   
           </div>
         </div>
       </div>

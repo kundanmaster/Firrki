@@ -4,6 +4,9 @@ import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/dist/client/components/navigation";
 import { toast } from "sonner";
 import { FaHeart, FaShoppingCart, FaUser, FaSearch } from "react-icons/fa";
+import { CiSearch, CiHeart } from "react-icons/ci";
+import { PiShoppingCartSimpleLight, PiUserThin } from "react-icons/pi";
+
 import {
   Avatar,
   Dropdown,
@@ -17,7 +20,8 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/react";
-
+import Image from "next/image";
+import { RiUser3Line } from "react-icons/ri";
 const HeaderLayout = ({
   children,
   OtherPage,
@@ -47,9 +51,10 @@ const HeaderLayout = ({
   const closeSearch = () => {
     setSearchOpen(false);
   };
+
   return (
     <>
-      <div className="">
+      {/* <div className="">
         <Navbar className="backdrop-blur-sm data-[menu-open=true]:backdrop-blur-sm backdrop-saturate-50 bg-background/50">
           {children}
           <NavbarContent
@@ -57,19 +62,6 @@ const HeaderLayout = ({
             className="items-center max-w-screen-xl "
             justify="end"
           >
-            {/* <Input
-              classNames={{
-                base: "max-w-full sm:max-w-[10rem] h-10",
-                mainWrapper: "h-full",
-                input: "text-small",
-                inputWrapper:
-                  "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-              }}
-              placeholder="Type to search..."
-              size="sm"
-              // startContent={<SearchIcon size={18} />}
-              type="search"
-            /> */}
             <div
               className="relative"
               ref={searchRef}
@@ -107,15 +99,7 @@ const HeaderLayout = ({
               <a href="#" className="hover:text-[#AD8C87]">
                 <FaShoppingCart className="w-6 h-6 " />
               </a>
-              {/* <a
-                href="#"
-                className="hover:text-[#AD8C87]"
-                onClick={toggleModal}
-              >
-                <FaUser className="w-6 h-6 " />
-              </a> */}
             </div>
-            <div>{session?.user?.name || session?.user?.name}</div>
             <Dropdown placement="bottom-end">
               <DropdownTrigger>
                 <Avatar
@@ -125,35 +109,129 @@ const HeaderLayout = ({
                   color="secondary"
                   name=""
                   size="sm"
-                  src={session?.user?.image ? session?.user?.image : undefined}
-                  // src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                  src={session?.user?.image ? session.user.image : undefined}
                 />
               </DropdownTrigger>
               <DropdownMenu aria-label="Profile Actions" variant="flat">
-                <DropdownItem key="profile" className="h-14 gap-2">
-                  <p className="font-semibold">Signed in as</p>
-                  <p className="font-semibold">{session?.user?.email}</p>
-                </DropdownItem>
-                <DropdownItem key="settings">My Settings</DropdownItem>
-                <DropdownItem key="team_settings">Team Settings</DropdownItem>
-                <DropdownItem key="analytics">Analytics</DropdownItem>
-                <DropdownItem key="system">System</DropdownItem>
-                <DropdownItem key="configurations">Configurations</DropdownItem>
-                <DropdownItem key="help_and_feedback">
-                  Help & Feedback
-                </DropdownItem>
-                <DropdownItem
-                  key="logout"
-                  color="danger"
-                  onClick={() => sign_Out()}
-                >
-                  Log Out
-                </DropdownItem>
+                {session?.user ? (
+                  <>
+                    <DropdownItem key="profile" className="h-14 gap-2">
+                      <p className="font-semibold">Signed in as</p>
+                      <p className="font-semibold">{session.user.email}</p>
+                    </DropdownItem>
+                    <DropdownItem key="settings">My Settings</DropdownItem>
+                    <DropdownItem key="team_settings">
+                      Team Settings
+                    </DropdownItem>
+                    <DropdownItem key="analytics">Analytics</DropdownItem>
+                    <DropdownItem key="system">System</DropdownItem>
+                    <DropdownItem key="configurations">
+                      Configurations
+                    </DropdownItem>
+                    <DropdownItem key="help_and_feedback">
+                      Help & Feedback
+                    </DropdownItem>
+                    <DropdownItem
+                      key="logout"
+                      color="danger"
+                      onClick={sign_Out}
+                    >
+                      Log Out
+                    </DropdownItem>
+                  </>
+                ) : (
+                  <DropdownItem key="signin">
+                    <Link href="/login">
+                      <p className="font-semibold text-[#AD8C87]">Please Sign in</p>
+                    </Link>
+                  </DropdownItem>
+                )}
               </DropdownMenu>
             </Dropdown>
           </NavbarContent>
         </Navbar>
-      </div>
+      </div> */}
+      <header className="bg-[#9F7F7E]">
+        {/* Optional announcement bar */}
+        {/* <div className="text-center py-4 text-base font-normal text-white">
+    Free Shipping on all domestic orders - Shop Now
+  </div> */}
+        <div className="py-1 px-5 flex items-center justify-between bg-[#ececec]">
+          <div className=" px-5 flex items-center">
+            <Image
+              src="/assets/dashboard/Firrki_Logo.png"
+              alt="Firki Logo"
+              width={250}
+              height={350}
+            />
+          </div>
+          <div className="flex items-center space-x-6">
+            <nav className="flex items-center space-x-6 font-bold text-xl">
+              <a href="#" className="hover:text-[#AD8C87]">
+                Home
+              </a>
+              <a href="#" className="hover:text-[#AD8C87]">
+                Our Story
+              </a>
+              <a href="#" className="hover:text-[#AD8C87]">
+                Shop
+              </a>
+              <a href="#" className="hover:text-[#AD8C87] flex items-center">
+                <Image
+                  src="/assets/dashboard/Firbhet_Logo.jpeg"
+                  alt="Firbhet Logo"
+                  width={48}
+                  height={58}
+                />
+              </a>
+              <a href="#" className="hover:text-[#AD8C87]">
+                Contact
+              </a>
+            </nav>
+            <div className="flex items-center space-x-4">
+              <div className="relative" ref={searchRef}>
+                <CiSearch
+                  onClick={toggleSearch}
+                  className="w-6 h-6 cursor-pointer"
+                />
+                {searchOpen && (
+                  <div className="absolute mt-2 left-0">
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      className="pl-8 pr-4 py-2 rounded-full text-sm border border-gray-300 focus:outline-none focus:border-pink-500 bg-[#d9e2d6]"
+                    />
+                  </div>
+                )}
+              </div>
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                className="text-sm border border-gray-300 py-2 px-3 rounded-full focus:outline-none focus:border-pink-500 bg-[#d9e2d6]"
+              >
+                <option value="INR ₹">INR ₹</option>
+                <option value="USD $">USD $</option>
+                <option value="EUR €">EUR €</option>
+              </select>
+              <div className="flex space-x-4">
+                <a href="#" className="hover:text-[#AD8C87]">
+                  <CiHeart className="w-6 h-6" />
+                </a>
+                <a
+                  href="#"
+                  className="hover:text-[#AD8C87]"
+                  onClick={toggleModal}
+                >
+                  <PiUserThin   className="w-6 h-6" />
+                </a>
+                <a href="#" className="hover:text-[#AD8C87]">
+                  <PiShoppingCartSimpleLight className="w-6 h-6" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
 
       {OtherPage}
     </>
