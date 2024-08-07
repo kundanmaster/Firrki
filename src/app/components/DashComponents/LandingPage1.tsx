@@ -126,11 +126,37 @@ const LandingPage1: React.FC = () => {
 
   return (
     <>
-      
+    <div
+        className="relative w-full bg-no-repeat text-center flex items-center justify-center  md:h-[35vh] sm:h-[20vh]"
+        style={{
+          backgroundImage: "url(/assets/dashboard/fontback.png)",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+      <div
+        style={largeImageStyle}
+        className="relative flex items-center justify-center"
+      >
+        {/* <Image
+          src="/master16.jpeg"
+          alt="Main Image"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg shadow-md"
+          style={imageStyle}
+        /> */}
+        <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
+          <span> INSTAGRAM</span>
+          <span> HIGHLIGHTS</span>
+        </h1>
+      </div>
+      </div>
       <div className="bg-gray-100 p-4">
         <div className="grid gap-4">
           {/* First row with one large image */}
-          <div style={largeImageStyle}>
+          {/* <div style={largeImageStyle}>
             <Image
               src="/assets/dashboard/master9.png"
               alt="Main Image"
@@ -139,7 +165,7 @@ const LandingPage1: React.FC = () => {
               className="rounded-lg shadow-md"
               style={imageStyle}
             />
-          </div>
+          </div> */}
 
           {/* Second row with four images */}
           <div className="grid grid-cols-4 gap-4">

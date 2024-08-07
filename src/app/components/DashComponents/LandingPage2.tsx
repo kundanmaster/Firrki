@@ -3,6 +3,13 @@
 import React from "react";
 import Image from "next/image";
 const HeroSection2: React.FC = () => {
+  const largeImageStyle: React.CSSProperties = {
+    position: "relative",
+    height: "7rem",
+    width: "100%",
+    overflow: "hidden",
+    transition: "transform 0.3s ease",
+  };
   return (
     <>
       <div className="px-2 pb-1 flex flex-col md:flex-row">
@@ -96,7 +103,7 @@ const HeroSection2: React.FC = () => {
         </div>
       </div>
       <div
-        className="relative w-full bg-no-repeat text-center flex items-center justify-center lg:h-[60vh] md:h-[35vh] sm:h-[20vh]"
+        className="relative w-full bg-no-repeat text-center flex items-center justify-center  md:h-[35vh] sm:h-[20vh]"
         style={{
           backgroundImage: "url(/assets/dashboard/fontback.png)",
           backgroundSize: "100% auto",
@@ -104,18 +111,13 @@ const HeroSection2: React.FC = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="absolute flex flex-col items-center justify-center ">
-          <h1
-            className="lg:text-6xl md:text-4xl sm:text-2xl font-bold mb-6"
-            style={{ color: "#2C4456" }}
-          >
-            CUSTOMIZED
-          </h1>
-          <h1
-            className="lg:text-6xl md:text-4xl sm:text-2xl font-bold mb-6"
-            style={{ color: "#2C4456" }}
-          >
-            DESIGN
+        <div
+          style={largeImageStyle}
+          className="relative flex items-center justify-center"
+        >
+          <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
+            <span> CUSTOMIZED</span>
+            <span> DESIGN</span>
           </h1>
         </div>
       </div>
@@ -187,7 +189,7 @@ const HeroSection2: React.FC = () => {
         </div>
       </div>
       <div
-        className="relative w-full bg-no-repeat text-center flex items-center justify-center lg:h-[60vh] md:h-[35vh] sm:h-[20vh]"
+        className="relative w-full bg-no-repeat text-center flex items-center justify-center  md:h-[35vh] sm:h-[20vh]"
         style={{
           backgroundImage: "url(/assets/dashboard/fontback.png)",
           backgroundSize: "100% auto",
@@ -195,18 +197,13 @@ const HeroSection2: React.FC = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="absolute flex flex-col items-center justify-center ">
-          <h1
-            className="lg:text-6xl md:text-4xl sm:text-2xl font-bold mb-6"
-            style={{ color: "#2C4456" }}
-          >
-            FEATURED
-          </h1>
-          <h1
-            className="lg:text-6xl md:text-4xl sm:text-2xl font-bold mb-6"
-            style={{ color: "#2C4456" }}
-          >
-            PRODUCTS
+        <div
+          style={largeImageStyle}
+          className="relative flex items-center justify-center"
+        >
+          <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
+            <span> FEATURED</span>
+            <span> PRODUCTS</span>
           </h1>
         </div>
       </div>

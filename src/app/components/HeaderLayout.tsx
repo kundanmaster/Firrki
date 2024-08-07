@@ -3,25 +3,18 @@ import React, { ReactNode, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/dist/client/components/navigation";
 import { toast } from "sonner";
-import { FaHeart, FaShoppingCart, FaUser, FaSearch } from "react-icons/fa";
 import { CiSearch, CiHeart } from "react-icons/ci";
 import { PiShoppingCartSimpleLight, PiUserThin } from "react-icons/pi";
-
 import {
   Avatar,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Input,
   Link,
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
 } from "@nextui-org/react";
 import Image from "next/image";
-import { RiUser3Line } from "react-icons/ri";
+
 const HeaderLayout = ({
   children,
   OtherPage,
@@ -33,6 +26,7 @@ const HeaderLayout = ({
   const [currency, setCurrency] = useState<string>("INR ₹");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -52,9 +46,13 @@ const HeaderLayout = ({
     setSearchOpen(false);
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <>
-      {/* <div className="">
+    {/* <div className="">
         <Navbar className="backdrop-blur-sm data-[menu-open=true]:backdrop-blur-sm backdrop-saturate-50 bg-background/50">
           {children}
           <NavbarContent
@@ -152,10 +150,6 @@ const HeaderLayout = ({
         </Navbar>
       </div> */}
       <header className="bg-[#9F7F7E]">
-        {/* Optional announcement bar */}
-        {/* <div className="text-center py-4 text-base font-normal text-white">
-    Free Shipping on all domestic orders - Shop Now
-  </div> */}
         <div className="py-1 px-5 flex items-center justify-between bg-[#ececec]">
           <div className=" px-5 flex items-center">
             <Image
@@ -166,26 +160,40 @@ const HeaderLayout = ({
             />
           </div>
           <div className="flex items-center space-x-6">
-            <nav className="flex items-center space-x-6 font-bold text-xl">
+            
+            <div className="block md:hidden">
+              <button onClick={toggleMenu} className="focus:outline-none">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <nav className={`md:flex items-center space-x-6 font-bold text-xl pr-48 ${menuOpen ? 'block' : 'hidden'} md:block`}>
               <a href="#" className="hover:text-[#AD8C87]">
                 Home
               </a>
               <a href="#" className="hover:text-[#AD8C87]">
-                Our Story
-              </a>
-              <a href="#" className="hover:text-[#AD8C87]">
                 Shop
               </a>
-              <a href="#" className="hover:text-[#AD8C87] flex items-center">
-                <Image
-                  src="/assets/dashboard/Firbhet_Logo.jpeg"
-                  alt="Firbhet Logo"
-                  width={48}
-                  height={58}
-                />
+              <a href="#" className="hover:text-[#AD8C87]">
+                Firbhet
               </a>
               <a href="#" className="hover:text-[#AD8C87]">
-                Contact
+                Design
+              </a>
+              <a href="#" className="hover:text-[#AD8C87]">
+                Our Story
               </a>
             </nav>
             <div className="flex items-center space-x-4">
@@ -222,7 +230,7 @@ const HeaderLayout = ({
                   className="hover:text-[#AD8C87]"
                   onClick={toggleModal}
                 >
-                  <PiUserThin   className="w-6 h-6" />
+                  <PiUserThin className="w-6 h-6" />
                 </a>
                 <a href="#" className="hover:text-[#AD8C87]">
                   <PiShoppingCartSimpleLight className="w-6 h-6" />
@@ -232,7 +240,6 @@ const HeaderLayout = ({
           </div>
         </div>
       </header>
-
       {OtherPage}
     </>
   );
