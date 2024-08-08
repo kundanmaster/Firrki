@@ -1,8 +1,6 @@
-
-
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { FaStar, FaRegStar, FaShoppingCart, FaHeart } from "react-icons/fa";
@@ -28,10 +26,10 @@ const ProductDetail: React.FC = () => {
           className="mb-4"
         />
         <div className="flex space-x-4 mt-4">
-          <Image src="/green.png" alt="Green Fabric" width={50} height={50} />
-          <Image src="/blue.png" alt="Blue Fabric" width={50} height={50} />
-          <Image src="/red.png" alt="Red Fabric" width={50} height={50} />
-          <Image src="/orange.png" alt="Orange Fabric" width={50} height={50} />
+          <Image src="/assets/dashboard/master17.jpeg" alt="Green Fabric" width={50} height={50} />
+          <Image src="/assets/dashboard/master17.jpeg" alt="Blue Fabric" width={50} height={50} />
+          <Image src="/assets/dashboard/master17.jpeg" alt="Red Fabric" width={50} height={50} />
+          <Image src="/assets/dashboard/master17.jpeg" alt="Orange Fabric" width={50} height={50} />
         </div>
       </div>
 
@@ -100,4 +98,10 @@ const ProductDetail: React.FC = () => {
   );
 };
 
-export default ProductDetail;
+export default function ProductDetailPage() {
+  return (
+    <Suspense fallback={<div>Loading Product Details...</div>}>
+      <ProductDetail />
+    </Suspense>
+  );
+}
