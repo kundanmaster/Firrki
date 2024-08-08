@@ -111,7 +111,7 @@ const HeroSection3: React.FC = () => {
     <div
       className="relative w-full bg-no-repeat text-center py-12"
       style={{
-        backgroundColor: 'white',
+        backgroundImage: `url("/assets/dashboard/master18.jpeg")`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

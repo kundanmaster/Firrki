@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import ImageSlider from "../ImageSlider";
 const HeroSection2: React.FC = () => {
   const largeImageStyle: React.CSSProperties = {
     position: "relative",
@@ -10,10 +11,20 @@ const HeroSection2: React.FC = () => {
     overflow: "hidden",
     transition: "transform 0.3s ease",
   };
+  const images = [
+    "/assets/dashboard/master1.jpeg",
+    "/assets/dashboard/master4.jpeg",
+    "/assets/dashboard/master5.jpeg",
+    "/assets/dashboard/master6.jpeg",
+    "/assets/dashboard/master7.jpeg",
+    "/assets/dashboard/master8.jpeg",
+    "/assets/dashboard/master10.jpeg",
+  ];
   return (
     <>
-      <div className="px-2 pb-1 flex flex-col md:flex-row">
-        <div className="relative h-96 w-full md:w-[70%] pr-0 md:pr-1">
+    
+      <div className="px-2 pb-1 flex flex-col md:flex-row gap-x-2 ">
+        <div className="relative h-96 w-full md:w-[70%] ">
           <div
             className="relative h-full w-full bg-cover bg-center shadow-md flex flex-col justify-between"
             style={{ backgroundImage: 'url("/assets/dashboard/master1.jpeg")' }}
@@ -21,28 +32,30 @@ const HeroSection2: React.FC = () => {
             {/* Content */}
           </div>
         </div>
-        <div className="relative h-96 w-full md:w-[30%] pl-0 md:pl-2 mt-2 md:mt-0">
+        <div className="relative h-96 w-full md:w-[30%] ">
           <Image
             src="/assets/dashboard/master2.jpeg"
             alt="New Section Image 2"
-            layout="fill"
-            objectFit="cover"
+            width={1200}
+            height={384}
             className="shadow-md"
+            style={{ objectFit: "cover", height: "24rem"}}
           />
         </div>
       </div>
-      <div className="px-2 pb-1 flex flex-col md:flex-row">
-        <div className="relative h-96 w-full md:w-[30%] pr-0 md:pr-1 mt-2 md:mt-0">
+      <div className="px-2 pb-1 pt-1 flex flex-col md:flex-row gap-x-2 ">
+        <div className="relative h-96 w-full md:w-[30%] ">
           <Image
             src="/assets/dashboard/master3.jpeg"
             alt="New Section Image 3"
-            layout="fill"
-            objectFit="cover"
+            width={1200}
+            height={384}
             className="shadow-md"
+            style={{ objectFit: "cover", height: "24rem" }} 
           />
         </div>
 
-        <div className="relative h-96 w-full md:w-[70%] pl-0 md:pl-1 mt-2 md:mt-0">
+        <div className="relative h-96 w-full md:w-[70%] ">
           <div
             className="relative h-full w-full bg-cover bg-center shadow-md flex flex-col justify-between"
             style={{ backgroundImage: 'url("/assets/dashboard/master4.jpeg")' }}
@@ -52,19 +65,23 @@ const HeroSection2: React.FC = () => {
         </div>
       </div>
 
-      <div className="py-2 flex">
+      <div className="pb-2 pt-1 flex">
         <div className="relative h-24 w-full mx-2">
           <Image
             src="/assets/dashboard/master5.png"
             alt="New Section Image 5"
-            layout="fill"
-            objectFit="cover"
-            className="shadow-md"
+            width={1200}
+            height={50}
+            className="shadow-md object-cover w-full h-24"
           />
         </div>
       </div>
 
-      <div className="py-2 px-2 flex flex-col md:flex-row gap-1">
+      <div>
+        <ImageSlider images={images} />
+      </div>
+
+      {/* <div className="py-1 px-2 flex flex-col md:flex-row gap-1">
         <div className="relative h-[70vh] w-full md:w-[25%] mt-2 md:mt-0">
           <Image
             src="/assets/dashboard/master5.jpeg"
@@ -101,7 +118,7 @@ const HeroSection2: React.FC = () => {
             className="rounded-b-lg shadow-md"
           />
         </div>
-      </div>
+      </div> */}
       <div
         className="relative w-full bg-no-repeat text-center flex items-center justify-center  md:h-[35vh] sm:h-[20vh]"
         style={{

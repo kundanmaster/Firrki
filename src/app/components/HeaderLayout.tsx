@@ -126,7 +126,7 @@ const HeaderLayout = ({
             </nav>
             <div className="flex items-center space-x-4">
               <div className="relative" ref={searchRef}>
-                <CiSearch onClick={onOpen} className="w-6 h-6 cursor-pointer" />
+                <CiSearch onClick={onOpen} className="w-6 h-6 cursor-pointer hover:text-[#AD8C87]" />
 
                 <div className="flex flex-wrap gap-3">
                   {sizes.map((size) => (
@@ -191,7 +191,7 @@ const HeaderLayout = ({
                       type="button"
                       className="flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
                     >
-                      <PiUserThin className="w-6 h-6" />
+                      <PiUserThin className="w-6 h-6 hover:text-[#AD8C87]" />
                     </button>
                   </DropdownTrigger>
 
@@ -227,25 +227,6 @@ const HeaderLayout = ({
                       </DropdownItem>
                     </DropdownMenu>
                   ) : (
-                    // <>
-                    //   <DropdownItem key="profile" className="h-14 gap-2" textValue="Signed in as">
-                    //     <p className="font-semibold">Signed in as</p>
-                    //     <p className="font-semibold">{session.user.email}</p>
-                    //   </DropdownItem>
-                    //   <DropdownItem key="settings" textValue="Signed in as">My Settings</DropdownItem>
-                    //   <DropdownItem key="team_settings">
-                    //     Team Settings
-                    //   </DropdownItem>
-                    //   <DropdownItem key="analytics" textValue="Signed in as">Analytics</DropdownItem>
-                    //   <DropdownItem key="system" textValue="Signed in as">System</DropdownItem>
-                    //   <DropdownItem key="configurations" textValue="Signed in as">
-                    //     Configurations
-                    //   </DropdownItem>
-                    //   <DropdownItem key="help_and_feedback" textValue="Signed in as">
-                    //     Help & Feedback
-                    //   </DropdownItem>
-
-                    // </>
                     <DropdownMenu aria-label="Profile Actions" variant="flat">
                       <DropdownItem key="signin" textValue="Signed in as">
                         <Link href="/login">

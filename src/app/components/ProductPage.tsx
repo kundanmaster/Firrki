@@ -13,6 +13,7 @@ import LandingPage1 from "./DashComponents/LandingPage1";
 import LandingPage2 from "./DashComponents/LandingPage2";
 import LandingPage3 from "./DashComponents/LandingPage3";
 import Maincontent from "./DashComponents/Maincontent";
+// import TestimonialSection from "./DashComponents/testimonial";
 
 function ProductPage() {
   const images = [
@@ -146,6 +147,7 @@ function ProductPage() {
       <LandingPage3 />
       <LandingPage1 />
       <Maincontent />
+      {/* <TestimonialSection/> */}
       <Footer />
     </>
   );

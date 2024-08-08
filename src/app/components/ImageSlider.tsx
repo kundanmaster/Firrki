@@ -9,39 +9,46 @@ interface ImageSliderProps {
 const ImageSlider: React.FC<ImageSliderProps> = ({ images, interval = 6000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const imagesPerSlide = 4;
+
   useEffect(() => {
     const slideInterval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      nextSlide();
     }, interval);
 
     return () => clearInterval(slideInterval);
-  }, [images.length, interval]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [interval]);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => 
+      prevIndex === images.length - imagesPerSlide ? 0 : prevIndex + 1
+    );
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - imagesPerSlide : prevIndex - 1
+    );
   };
 
   return (
     <div className="relative w-full h-[60vh]">
       <div className="overflow-hidden relative h-full">
         <div
-          className="flex transition-transform ease-out duration-300 h-full"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          className="flex transition-transform ease-out duration-300 h-full gap-1"
+          style={{ transform: `translateX(-${currentIndex * (100 / imagesPerSlide)}%)`}}
         >
           {images.map((src, index) => (
-            <div key={index} className="min-w-full h-full relative">
+            <div key={index} className="min-w-[25%] h-full relative ">
               <Image
                 src={src}
                 alt={`Slide ${index}`}
                 fill
-                priority={index === 0} // Add priority to the first image
-                sizes="100vw"
+                priority={index < imagesPerSlide} 
+                sizes="25vw"
                 style={{ objectFit: 'cover' }}
-                className="rounded-none"
+                className="rounded-lg shadow-md"
               />
             </div>
           ))}
@@ -62,13 +69,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, interval = 6000 }) =>
       </button>
 
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {images.map((_, index) => (
+        {Array(images.length - imagesPerSlide + 1).fill(0).map((_, index) => (
           <button
             key={index}
-            className={`h-2 w-24 rounded-full ${
+            className={`h-2 w-10 rounded-full ${
               index === currentIndex
-                ? 'bg-white bg-opacity-40'
-                : 'bg-gray-400 bg-opacity-25 hover:bg-white'
+                ? 'bg-white bg-opacity-90'
+                : 'bg-gray-400 bg-opacity-60 hover:bg-white'
             } focus:outline-none`}
             onClick={() => setCurrentIndex(index)}
           />
