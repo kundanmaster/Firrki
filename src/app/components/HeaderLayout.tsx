@@ -7,13 +7,19 @@ import { CiSearch, CiHeart } from "react-icons/ci";
 import { PiShoppingCartSimpleLight, PiUserThin } from "react-icons/pi";
 import {
   Avatar,
+  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
   Link,
+  TooltipPlacement,
+  useDisclosure,
 } from "@nextui-org/react";
 import Image from "next/image";
+import CustomModal from "./Modal";
+import CustomTooltip from "./Popover";
+import { LiaShoppingBagSolid } from "react-icons/lia";
 
 const HeaderLayout = ({
   children,
@@ -22,6 +28,7 @@ const HeaderLayout = ({
   children: ReactNode;
   OtherPage: ReactNode;
 }) => {
+  const sizes: Array<"2xl"> = ["2xl"];
   const { data: session, status } = useSession();
   const [currency, setCurrency] = useState<string>("INR ₹");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -29,7 +36,7 @@ const HeaderLayout = ({
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-
+  const placements = ["bottom-start"];
   const sign_Out = () => {
     signOut();
     toast.error("Logged out successfully");
@@ -49,106 +56,24 @@ const HeaderLayout = ({
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const items = [
+    {
+      image: "/assets/dashboard/master3.jpeg",
+      title: "Cushion Cover",
+      description: "This is a custom Cushion Cover",
+      price: "$250",
+    },
+    {
+      image: "/assets/dashboard/master3.jpeg",
+      title: "Throw Pillow",
+      description: "This is a soft throw pillow",
+      price: "$120",
+    },
+    // Add more items as needed
+  ];
   return (
     <>
-    {/* <div className="">
-        <Navbar className="backdrop-blur-sm data-[menu-open=true]:backdrop-blur-sm backdrop-saturate-50 bg-background/50">
-          {children}
-          <NavbarContent
-            as="div"
-            className="items-center max-w-screen-xl "
-            justify="end"
-          >
-            <div
-              className="relative"
-              ref={searchRef}
-              style={{ marginLeft: "-50px" }}
-            >
-              <FaSearch
-                onClick={toggleSearch}
-                className="w-6 h-6 cursor-pointer"
-              />
-              {searchOpen && (
-                <div className="absolute mt-2 left-0">
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="pl-8 pr-4 py-2 rounded-full text-sm border border-gray-300 focus:outline-none focus:border-pink-500"
-                    style={{ backgroundColor: "#d9e2d6" }}
-                  />
-                </div>
-              )}
-            </div>
-            <select
-              value={currency}
-              onChange={(e) => setCurrency(e.target.value)}
-              className="text-sm border border-gray-300 py-2 px-3 rounded-full focus:outline-none focus:border-pink-500"
-              style={{ backgroundColor: "#d9e2d6" }}
-            >
-              <option value="INR ₹">INR ₹</option>
-              <option value="USD $">USD $</option>
-              <option value="EUR €">EUR €</option>
-            </select>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-[#AD8C87]">
-                <FaHeart className="w-6 h-6 " />
-              </a>
-              <a href="#" className="hover:text-[#AD8C87]">
-                <FaShoppingCart className="w-6 h-6 " />
-              </a>
-            </div>
-            <Dropdown placement="bottom-end">
-              <DropdownTrigger>
-                <Avatar
-                  isBordered
-                  as="button"
-                  className="transition-transform bg-gradient-to-br from-[#AD8C87] to-[#ceb3af]"
-                  color="secondary"
-                  name=""
-                  size="sm"
-                  src={session?.user?.image ? session.user.image : undefined}
-                />
-              </DropdownTrigger>
-              <DropdownMenu aria-label="Profile Actions" variant="flat">
-                {session?.user ? (
-                  <>
-                    <DropdownItem key="profile" className="h-14 gap-2">
-                      <p className="font-semibold">Signed in as</p>
-                      <p className="font-semibold">{session.user.email}</p>
-                    </DropdownItem>
-                    <DropdownItem key="settings">My Settings</DropdownItem>
-                    <DropdownItem key="team_settings">
-                      Team Settings
-                    </DropdownItem>
-                    <DropdownItem key="analytics">Analytics</DropdownItem>
-                    <DropdownItem key="system">System</DropdownItem>
-                    <DropdownItem key="configurations">
-                      Configurations
-                    </DropdownItem>
-                    <DropdownItem key="help_and_feedback">
-                      Help & Feedback
-                    </DropdownItem>
-                    <DropdownItem
-                      key="logout"
-                      color="danger"
-                      onClick={sign_Out}
-                    >
-                      Log Out
-                    </DropdownItem>
-                  </>
-                ) : (
-                  <DropdownItem key="signin">
-                    <Link href="/login">
-                      <p className="font-semibold text-[#AD8C87]">Please Sign in</p>
-                    </Link>
-                  </DropdownItem>
-                )}
-              </DropdownMenu>
-            </Dropdown>
-          </NavbarContent>
-        </Navbar>
-      </div> */}
       <header className="bg-[#9F7F7E]">
         <div className="py-1 px-5 flex items-center justify-between bg-[#ececec]">
           <div className=" px-5 flex items-center">
@@ -160,7 +85,6 @@ const HeaderLayout = ({
             />
           </div>
           <div className="flex items-center space-x-6">
-            
             <div className="block md:hidden">
               <button onClick={toggleMenu} className="focus:outline-none">
                 <svg
@@ -179,7 +103,11 @@ const HeaderLayout = ({
                 </svg>
               </button>
             </div>
-            <nav className={`md:flex items-center space-x-6 font-bold text-xl pr-48 ${menuOpen ? 'block' : 'hidden'} md:block`}>
+            <nav
+              className={`md:flex items-center space-x-6 font-bold text-xl pr-48 ${
+                menuOpen ? "block" : "hidden"
+              } md:block`}
+            >
               <a href="#" className="hover:text-[#AD8C87]">
                 Home
               </a>
@@ -198,19 +126,30 @@ const HeaderLayout = ({
             </nav>
             <div className="flex items-center space-x-4">
               <div className="relative" ref={searchRef}>
-                <CiSearch
-                  onClick={toggleSearch}
-                  className="w-6 h-6 cursor-pointer"
-                />
-                {searchOpen && (
-                  <div className="absolute mt-2 left-0">
-                    <input
-                      type="text"
-                      placeholder="Search"
-                      className="pl-8 pr-4 py-2 rounded-full text-sm border border-gray-300 focus:outline-none focus:border-pink-500 bg-[#d9e2d6]"
-                    />
-                  </div>
-                )}
+                <CiSearch onClick={onOpen} className="w-6 h-6 cursor-pointer" />
+
+                <div className="flex flex-wrap gap-3">
+                  {sizes.map((size) => (
+                    <div key={size}>
+                      <CustomModal
+                        title=""
+                        bodyContent={
+                          <>
+                            <input
+                              type="text"
+                              placeholder="Search"
+                              className="pl-8 pr-4 py-2 rounded-full text-sm border border-gray-300 focus:outline-none focus:border-pink-500 bg-[#d9e2d6]"
+                            />
+                          </>
+                        }
+                        footerActions={<></>}
+                        size={size}
+                        isOpen={isOpen}
+                        onClose={onClose}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
               <select
                 value={currency}
@@ -222,16 +161,102 @@ const HeaderLayout = ({
                 <option value="EUR €">EUR €</option>
               </select>
               <div className="flex space-x-4">
-                <a href="#" className="hover:text-[#AD8C87]">
-                  <CiHeart className="w-6 h-6" />
-                </a>
-                <a
-                  href="#"
-                  className="hover:text-[#AD8C87]"
-                  onClick={toggleModal}
-                >
-                  <PiUserThin className="w-6 h-6" />
-                </a>
+                <div className="">
+                  <CustomTooltip
+                    items={items}
+                    triggerElement={
+                      <a href="#" className="hover:text-[#AD8C87]">
+                        <CiHeart className="w-6 h-6" />
+                      </a>
+                    }
+                    placement="top" // Customize placement as needed
+                  />
+                </div>
+
+                <Dropdown placement="bottom-end">
+                  <DropdownTrigger>
+                    {/* <Avatar
+                      
+                      as="button"
+                      className="transition-transform bg-transparent"
+                      color="secondary"
+                      name=""
+                      size="sm"
+                      src={
+                        session?.user?.image ? session.user.image : undefined
+                      }
+                    /> */}
+
+                    <button
+                      type="button"
+                      className="flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
+                    >
+                      <PiUserThin className="w-6 h-6" />
+                    </button>
+                  </DropdownTrigger>
+
+                  {session?.user ? (
+                    <DropdownMenu aria-label="Profile Actions" variant="flat">
+                      <DropdownItem
+                        key="profile"
+                        className="h-14 gap-2"
+                        textValue="Signed in as"
+                      >
+                        <p className="font-semibold">Signed in as</p>
+                        <p className="font-semibold">{session.user.email}</p>
+                      </DropdownItem>
+                      <DropdownItem key="settings">My Settings</DropdownItem>
+                      <DropdownItem key="team_settings">
+                        Team Settings
+                      </DropdownItem>
+                      <DropdownItem key="analytics">Analytics</DropdownItem>
+                      <DropdownItem key="system">System</DropdownItem>
+                      <DropdownItem key="configurations">
+                        Configurations
+                      </DropdownItem>
+                      <DropdownItem key="help_and_feedback">
+                        Help & Feedback
+                      </DropdownItem>
+                      <DropdownItem
+                        key="logout"
+                        color="danger"
+                        onClick={sign_Out}
+                        textValue="Signed in as"
+                      >
+                        Log Out
+                      </DropdownItem>
+                    </DropdownMenu>
+                  ) : (
+                    // <>
+                    //   <DropdownItem key="profile" className="h-14 gap-2" textValue="Signed in as">
+                    //     <p className="font-semibold">Signed in as</p>
+                    //     <p className="font-semibold">{session.user.email}</p>
+                    //   </DropdownItem>
+                    //   <DropdownItem key="settings" textValue="Signed in as">My Settings</DropdownItem>
+                    //   <DropdownItem key="team_settings">
+                    //     Team Settings
+                    //   </DropdownItem>
+                    //   <DropdownItem key="analytics" textValue="Signed in as">Analytics</DropdownItem>
+                    //   <DropdownItem key="system" textValue="Signed in as">System</DropdownItem>
+                    //   <DropdownItem key="configurations" textValue="Signed in as">
+                    //     Configurations
+                    //   </DropdownItem>
+                    //   <DropdownItem key="help_and_feedback" textValue="Signed in as">
+                    //     Help & Feedback
+                    //   </DropdownItem>
+
+                    // </>
+                    <DropdownMenu aria-label="Profile Actions" variant="flat">
+                      <DropdownItem key="signin" textValue="Signed in as">
+                        <Link href="/login">
+                          <p className="font-semibold text-[#AD8C87]">
+                            Please Sign in
+                          </p>
+                        </Link>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  )}
+                </Dropdown>
                 <a href="#" className="hover:text-[#AD8C87]">
                   <PiShoppingCartSimpleLight className="w-6 h-6" />
                 </a>
