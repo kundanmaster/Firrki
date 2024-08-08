@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import { FaSearch, FaPlus } from 'react-icons/fa'; // Import the plus icon from react-icons
+import { FaSearch } from 'react-icons/fa';
+import { useRouter } from "next/navigation";
 
 interface ProductSectionProps {
   mainImage: string;
@@ -11,6 +12,13 @@ interface ProductSectionProps {
 
 const ProductSection: React.FC<ProductSectionProps> = ({ mainImage, images }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const router = useRouter();
+
+  const handleImageClick = (image: string, description: string) => {
+    router.push(
+      `/productdetails?image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}`
+    );
+  };
 
   return (
     <div className="flex justify-center space-x-4 mt-8">
@@ -64,6 +72,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({ mainImage, images }) =>
             width: hoveredIndex === index ? '70%' : '30%',
             transition: 'width 0.3s ease',
           }}
+          onClick={() => handleImageClick(image, `Description for image ${index + 1}`)}
         >
           <Image
             src={image}
@@ -86,15 +95,6 @@ const ProductSection: React.FC<ProductSectionProps> = ({ mainImage, images }) =>
           >
             <FaSearch />
           </a>
-          <a
-            href="#"
-            className="absolute bottom-4 right-4 text-white text-lg"
-            style={{
-              pointerEvents: 'auto',
-            }}
-          >
-          
-          </a>
         </div>
       ))}
     </div>
@@ -102,16 +102,16 @@ const ProductSection: React.FC<ProductSectionProps> = ({ mainImage, images }) =>
 };
 
 const HeroSection3: React.FC = () => {
-  const productImages1 = ["/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg","/assets/dashboard/master22.jpeg","/assets/dashboard/master24.jpeg","/assets/dashboard/master25.jpeg"];
-  const productImages2 = ["/assets/dashboard/master8.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg", "/assets/dashboard/master8.jpeg","/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg"];
-  const productImages3 = ["/assets/dashboard/master22.jpeg", "/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg","/assets/dashboard/master24.jpeg", "/assets/dashboard/master25.jpeg", "/assets/dashboard/master22.jpeg"];
-  const productImages4 = ["/assets/dashboard/master24.jpeg", "/assets/dashboard/master25.jpeg", "/assets/dashboard/master22.jpeg", "/assets/dashboard/master8.jpeg","/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg"];
+  const productImages1 = ["/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master22.jpeg", "/assets/dashboard/master24.jpeg", "/assets/dashboard/master25.jpeg"];
+  const productImages2 = ["/assets/dashboard/master8.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg", "/assets/dashboard/master8.jpeg", "/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg"];
+  const productImages3 = ["/assets/dashboard/master22.jpeg", "/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg", "/assets/dashboard/master24.jpeg", "/assets/dashboard/master25.jpeg", "/assets/dashboard/master22.jpeg"];
+  const productImages4 = ["/assets/dashboard/master24.jpeg", "/assets/dashboard/master25.jpeg", "/assets/dashboard/master22.jpeg", "/assets/dashboard/master8.jpeg", "/assets/dashboard/master6.jpeg", "/assets/dashboard/master7.jpeg", "/assets/dashboard/master6.jpeg"];
 
   return (
     <div
       className="relative w-full bg-no-repeat text-center py-12"
       style={{
-        backgroundImage: `url("/assets/dashboard/master18.jpeg")`,
+        backgroundImage: `url("/assets/dashboard/master188.jpg")`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -130,4 +130,3 @@ const HeroSection3: React.FC = () => {
 };
 
 export default HeroSection3;
-
