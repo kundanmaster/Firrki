@@ -4,6 +4,7 @@ import React, { Suspense } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { FaStar, FaRegStar, FaShoppingCart, FaHeart } from "react-icons/fa";
+import HeaderLayout from '../components/HeaderLayout';
 
 const ProductDetail: React.FC = () => {
   const searchParams = useSearchParams();
@@ -16,6 +17,8 @@ const ProductDetail: React.FC = () => {
   }
 
   return (
+    <>
+    
     <div className="flex flex-row items-start justify-center min-h-screen p-4">
       <div className="flex flex-col items-center justify-center w-1/2 p-4">
         <Image
@@ -95,6 +98,7 @@ const ProductDetail: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
