@@ -5,7 +5,7 @@ import Image from 'next/image';
 const Footer: React.FC = () => {
   return (
     <div
-      className="relative w-full h-full bg-top bg-cover text-center"
+      className="relative w-full h-[45rem] bg-top bg-cover text-center"
       style={{
         backgroundImage: `url('/assets/dashboard/footer.jpeg')`,
       }}

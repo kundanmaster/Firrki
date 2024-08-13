@@ -75,8 +75,8 @@ const HeaderLayout = ({
   return (
     <>
       <header className="bg-[#9F7F7E]">
-        <div className="py-1 px-5 flex items-center justify-between bg-[#ececec]">
-          <div className=" px-5 flex items-center">
+        <div className="py-1 pr-5 flex items-center justify-between bg-[#ececec]">
+          <div className="flex items-center">
             <Image
               src="/assets/dashboard/Firrki_Logo.png"
               alt="Firki Logo"
@@ -114,8 +114,11 @@ const HeaderLayout = ({
               <a href="#" className="hover:text-[#AD8C87]">
                 Shop
               </a>
-              <a href="#" className="hover:text-[#AD8C87]">
+              {/* <a href="#" className="hover:text-[#AD8C87]">
                 Firbhet
+              </a> */}
+              <a href="#" className="hover:text-[#AD8C87] font-bold flex items-center">
+                <Image src="/assets/dashboard/Firbhet_Logo.jpeg" alt="Firbhet Logo" width={48} height={58} />
               </a>
               <a href="#" className="hover:text-[#AD8C87]">
                 Design

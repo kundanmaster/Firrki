@@ -68,7 +68,7 @@ const HeroSection2: React.FC = () => {
       <div className="pb-2 pt-1 flex">
         <div className="relative h-24 w-full mx-2">
           <Image
-            src="/assets/dashboard/master5.png"
+            src="/assets/dashboard/traditional.jpg"
             alt="New Section Image 5"
             width={1200}
             height={50}
