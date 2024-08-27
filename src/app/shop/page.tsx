@@ -40,6 +40,10 @@ const AdornComponent = () => {
   }, [mainImages.length]);
 
   return (
+    <>
+    <HeaderLayout OtherPage={undefined}>
+      s
+    </HeaderLayout>
     <div className="h-[100vh]">
       <div
         className="relative w-full h-screen bg-cover bg-center"
@@ -234,6 +238,7 @@ const AdornComponent = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,5 +1,3 @@
-
-
 "use client";
 import React, { ReactNode, useRef, useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
@@ -108,7 +106,8 @@ const HeaderLayout = ({
               <Image
                 src="/assets/dashboard/Firrki_Logo.png"
                 alt="Firki Logo"
-                width={170}
+                style={{ width: "170px", height: "auto" }}
+                width={170} // Still provide intrinsic size for server-side optimization
                 height={210}
               />
             </Link>

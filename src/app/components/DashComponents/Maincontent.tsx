@@ -80,7 +80,7 @@ const LastHeroSection: React.FC = () => {
 
   return (
     <div
-      className="relative w-full h-[1200px] bg-center bg-cover bg-no-repeat text-center py-12"
+      className="relative w-full h-[720px] bg-center bg-cover bg-no-repeat text-center py-12"
       style={{ backgroundImage: 'url(/assets/dashboard/tigerMaster.jpeg)' }}
     >
       <h2 className="text-6xl font-semibold text-pink-600 mb-8">
@@ -104,7 +104,7 @@ const LastHeroSection: React.FC = () => {
             location: "San Jose"
           }
         ].map((testimonial, index) => (
-          <div key={index} className="pr-24">
+          <div key={index} className="px-6">
             <div className="relative flex flex-col items-center">
               <div className="relative">
                 <p
