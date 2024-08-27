@@ -196,7 +196,7 @@ const LandingPage1: React.FC = () => {
           </div>
         </div>
       </div> */}
-<div
+    <div
       className="relative w-full bg-no-repeat text-center"
       style={{
         backgroundImage: `url("/assets/dashboard/master188.jpg")`,

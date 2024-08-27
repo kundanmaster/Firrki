@@ -1,26 +1,38 @@
+
+
 "use client";
-import React, { ReactNode, useRef, useState } from "react";
+import React, { ReactNode, useRef, useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/dist/client/components/navigation";
 import { toast } from "sonner";
+import { AiOutlineHeart } from "react-icons/ai";
 import { CiSearch, CiHeart } from "react-icons/ci";
-import { PiShoppingCartSimpleLight, PiUserThin } from "react-icons/pi";
+import { FiUser, FiShoppingCart, FiSearch } from "react-icons/fi";
 import {
-  Avatar,
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
   Link,
-  TooltipPlacement,
   useDisclosure,
 } from "@nextui-org/react";
 import Image from "next/image";
 import CustomModal from "./Modal";
 import CustomTooltip from "./Popover";
-import { LiaShoppingBagSolid } from "react-icons/lia";
+import GiftSection from "../gift/page";
+function useRotatingMessages(messages: string[], interval: number) {
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
+  useEffect(() => {
+    const messageInterval = setInterval(() => {
+      setCurrentMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
+    }, interval);
+
+    return () => clearInterval(messageInterval);
+  }, [messages, interval]);
+
+  return messages[currentMessageIndex];
+}
 const HeaderLayout = ({
   children,
   OtherPage,
@@ -34,9 +46,20 @@ const HeaderLayout = ({
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [showGiftSection, setShowGiftSection] = useState<boolean>(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const placements = ["bottom-start"];
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const rotatingMessage = useRotatingMessages(
+    [
+      "Free Shipping on all domestic orders - Shop Now",
+      "20% off on your first purchase - Don't Miss Out",
+      "Exclusive deals available for a limited time - Explore Now",
+      "New Arrivals are here - Check Them Out",
+      "Sign up for our newsletter and get 10% off",
+    ],
+    3000 // 3 seconds interval
+  );
   const sign_Out = () => {
     signOut();
     toast.error("Logged out successfully");
@@ -45,6 +68,7 @@ const HeaderLayout = ({
   const toggleModal = () => {
     setModalOpen(!modalOpen);
   };
+
   const toggleSearch = () => {
     setSearchOpen(!searchOpen);
   };
@@ -56,7 +80,7 @@ const HeaderLayout = ({
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const items = [
     {
       image: "/assets/dashboard/master3.jpeg",
@@ -70,19 +94,24 @@ const HeaderLayout = ({
       description: "This is a soft throw pillow",
       price: "$120",
     },
-    // Add more items as needed
   ];
+
   return (
     <>
-      <header className="bg-[#9F7F7E]">
-        <div className="py-1 pr-5 flex items-center justify-between bg-[#ececec]">
+      <header className="bg-[#DBE1D3 h-64] relative">
+        <div className="text-center py-4 text-xl font-normal text-white bg-[#c89d9e]">
+          {rotatingMessage}
+        </div>
+        <div className="py-2   pr-5 flex items-center justify-between bg-[rgb(219,225,211)]">
           <div className="flex items-center">
-            <Image
-              src="/assets/dashboard/Firrki_Logo.png"
-              alt="Firki Logo"
-              width={250}
-              height={350}
-            />
+            <Link href="/">
+              <Image
+                src="/assets/dashboard/Firrki_Logo.png"
+                alt="Firki Logo"
+                width={170}
+                height={210}
+              />
+            </Link>
           </div>
           <div className="flex items-center space-x-6">
             <div className="block md:hidden">
@@ -104,21 +133,38 @@ const HeaderLayout = ({
               </button>
             </div>
             <nav
-              className={`md:flex items-center space-x-6 font-bold text-xl pr-48 ${
+              className={`md:flex items-center space-x-12 font-bold text-xl pr-48 ${
                 menuOpen ? "block" : "hidden"
               } md:block`}
             >
               <a href="#" className="hover:text-[#AD8C87]">
                 Home
               </a>
-              <a href="#" className="hover:text-[#AD8C87]">
+              <a
+                href="/shop"
+                className="hover:text-[#AD8C87] font-bold flex items-center relative"
+                onMouseEnter={() => setShowGiftSection(true)} // Show GiftSection on hover
+                onMouseLeave={() => setShowGiftSection(false)} // Hide GiftSection when hover ends
+              >
                 Shop
+                {showGiftSection && (
+                  <div className="absolute top-full left-[-620px] mt-10 w-screen max-w-screen-2lg bg-white shadow-lg border-t border-gray-200 z-50">
+                    <GiftSection />
+                  </div>
+                )}
               </a>
-              {/* <a href="#" className="hover:text-[#AD8C87]">
-                Firbhet
-              </a> */}
-              <a href="#" className="hover:text-[#AD8C87] font-bold flex items-center">
-                <Image src="/assets/dashboard/Firbhet_Logo.jpeg" alt="Firbhet Logo" width={48} height={58} />
+              <a
+                href="#"
+                className="hover:text-[#AD8C87] font-bold flex items-center relative"
+                onMouseEnter={() => setShowGiftSection(true)} // Show GiftSection on hover
+                onMouseLeave={() => setShowGiftSection(false)} // Hide GiftSection when hover ends
+              >
+                <Image
+                  src="/assets/dashboard/newfirbhetlogo.png"
+                  alt="Firbhet Logo"
+                  width={54}
+                  height={78}
+                />
               </a>
               <a href="#" className="hover:text-[#AD8C87]">
                 Design
@@ -128,9 +174,24 @@ const HeaderLayout = ({
               </a>
             </nav>
             <div className="flex items-center space-x-4">
-              <div className="relative" ref={searchRef}>
-                <CiSearch onClick={onOpen} className="w-6 h-6 cursor-pointer hover:text-[#AD8C87]" />
+              {/* <div className="relative" ref={searchRef}>
+                <FiSearch onClick={toggleSearch} className="w-6 h-6 cursor-pointer hover:text-[#AD8C87]" />
+                {searchOpen && (
+                  <div className="absolute top-full mt-2 right-0 bg-white shadow-lg p-4 rounded-lg">
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      className="pl-8 pr-4 py-2 rounded-full text-sm border border-gray-300 focus:outline-none focus:border-pink-500 bg-[#d9e2d6]"
+                    />
+                  </div>
+                )}
+              </div> */}
 
+              <div className="relative" ref={searchRef}>
+                <CiSearch
+                  onClick={onOpen}
+                  className="w-6 h-6 cursor-pointer hover:text-[#AD8C87]"
+                />
                 <div className="flex flex-wrap gap-3">
                   {sizes.map((size) => (
                     <div key={size}>
@@ -163,88 +224,88 @@ const HeaderLayout = ({
                 <option value="USD $">USD $</option>
                 <option value="EUR €">EUR €</option>
               </select>
-              <div className="flex space-x-4">
-                <div className="">
-                  <CustomTooltip
-                    items={items}
-                    triggerElement={
-                      <a href="#" className="hover:text-[#AD8C87]">
-                        <CiHeart className="w-6 h-6" />
-                      </a>
-                    }
-                    placement="top" // Customize placement as needed
-                  />
+              <div className="relative">
+                <Image
+                  className="cursor-pointer hover:text-[#AD8C87]"
+                  src="/assets/dashboard/addToCard.png"
+                  alt="Firbhet Logo"
+                  width={34}
+                  height={44}
+                />
+                <div className="absolute -top-1 -right-2 bg-[#2c4456] text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+                  0
                 </div>
-
-                <Dropdown placement="bottom-end">
-                  <DropdownTrigger>
-                    {/* <Avatar
-                      
-                      as="button"
-                      className="transition-transform bg-transparent"
-                      color="secondary"
-                      name=""
-                      size="sm"
-                      src={
-                        session?.user?.image ? session.user.image : undefined
-                      }
-                    /> */}
-
-                    <button
-                      type="button"
-                      className="flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
-                    >
-                      <PiUserThin className="w-6 h-6 hover:text-[#AD8C87]" />
-                    </button>
-                  </DropdownTrigger>
-
-                  {session?.user ? (
-                    <DropdownMenu aria-label="Profile Actions" variant="flat">
-                      <DropdownItem
-                        key="profile"
-                        className="h-14 gap-2"
-                        textValue="Signed in as"
-                      >
-                        <p className="font-semibold">Signed in as</p>
-                        <p className="font-semibold">{session.user.email}</p>
-                      </DropdownItem>
-                      <DropdownItem key="settings">My Settings</DropdownItem>
-                      <DropdownItem key="team_settings">
-                        Team Settings
-                      </DropdownItem>
-                      <DropdownItem key="analytics">Analytics</DropdownItem>
-                      <DropdownItem key="system">System</DropdownItem>
-                      <DropdownItem key="configurations">
-                        Configurations
-                      </DropdownItem>
-                      <DropdownItem key="help_and_feedback">
-                        Help & Feedback
-                      </DropdownItem>
-                      <DropdownItem
-                        key="logout"
-                        color="danger"
-                        onClick={sign_Out}
-                        textValue="Signed in as"
-                      >
-                        Log Out
-                      </DropdownItem>
-                    </DropdownMenu>
-                  ) : (
-                    <DropdownMenu aria-label="Profile Actions" variant="flat">
-                      <DropdownItem key="signin" textValue="Signed in as">
-                        <Link href="/login">
-                          <p className="font-semibold text-[#AD8C87]">
-                            Please Sign in
-                          </p>
-                        </Link>
-                      </DropdownItem>
-                    </DropdownMenu>
-                  )}
-                </Dropdown>
-                <a href="#" className="hover:text-[#AD8C87]">
-                  <PiShoppingCartSimpleLight className="w-6 h-6" />
-                </a>
               </div>
+              <div className="relative">
+                <Image
+                  className=" cursor-pointer hover:text-[#AD8C87]"
+                  src="/assets/dashboard/like.png"
+                  alt="like Logo"
+                  width={34}
+                  height={44}
+                />
+                <div className="absolute -top-1 -right-2 bg-[#2c4456] text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+                  0
+                </div>
+              </div>
+              <Dropdown placement="bottom-end">
+                <DropdownTrigger>
+                  <button
+                    type="button"
+                    className="flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
+                  >
+                    <Image
+                      className=" hover:text-[#AD8C87]"
+                      src="/assets/dashboard/signin.png"
+                      alt="Firbhet Logo"
+                      width={39}
+                      height={47}
+                    />
+                  </button>
+                </DropdownTrigger>
+                {session?.user ? (
+                  <DropdownMenu aria-label="Profile Actions" variant="flat">
+                    <DropdownItem
+                      key="profile"
+                      className="h-14 gap-2"
+                      textValue="Signed in as"
+                    >
+                      <p className="font-semibold">Signed in as</p>
+                      <p className="font-semibold">{session.user.email}</p>
+                    </DropdownItem>
+                    <DropdownItem key="settings">My Settings</DropdownItem>
+                    <DropdownItem key="team_settings">
+                      Team Settings
+                    </DropdownItem>
+                    <DropdownItem key="analytics">Analytics</DropdownItem>
+                    <DropdownItem key="system">System</DropdownItem>
+                    <DropdownItem key="configurations">
+                      Configurations
+                    </DropdownItem>
+                    <DropdownItem key="help_and_feedback">
+                      Help & Feedback
+                    </DropdownItem>
+                    <DropdownItem
+                      key="logout"
+                      color="danger"
+                      onClick={sign_Out}
+                      textValue="Signed in as"
+                    >
+                      Log Out
+                    </DropdownItem>
+                  </DropdownMenu>
+                ) : (
+                  <DropdownMenu aria-label="Profile Actions" variant="flat">
+                    <DropdownItem key="signin" textValue="Signed in as">
+                      <Link href="/login">
+                        <p className="font-semibold text-[#AD8C87]">
+                          Please Sign in
+                        </p>
+                      </Link>
+                    </DropdownItem>
+                  </DropdownMenu>
+                )}
+              </Dropdown>
             </div>
           </div>
         </div>
