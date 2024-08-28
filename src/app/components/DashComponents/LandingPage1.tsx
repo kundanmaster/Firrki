@@ -113,7 +113,7 @@ const LandingPage1: React.FC = () => {
   return (
     <>
       <div
-        className="relative w-full bg-no-repeat text-center flex items-center justify-center  md:h-[49vh] sm:h-[20vh]"
+        className="relative w-full bg-no-repeat text-center flex items-center justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[500px]"
         style={{
           backgroundImage: "url(/assets/dashboard/master166.jpg)",
           backgroundSize: "100% auto",
@@ -196,112 +196,112 @@ const LandingPage1: React.FC = () => {
           </div>
         </div>
       </div> */}
-    <div
-      className="relative w-full bg-no-repeat text-center"
-      style={{
-        backgroundImage: `url("/assets/dashboard/master188.jpg")`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        minHeight: '100vh',
-        paddingLeft: '30px', // Add left padding for overall page
-      }}
-    >
-      <div className="grid grid-cols-4 gap-4 p-4">
-        {/* First Column */}
-        <div className="flex flex-col gap-4">
-          <div className="h-[60vh]">
-            <CustomTooltip
-              items={items}
-              triggerElement={
-                <Image
-                  src={secondRowImages[0]} // Image from secondRowImages array
-                  alt="Image 1"
-                  width={1200}
-                  height={800}
-                  className="object-cover w-full h-full"
-                />
-              }
-              placement="left" // Customize placement as needed
-            />
+      <div
+        className="relative w-full bg-no-repeat text-center"
+        style={{
+          backgroundImage: `url("/assets/dashboard/master188.jpg")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          minHeight: "100vh",
+          paddingLeft: "30px", // Add left padding for overall page
+        }}
+      >
+        <div className="grid grid-cols-4 gap-4 p-4">
+          {/* First Column */}
+          <div className="flex flex-col gap-4">
+            <div className="h-[60vh]">
+              <CustomTooltip
+                items={items}
+                triggerElement={
+                  <Image
+                    src={secondRowImages[0]} // Image from secondRowImages array
+                    alt="Image 1"
+                    width={1200}
+                    height={800}
+                    className="object-cover w-full h-full"
+                  />
+                }
+                placement="left" // Customize placement as needed
+              />
+            </div>
+            <div className="h-[40vh]">
+              <Image
+                src={secondRowImages[1]} // Image from secondRowImages array
+                alt="Image 2"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
+              />
+            </div>
           </div>
-          <div className="h-[40vh]">
-            <Image
-              src={secondRowImages[1]} // Image from secondRowImages array
-              alt="Image 2"
-              width={1200}
-              height={800}
-              className="object-cover w-full h-full"
-            />
-          </div>
-        </div>
 
-        {/* Second Column */}
-        <div className="flex flex-col gap-4">
-          <div className="h-[70vh]">
-            <Image
-              src={secondRowImages[2]} // Image from secondRowImages array
-              alt="Image 3"
-              width={1200}
-              height={800}
-              className="object-cover w-full h-full"
-            />
+          {/* Second Column */}
+          <div className="flex flex-col gap-4">
+            <div className="h-[70vh]">
+              <Image
+                src={secondRowImages[2]} // Image from secondRowImages array
+                alt="Image 3"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <div className="h-[30vh]">
+              <Image
+                src={secondRowImages[3]} // Image from secondRowImages array
+                alt="Image 4"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
+              />
+            </div>
           </div>
-          <div className="h-[30vh]">
-            <Image
-              src={secondRowImages[3]} // Image from secondRowImages array
-              alt="Image 4"
-              width={1200}
-              height={800}
-              className="object-cover w-full h-full"
-            />
-          </div>
-        </div>
 
-        {/* Third Column */}
-        <div className="flex flex-col gap-4">
-          <div className="h-[60vh]">
-            <Image
-              src={thirdRowImages[0]} // Image from thirdRowImages array
-              alt="Image 5"
-              width={1200}
-              height={800}
-              className="object-cover w-full h-full"
-            />
+          {/* Third Column */}
+          <div className="flex flex-col gap-4">
+            <div className="h-[60vh]">
+              <Image
+                src={thirdRowImages[0]} // Image from thirdRowImages array
+                alt="Image 5"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <div className="h-[40vh]">
+              <Image
+                src={thirdRowImages[1]} // Image from thirdRowImages array
+                alt="Image 6"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
+              />
+            </div>
           </div>
-          <div className="h-[40vh]">
-            <Image
-              src={thirdRowImages[1]} // Image from thirdRowImages array
-              alt="Image 6"
-              width={1200}
-              height={800}
-              className="object-cover w-full h-full"
-            />
-          </div>
-        </div>
 
-        {/* Fourth Column */}
-        <div className="flex flex-col gap-4">
-          <div className="h-[70vh]">
-            <Image
-              src={thirdRowImages[2]} // Image from thirdRowImages array
-              alt="Image 7"
-              width={1200}
-              height={800}
-              className="object-cover w-full h-full"
-            />
-          </div>
-          <div className="h-[30vh]">
-            <Image
-              src={thirdRowImages[3]} // Image from thirdRowImages array
-              alt="Image 8"
-              width={1200}
-              height={800}
-              className="object-cover w-full h-full"
-            />
+          {/* Fourth Column */}
+          <div className="flex flex-col gap-4">
+            <div className="h-[70vh]">
+              <Image
+                src={thirdRowImages[2]} // Image from thirdRowImages array
+                alt="Image 7"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <div className="h-[30vh]">
+              <Image
+                src={thirdRowImages[3]} // Image from thirdRowImages array
+                alt="Image 8"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
+              />
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );

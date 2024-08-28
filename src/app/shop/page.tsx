@@ -181,24 +181,24 @@ const AdornComponent = () => {
                   height={900}
                 />
               </div>
-              <div className="col-span-1" style={{ height: "130px" }}>
+              <div className="col-span-1" >
                 <Image
                   src="/assets/dashboard/shop2.jpeg"
                   alt="Master Image 26"
-                  className="object-cover rounded-md"
-                  layout="responsive"
-                  width={200}
-                  height={50}
+                  className="object-cover rounded-md "
+                  width={500}
+                  height={500}
+                  style={{height: '529px'}}
                 />
               </div>
-              <div className="col-span-1" style={{ height: "130px" }}>
+              <div className="col-span-1" >
                 <Image
                   src="/assets/dashboard/shop3.jpeg"
                   alt="Master Image 27"
-                  className="object-cover rounded-md"
-                  layout="responsive"
-                  width={300}
-                  height={450}
+                  className="object-cover rounded-md "
+                  width={500}
+                  height={500}
+                  style={{height: '529px'}}
                 />
               </div>
 
@@ -207,20 +207,19 @@ const AdornComponent = () => {
                   src="/assets/dashboard/shop4.jpeg"
                   alt="Master Image 28"
                   className="object-cover rounded-md"
-                  layout="responsive"
-                  width={300}
-                  height={450}
-                  style={{ height: "330px" }}
+                  width={1000}
+                  height={500}
+                  style={{height: '529px'}}
                 />
               </div>
               <div className="col-span-1">
                 <Image
                   src="/assets/dashboard/shop5.jpeg"
-                  alt="Master Image 29"
+                  alt="Master Image 29" 
                   className="object-cover rounded-md"
-                  layout="responsive"
-                  width={300}
-                  height={450}
+                  width={500}
+                  height={500}
+                  style={{height: '529px'}}
                 />
               </div>
               <div className="col-span-2">
@@ -228,9 +227,9 @@ const AdornComponent = () => {
                   src="/assets/dashboard/shop6.jpeg"
                   alt="Master Image 30"
                   className="object-cover rounded-md"
-                  layout="responsive"
-                  width={600}
+                  width={500}
                   height={500}
+                  style={{height: '529px', width: '1000px'}}
                 />
               </div>
             </div>

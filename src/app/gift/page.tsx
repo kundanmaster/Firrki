@@ -6,57 +6,65 @@ const GiftSection = () => {
     <div className="flex space-x-4 px-8 py-12">
       {/* GIFTS FOR SEASON */}
       <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">GIFTS FOR SEASON</div>
-        <Image src="/assets/dashboard/master6.jpeg" alt="Gifts for Season" width={500} height={500} className="w-full h-auto object-cover" />
+        {/* <div className="font-semibold text-lg">Block Printing</div> */}
+        <Image src="/assets/dashboard/master6.jpeg" alt="Block Printing" width={500} height={500} className="w-full h-auto object-cover" />
         <a href="#" className="text-sm mt-2">View All</a>
       </div>
-
+      {/* - Block Printing
+- Quilting
+-Hand Embroidery
+- Embroidery
+- Chikankari
+- Applique
+- Crochet
+- Lace
+- Cutwork
+- Handwoven */}
       {/* SHOP BY OCCASION & SHOP BY RECIPIENT */}
       <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">SHOP BY OCCASION</div>
+        <div className="font-semibold text-lg">Technique (Category/Heading)</div>
         <ul className="text-sm space-y-2">
-          <li>Birthday</li>
-          <li>New Home</li>
-          <li>Wedding</li>
-          <li>Anniversary</li>
-          <li>Gifts Of Love</li>
-          <li>Gifts For Season</li>
-        </ul>
-        <div className="font-semibold text-lg mt-6">SHOP BY RECIPIENT</div>
-        <ul className="text-sm space-y-2">
-          <li>The Gracious Host</li>
-          <li>India Lovers</li>
-          <li>Friends Like Family</li>
-          <li>Discerning Man</li>
-          <li>Little Ones</li>
+          <li>Block Printing</li>
+          <li>Quilting</li>
+          <li>Hand Embroidery</li>
+          <li>Chikankari</li>
+          <li>Applique</li>
+          <li>Crochet</li>
+        {/* </ul> */}
+        {/* <div className="font-semibold text-lg mt-6">SHOP BY RECIPIENT</div> */}
+        {/* <ul className="text-sm space-y-2"> */}
+          <li>Lace</li>
+          <li>Cutwork</li>
+          <li>Handwoven</li>
+          
         </ul>
       </div>
 
       {/* GIFTING */}
       <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">GIFTING</div>
-        <Image src="/assets/dashboard/master6.jpeg" alt="Gifting" width={500} height={500} className="w-full h-auto object-cover" />
+        <div className="font-semibold text-lg">Bed Linen</div>
+        <Image src="/assets/dashboard/master6.jpeg" alt="Bed Linen" width={500} height={500} className="w-full h-auto object-cover" />
         <a href="#" className="text-sm mt-2">Petite Giftables</a>
       </div>
 
       {/* GIFT CARDS */}
       <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">GIFT CARDS</div>
-        <Image src="/assets/dashboard/master5.jpeg" alt="Gift Cards" width={500} height={500} className="w-full h-auto object-cover" />
+        <div className="font-semibold text-lg">Bath Linen</div>
+        <Image src="/assets/dashboard/master5.jpeg" alt="Bath Linen" width={500} height={500} className="w-full h-auto object-cover" />
         <a href="#" className="text-sm mt-2">Discover Gift Cards &gt;</a>
       </div>
 
       {/* CORPORATE GIFTING */}
       <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">CORPORATE GIFTING</div>
-        <Image src="/assets/dashboard/master6.jpeg" alt="Corporate Gifting" width={500} height={500} className="w-full h-auto object-cover" />
+        <div className="font-semibold text-lg">Table Linen</div>
+        <Image src="/assets/dashboard/master6.jpeg" alt="Table Linen" width={500} height={500} className="w-full h-auto object-cover" />
         <a href="#" className="text-sm mt-2">Explore &gt;</a>
       </div>
 
       {/* GIFT REGISTRY */}
       <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">GIFT REGISTRY</div>
-        <Image src="/assets/dashboard/master5.jpeg" alt="Gift Registry" width={500} height={500} className="w-full h-auto object-cover" />
+        <div className="font-semibold text-lg">Cushion & Throws</div>
+        <Image src="/assets/dashboard/master5.jpeg" alt="Cushion & Throws" width={500} height={500} className="w-full h-auto object-cover" />
         <a href="#" className="text-sm mt-2">Discover &gt;</a>
       </div>
     </div>

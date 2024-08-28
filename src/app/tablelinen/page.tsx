@@ -115,7 +115,7 @@ const TableLinen: FC = () => {
         >
           <div className="flex justify-center space-x-7 mt-[-20px] px-8">
             {/* Image Card 1 */}
-            <div className="w-[230px] h-[390px] border border-pink-200 rounded-lg flex flex-col">
+            <div className="w-[230px] h-[390px] flex flex-col">
               <div className="relative w-full h-[300px]">
                 <Image
                   src="/assets/tableLinen/image.png"
@@ -131,7 +131,7 @@ const TableLinen: FC = () => {
             </div>
 
             {/* Image Card 2 */}
-            <div className="w-[230px] h-[390px] border border-pink-200 rounded-lg flex flex-col">
+            <div className="w-[230px] h-[390px] flex flex-col">
               <div className="relative w-full h-[300px]">
                 <Image
                   src="/assets/tableLinen/image22.png"
@@ -147,7 +147,7 @@ const TableLinen: FC = () => {
             </div>
 
             {/* Image Card 3 */}
-            <div className="w-[230px] h-[390px] border border-pink-200 rounded-lg flex flex-col">
+            <div className="w-[230px] h-[390px] flex flex-col">
               <div className="relative w-full h-[300px]">
                 <Image
                   src="/assets/tableLinen/image2.png"
@@ -163,7 +163,7 @@ const TableLinen: FC = () => {
             </div>
 
             {/* Image Card 4 */}
-            <div className="w-[230px] h-[390px] border border-pink-200 rounded-lg flex flex-col">
+            <div className="w-[230px] h-[390px] border rounded-lg flex flex-col">
               <div className="relative w-full h-[300px]">
                 <Image
                   src="/assets/tableLinen/image3.png"

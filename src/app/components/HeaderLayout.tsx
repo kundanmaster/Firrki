@@ -136,7 +136,7 @@ const HeaderLayout = ({
                 menuOpen ? "block" : "hidden"
               } md:block`}
             >
-              <a href="#" className="hover:text-[#AD8C87]">
+              <a href="/" className="hover:text-[#AD8C87]">
                 Home
               </a>
               <a

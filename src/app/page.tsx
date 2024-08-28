@@ -61,7 +61,7 @@ function Guest() {
             <NavbarItem>
               <Link
                 color="foreground"
-                href="#"
+                href="/"
                 className="hover:bg-slate-400/10 rounded-md p-2 font-bold hover:text-[#AD8C87]"
               >
                 Home
@@ -138,7 +138,7 @@ function AuthorizedUser({ session }: AuthorizedUserProps) {
               <NavbarItem>
                 <Link
                   color="foreground"
-                  href="#"
+                  href="/"
                   className="hover:bg-slate-400/10 rounded-md p-2 font-bold hover:text-[#AD8C87]"
                 >
                   Home
