@@ -23,7 +23,7 @@ const GiftSection = () => {
       </div>
       {/* SHOP BY OCCASION & SHOP BY RECIPIENT */}
       <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">Technique</div>
+        <div className="font-semibold text-lg">Frhibett</div>
         <ul className="text-sm space-y-2">
           <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
             <Link href="#">Block Printing</Link>

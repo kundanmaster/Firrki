@@ -18,6 +18,8 @@ import Image from "next/image";
 import CustomModal from "./Modal";
 import CustomTooltip from "./Popover";
 import GiftSection from "../gift/page";
+import GiftShop from "./GiftSection/GiftShop";
+import GiftImage from "./GiftSection/GiftImage";
 function useRotatingMessages(messages: string[], interval: number) {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
@@ -44,8 +46,11 @@ const HeaderLayout = ({
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [showGiftSection, setShowGiftSection] = useState<boolean>(false);
+  const [showShopDropdown, setShowShopDropdown] = useState<boolean>(false);
+  const [showImageDropdown, setShowImageDropdown] = useState<boolean>(false);
   const searchRef = useRef<HTMLDivElement>(null);
+  const timeoutRefShop = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRefImage = useRef<NodeJS.Timeout | null>(null);
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const rotatingMessage = useRotatingMessages(
@@ -93,6 +98,31 @@ const HeaderLayout = ({
       price: "$120",
     },
   ];
+  const handleMouseEnterShop = () => {
+    if (timeoutRefShop.current) {
+      clearTimeout(timeoutRefShop.current);
+    }
+    setShowShopDropdown(true);
+  };
+
+  const handleMouseLeaveShop = () => {
+    timeoutRefShop.current = setTimeout(() => {
+      setShowShopDropdown(false);
+    }, 100);
+  };
+
+  const handleMouseEnterImage = () => {
+    if (timeoutRefImage.current) {
+      clearTimeout(timeoutRefImage.current);
+    }
+    setShowImageDropdown(true);
+  };
+
+  const handleMouseLeaveImage = () => {
+    timeoutRefImage.current = setTimeout(() => {
+      setShowImageDropdown(false);
+    }, 100);
+  };
 
   return (
     <>
@@ -134,37 +164,52 @@ const HeaderLayout = ({
             <nav
               className={`md:flex items-center space-x-12 font-bold text-xl pr-48 ${
                 menuOpen ? "block" : "hidden"
-              } md:block`}
+              } md:block relative`}
             >
               <a href="/" className="hover:text-[#AD8C87]">
                 Home
               </a>
-              <a
-                href="/shop"
-                className="hover:text-[#AD8C87] font-bold flex items-center relative"
-                onMouseEnter={() => setShowGiftSection(true)} // Show GiftSection on hover
-                onMouseLeave={() => setShowGiftSection(false)} // Hide GiftSection when hover ends
+              {/* Shop Link with Hover Events */}
+              <div
+                className="relative"
+                onMouseEnter={handleMouseEnterShop}
+                onMouseLeave={handleMouseLeaveShop}
               >
-                Shop
-                {showGiftSection && (
-                  <div className="absolute top-full left-[-620px] mt-10 w-screen max-w-screen-2lg bg-white shadow-lg border-t border-gray-200 z-50">
-                    <GiftSection />
+                <a
+                  href="/shop"
+                  className="hover:text-[#AD8C87] font-bold flex items-center"
+                >
+                  Shop
+                </a>
+                {showShopDropdown && (
+                  <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-screen max-w-screen-2xl bg-white shadow-lg border-t border-gray-200 z-50">
+                    <GiftShop />
                   </div>
                 )}
-              </a>
-              <a
-                href="#"
-                className="hover:text-[#AD8C87] font-bold flex items-center relative"
-                onMouseEnter={() => setShowGiftSection(true)} // Show GiftSection on hover
-                onMouseLeave={() => setShowGiftSection(false)} // Hide GiftSection when hover ends
+              </div>
+              {/* Image with Separate Hover Events */}
+              <div
+                className="relative pb-4"
+                onMouseEnter={handleMouseEnterImage}
+                onMouseLeave={handleMouseLeaveImage}
               >
-                <Image
-                  src="/assets/dashboard/newfirbhetlogo.png"
-                  alt="Firbhet Logo"
-                  width={54}
-                  height={78}
-                />
-              </a>
+                <a
+                  href="/shop"
+                  className="hover:text-[#AD8C87] font-bold flex items-center"
+                >
+                  <Image
+                    src="/assets/dashboard/newfirbhetlogo.png"
+                    alt="Firbhet Logo"
+                    width={54}
+                    height={78}
+                  />
+                </a>
+                {showImageDropdown && (
+                  <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-screen max-w-screen-2xl bg-white shadow-lg border-t border-gray-200 z-50">
+                    <GiftImage />
+                  </div>
+                )}
+              </div>
               <a href="#" className="hover:text-[#AD8C87]">
                 Design
               </a>
@@ -251,7 +296,7 @@ const HeaderLayout = ({
                 <DropdownTrigger>
                   <button
                     type="button"
-                    className="flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
+                    className="flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors pb-2"
                   >
                     <Image
                       className=" hover:text-[#AD8C87]"
@@ -276,14 +321,14 @@ const HeaderLayout = ({
                     <DropdownItem key="team_settings">
                       Team Settings
                     </DropdownItem>
-                    <DropdownItem key="analytics">Analytics</DropdownItem>
-                    <DropdownItem key="system">System</DropdownItem>
-                    <DropdownItem key="configurations">
+                    {/* <DropdownItem key="analytics">Analytics</DropdownItem> */}
+                    {/* <DropdownItem key="system">System</DropdownItem> */}
+                    {/* <DropdownItem key="configurations">
                       Configurations
                     </DropdownItem>
                     <DropdownItem key="help_and_feedback">
                       Help & Feedback
-                    </DropdownItem>
+                    </DropdownItem> */}
                     <DropdownItem
                       key="logout"
                       color="danger"

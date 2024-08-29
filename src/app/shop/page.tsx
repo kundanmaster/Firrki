@@ -9,6 +9,10 @@ import Home from "../page";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const AdornComponent = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [mainImageIndex, setMainImageIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const images = [
     "/assets/dashboard/master17.jpeg",
     "/assets/dashboard/master19.jpeg",
@@ -16,13 +20,11 @@ const AdornComponent = () => {
     "/assets/dashboard/master21.jpeg",
   ];
 
-  const [currentImage, setCurrentImage] = useState(0);
   const mainImages = [
     "/assets/dashboard/master10.jpeg",
     "/assets/dashboard/master12.jpeg",
     "/assets/dashboard/master12.jpeg",
   ];
-  const [mainImageIndex, setMainImageIndex] = useState(0);
 
   const handleNextImage = () => {
     setCurrentImage((prev) => (prev + 1) % images.length);
@@ -39,10 +41,6 @@ const AdornComponent = () => {
 
     return () => clearInterval(interval);
   }, [mainImages.length]);
-
-  const [isUp, setIsUp] = useState(true);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleUpClick = () => {
     setCurrentIndex((prevIndex) =>
@@ -124,7 +122,7 @@ const AdornComponent = () => {
 
       <div>
         <div
-          className="relative h-[900px]"
+          className="relative h-[450px]"
           style={{
             backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
           }}
@@ -168,24 +166,114 @@ const AdornComponent = () => {
               </Link>
             ))}
           </div>
-          {/* <h2 className="text-center text-5xl font-bold text-gray-800 mb-8 mt-32">
-            <em>Bestsellers</em>
-          </h2> */}
-          <h2 className="text-center text-7xl font-bold text-gray-800 mb-8 mt-32">
-            POPULAR PRODUCTS
-          </h2>
-          <div className="flex items-center justify-center">
-            <Image
-              src="/assets/dashboard/Group 52.png"
-              alt="Adorn Logo"
-              className="mx-auto md:mx-0 flex item-center mb-8"
-              width={200}
-              height={200}
-            />
-          </div>
         </div>
       </div>
 
+      <div
+        className="pb-4"
+        style={{
+          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
+        }}
+      >
+        <div className="py-2">
+          <div className="flex items-center justify-center h-[50vh] bg-primaryrose">
+            <div className="text-center">
+              {/* Subtitle */}
+              <h2 className="text-xl font-light text-white uppercase mb-2">
+                All for Home
+              </h2>
+
+              {/* Main Title */}
+              <h1 className="text-5xl font-bold text-white mb-4">
+                New Arrivals
+              </h1>
+
+              {/* Description */}
+              <p className="text-white text-sm max-w-2xl mx-auto">
+                Lorem ipsum dolor amet, consectetur adipiscing elit. Nibh enim
+                finibus dignissim montes condimentum imperdiet eget? Torquent
+                tortor dolor bibendum dui purus. Etiam elit feugiat nisl
+                penatibus bibendum nam. Congue lobortis suspendisse rutrum
+                vestibulum vestibulum et fusce class. Orci habitant commodo
+                magna consectetur ultricies vestibulum dolor per.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="py-2">
+          <div className="relative flex h-[40vh] w-full bg-white shadow-lg overflow-hidden">
+            {/* Image Slider Section */}
+            <div className="flex-none w-[30%] h-full overflow-hidden">
+              <div
+                className="flex flex-col h-full transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateY(-${currentIndex * 100}%)` }}
+              >
+                {images.map((src, index) => (
+                  <div
+                    key={index}
+                    className={`w-full h-full ${
+                      index !== currentIndex ? "hidden" : ""
+                    }`}
+                  >
+                    <Image
+                      src={src}
+                      alt={`Image ${index + 1}`}
+                      width={500}
+                      height={500}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Information Section */}
+            <div className="flex flex-grow w-[70%] h-full bg-[#DBE1D3] p-4 justify-center text-left flex-col space-y-2 px-56">
+              <p className="text-primaryrose text-md">Lorem ipsum</p>
+              <p className="text-3xl">Lorem ipsum odor amet,</p>
+              <p className="text-sm">
+                Lorem ipsum odor amet, consectetuer adipiscing elit. Nibh enim
+                finibus dignissim montes condimentum imperdiet eget? Torquent
+                tortor dolor bibendum dui eu purus. Etiam elit feugiat nisl
+                penatibus bibendum nam. Congue lobortis suspendisse rutrum
+                vestibulum eu fusce class. Orci habitant commodo magna
+                consectetur ultrices vestibulum dolor per.
+              </p>
+              <div className="">
+                <button className="bg-primaryrose hover:bg-primaryrosedark py-2 text-white px-14">
+                  Explore
+                </button>
+              </div>
+            </div>
+
+            {/* Slider Buttons */}
+            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-2">
+              <button
+                onClick={handleUpClick}
+                className="border-2 border-black text-black px-2 py-2 rounded-full hover:bg-black hover:text-white"
+              ></button>
+              <button
+                onClick={handleDownClick}
+                className="border-2 border-black text-black px-2 py-2 rounded-full hover:bg-black hover:text-white"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <h2 className="text-center text-7xl font-bold text-gray-800 mt-20">
+          POPULAR PRODUCTS
+        </h2>
+        <div className="flex items-center justify-center">
+          <Image
+            src="/assets/dashboard/Group 52.png"
+            alt="Adorn Logo"
+            className="mx-auto md:mx-0 flex item-center mb-8"
+            width={200}
+            height={200}
+          />
+        </div>
+      </div>
       <div>
         <div
           className="pb-4"
@@ -255,97 +343,6 @@ const AdornComponent = () => {
         </div>
       </div>
 
-      <div
-        className="pb-4"
-        style={{
-          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
-        }}
-      >
-      <div className="py-2">
-        <div className="flex items-center justify-center h-[50vh] bg-primaryrose">
-          <div className="text-center">
-            {/* Subtitle */}
-            <h2 className="text-xl font-light text-white uppercase mb-2">
-              All for Home
-            </h2>
-
-            {/* Main Title */}
-            <h1 className="text-5xl font-bold text-white mb-4">New Arrivals</h1>
-
-            {/* Description */}
-            <p className="text-white text-sm max-w-2xl mx-auto">
-              Lorem ipsum dolor amet, consectetur adipiscing elit. Nibh enim
-              finibus dignissim montes condimentum imperdiet eget? Torquent
-              tortor dolor bibendum dui purus. Etiam elit feugiat nisl penatibus
-              bibendum nam. Congue lobortis suspendisse rutrum vestibulum
-              vestibulum et fusce class. Orci habitant commodo magna consectetur
-              ultricies vestibulum dolor per.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      
-        <div className="py-2">
-          <div className="relative flex h-[40vh] w-full bg-white shadow-lg overflow-hidden">
-            {/* Image Slider Section */}
-            <div className="flex-none w-[30%] h-full overflow-hidden">
-              <div
-                className="flex flex-col h-full transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateY(-${currentIndex * 100}%)` }}
-              >
-                {images.map((src, index) => (
-                  <div
-                    key={index}
-                    className={`w-full h-full ${
-                      index !== currentIndex ? "hidden" : ""
-                    }`}
-                  >
-                    <Image
-                      src={src}
-                      alt={`Image ${index + 1}`}
-                      width={500}
-                      height={500}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Information Section */}
-            <div className="flex flex-grow w-[70%] h-full bg-[#DBE1D3] p-4 justify-center text-left flex-col space-y-2 px-56">
-              <p className="text-primaryrose text-md">Lorem ipsum</p>
-              <p className="text-3xl">Lorem ipsum odor amet,</p>
-              <p className="text-sm">
-                Lorem ipsum odor amet, consectetuer adipiscing elit. Nibh enim
-                finibus dignissim montes condimentum imperdiet eget? Torquent
-                tortor dolor bibendum dui eu purus. Etiam elit feugiat nisl
-                penatibus bibendum nam. Congue lobortis suspendisse rutrum
-                vestibulum eu fusce class. Orci habitant commodo magna
-                consectetur ultrices vestibulum dolor per.
-              </p>
-              <div className="">
-                <button className="bg-primaryrose hover:bg-primaryrosedark py-2 text-white px-14">
-                  Explore
-                </button>
-              </div>
-            </div>
-
-            {/* Slider Buttons */}
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-2">
-              <button
-                onClick={handleUpClick}
-                className="border-2 border-black text-black px-2 py-2 rounded-full hover:bg-black hover:text-white"
-              ></button>
-              <button
-                onClick={handleDownClick}
-                className="border-2 border-black text-black px-2 py-2 rounded-full hover:bg-black hover:text-white"
-              ></button>
-            </div>
-          </div>
-        </div>
-      </div>
       <div
         style={{
           backgroundImage: `url('/assets/dashboard/footer2.jpeg')`,
