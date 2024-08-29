@@ -99,7 +99,7 @@ const AdornComponent = () => {
               <h1 className="text-8xl font-bold text-gray-800">ADORN</h1>
               <div>
                 <Image
-                  src="/assets/dashboard/group 52.png"
+                  src="/assets/dashboard/Group 52.png"
                   alt="Adorn Logo"
                   width={200}
                   height={100}
@@ -176,7 +176,7 @@ const AdornComponent = () => {
           </h2>
           <div className="flex items-center justify-center">
             <Image
-              src="/assets/dashboard/group 52.png"
+              src="/assets/dashboard/Group 52.png"
               alt="Adorn Logo"
               className="mx-auto md:mx-0 flex item-center mb-8"
               width={200}
