@@ -4,27 +4,90 @@ import Image from "next/image";
 import Link from "next/link";
 import HeaderLayout from "../components/HeaderLayout";
 import { useState, useEffect } from "react";
-import Footer from "../components/DashComponents/Footer";
-import Home from "../page";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import GiftFooter from "../components/GiftSection/GiftFooter";
+import VerticalCard from "../components/GiftSection/VerticalCard";
+
+type Category = "Table Linen" | "Bath Linen" | "Cushion & Throws" | "Bed Linen";
+
+const images = [
+  "/assets/dashboard/master17.jpeg",
+  "/assets/dashboard/master19.jpeg",
+  "/assets/dashboard/master20.jpeg",
+  "/assets/dashboard/master21.jpeg",
+];
+
+const mainImages = [
+  "/assets/dashboard/master10.jpeg",
+  "/assets/dashboard/master12.jpeg",
+  "/assets/dashboard/master12.jpeg",
+];
+
+const additionalImages: Record<Category, string[]> = {
+  "Table Linen": [
+    "/assets/tableLinen/image3.png",
+    "/assets/tableLinen/image3.png",
+    "/assets/tableLinen/image3.png",
+    "/assets/tableLinen/image3.png",
+    "/assets/tableLinen/image3.png",
+    "/assets/tableLinen/image3.png",
+  ],
+  "Bath Linen": [
+    "/assets/tableLinen/image2.png",
+    "/assets/tableLinen/image6.png",
+    "/assets/tableLinen/image2.png",
+    "/assets/tableLinen/image6.png",
+    "/assets/tableLinen/image2.png",
+    "/assets/tableLinen/image6.png",
+  ],
+  "Cushion & Throws": [
+    "/assets/tableLinen/image1.png",
+    "/assets/tableLinen/image22.png",
+    "/assets/tableLinen/image3.png",
+    "/assets/tableLinen/image22.png",
+    "/assets/tableLinen/image3.png",
+    "/assets/tableLinen/image22.png",
+  ],
+  "Bed Linen": [
+    "/assets/tableLinen/image7.png",
+    "/assets/tableLinen/image8.png",
+    "/assets/tableLinen/image7.png",
+    "/assets/tableLinen/image8.png",
+    "/assets/tableLinen/image7.png",
+    "/assets/tableLinen/image8.png",
+  ],
+};
 
 const AdornComponent = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [mainImageIndex, setMainImageIndex] = useState(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [mainImageIndex, setMainImageIndex] = useState<number>(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentImage, setCurrentImage] = useState<number>(0);
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+    null
+  );
+  const [showAdditionalImages, setShowAdditionalImages] =
+    useState<boolean>(false);
 
-  const images = [
-    "/assets/dashboard/master17.jpeg",
-    "/assets/dashboard/master19.jpeg",
-    "/assets/dashboard/master20.jpeg",
-    "/assets/dashboard/master21.jpeg",
-  ];
+  const toggleImages = (index: number) => {
+    const categories: Category[] = [
+      "Table Linen",
+      "Bath Linen",
+      "Cushion & Throws",
+      "Bed Linen",
+    ];
 
-  const mainImages = [
-    "/assets/dashboard/master10.jpeg",
-    "/assets/dashboard/master12.jpeg",
-    "/assets/dashboard/master12.jpeg",
-  ];
+    const category = categories[index];
+    if (selectedCategory === category) {
+      setShowAdditionalImages(!showAdditionalImages);
+    } else {
+      setSelectedCategory(category);
+      setShowAdditionalImages(true);
+    }
+  };
+
+  const currentAdditionalImages = selectedCategory
+    ? additionalImages[selectedCategory]
+    : [];
 
   const handleNextImage = () => {
     setCurrentImage((prev) => (prev + 1) % images.length);
@@ -40,7 +103,7 @@ const AdornComponent = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [mainImages.length]);
+  }, []);
 
   const handleUpClick = () => {
     setCurrentIndex((prevIndex) =>
@@ -53,18 +116,17 @@ const AdornComponent = () => {
       prevIndex < images.length - 1 ? prevIndex + 1 : 0
     );
   };
+
   return (
     <>
       <HeaderLayout OtherPage={undefined}>s</HeaderLayout>
       <div
         className="relative bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
-        }}
+        style={{ backgroundImage: `url('/assets/dashboard/master18.jpeg')` }}
       >
-        <div className="flex">
+        <div className="flex flex-col lg:flex-row">
           {/* Image Collage Section */}
-          <div className="flex-2/3 relative">
+          <div className="lg:flex-2/3 relative lg:order-1">
             <div className="relative">
               <Image
                 src={mainImages[mainImageIndex]}
@@ -92,7 +154,7 @@ const AdornComponent = () => {
           </div>
 
           {/* Text Section */}
-          <div className="flex-1/3  p-8">
+          <div className="lg:flex-1/3 p-8 lg:order-2">
             <div className="flex flex-col h-full justify-center items-center text-center">
               <h1 className="text-8xl font-bold text-gray-800">ADORN</h1>
               <div>
@@ -120,27 +182,20 @@ const AdornComponent = () => {
         </div>
       </div>
 
+      {/* Master Image Section */}
       <div>
         <div
           className="relative h-[450px]"
-          style={{
-            backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
-          }}
+          style={{ backgroundImage: `url('/assets/dashboard/master18.jpeg')` }}
         >
           <div className="flex justify-center space-x-16">
             {images.map((image, index) => (
-              <Link
-                href={`/${
-                  ["tablelinen", "bath-linen", "cushion-throws", "bed-linen"][
-                    index
-                  ]
-                }`}
-                key={index}
-              >
+              <div key={index}>
                 <div
                   className={`relative cursor-pointer ${
                     currentImage === index ? "opacity-100" : "opacity-100"
                   }`}
+                  onClick={() => toggleImages(index)}
                 >
                   <Image
                     src={image}
@@ -163,10 +218,39 @@ const AdornComponent = () => {
                     </p>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
+
+        {/* Display additional images if any image is selected */}
+        {selectedCategory && showAdditionalImages && (
+          <div>
+            <div
+              className="flex flex-wrap justify-center px-80"
+              style={{
+                backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
+              }}
+            >
+              {currentAdditionalImages.map((img, imgIndex) => (
+                <div
+                  key={imgIndex}
+                  className=" w-[30vh] h-[40vh] px-8 py-2 cursor-pointer"
+                  onClick={() => setShowAdditionalImages(false)}
+                >
+                  <Image
+                    src={img}
+                    alt={`Additional Image ${imgIndex + 1}`}
+                    className="object-cover"
+                    layout="responsive"
+                    width={300}
+                    height={300}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       <div
@@ -201,65 +285,7 @@ const AdornComponent = () => {
           </div>
         </div>
 
-        <div className="py-2">
-          <div className="relative flex h-[40vh] w-full bg-white shadow-lg overflow-hidden">
-            {/* Image Slider Section */}
-            <div className="flex-none w-[30%] h-full overflow-hidden">
-              <div
-                className="flex flex-col h-full transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateY(-${currentIndex * 100}%)` }}
-              >
-                {images.map((src, index) => (
-                  <div
-                    key={index}
-                    className={`w-full h-full ${
-                      index !== currentIndex ? "hidden" : ""
-                    }`}
-                  >
-                    <Image
-                      src={src}
-                      alt={`Image ${index + 1}`}
-                      width={500}
-                      height={500}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Information Section */}
-            <div className="flex flex-grow w-[70%] h-full bg-[#DBE1D3] p-4 justify-center text-left flex-col space-y-2 px-56">
-              <p className="text-primaryrose text-md">Lorem ipsum</p>
-              <p className="text-3xl">Lorem ipsum odor amet,</p>
-              <p className="text-sm">
-                Lorem ipsum odor amet, consectetuer adipiscing elit. Nibh enim
-                finibus dignissim montes condimentum imperdiet eget? Torquent
-                tortor dolor bibendum dui eu purus. Etiam elit feugiat nisl
-                penatibus bibendum nam. Congue lobortis suspendisse rutrum
-                vestibulum eu fusce class. Orci habitant commodo magna
-                consectetur ultrices vestibulum dolor per.
-              </p>
-              <div className="">
-                <button className="bg-primaryrose hover:bg-primaryrosedark py-2 text-white px-14">
-                  Explore
-                </button>
-              </div>
-            </div>
-
-            {/* Slider Buttons */}
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-2">
-              <button
-                onClick={handleUpClick}
-                className="border-2 border-black text-black px-2 py-2 rounded-full hover:bg-black hover:text-white"
-              ></button>
-              <button
-                onClick={handleDownClick}
-                className="border-2 border-black text-black px-2 py-2 rounded-full hover:bg-black hover:text-white"
-              ></button>
-            </div>
-          </div>
-        </div>
+        <VerticalCard />
 
         <h2 className="text-center text-7xl font-bold text-gray-800 mt-20">
           POPULAR PRODUCTS
@@ -343,144 +369,7 @@ const AdornComponent = () => {
         </div>
       </div>
 
-      <div
-        style={{
-          backgroundImage: `url('/assets/dashboard/footer2.jpeg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "bottom",
-          backgroundRepeat: "no-repeat",
-        }}
-        className="relative mt-auto flex flex-col items-center h-auto min-h-[600px] sm:min-h-[2000px] md:min-h-[900px] lg:min-h-[1024px] xl:min-h-[1200px] 2xl:min-h-[1500px] py-12"
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 w-full max-w-6xl text-center sm:text-left px-4">
-          <div className="space-y-5">
-            <div className="flex flex-col items-center sm:items-start">
-              {/* Logo */}
-              <div className="flex justify-center sm:justify-start w-full mb-6">
-                <Image
-                  src="/assets/dashboard/Firrki_Logo.png"
-                  alt="Logo"
-                  width={220}
-                  height={90}
-                  className="h-25 w-25"
-                />
-              </div>
-
-              {/* Social Media Icons */}
-              <div className="flex gap-7 justify-center sm:justify-start">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-black p-2 rounded-full"
-                >
-                  <FaFacebookF className="text-white text-3xl hover:text-gray-500" />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-black p-2 rounded-full"
-                >
-                  <FaInstagram className="text-white text-3xl hover:text-gray-500" />
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-black p-2 rounded-full"
-                >
-                  <FaYoutube className="text-white text-3xl hover:text-gray-500" />
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-6 sm:mt-0">
-              <p className="mb-6 text-gray-600 text-xl font-semibold">
-                Discover New Arrivals and Exclusive Discounts First
-              </p>
-              <input
-                type="email"
-                placeholder="Enter your Email Address"
-                className="px-4 py-2 w-full max-w-md border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-lg"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 w-full max-w-6xl">
-            <div className="text-center sm:text-left">
-              <h2 className="text-4xl font-semibold mb-3">QUICK LINKS</h2>
-              <ul className="space-y-2 text-gray-700 text-xl font-semibold">
-                <li>
-                  <a href="#" className="hover:text-gray-500">
-                    Our story
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-500">
-                    FAQs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-500">
-                    Returns and Exchange
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-500">
-                    Refunds
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-500">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-gray-500">
-                    Terms and Conditions
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="text-center sm:text-left">
-              <h3 className="text-4xl font-semibold mb-3">CATEGORIES</h3>
-              <ul className="space-y-2 text-gray-700 text-xl font-semibold">
-                <li>
-                  <a href="/new-arrivals" className="hover:text-gray-500">
-                    New arrivals
-                  </a>
-                </li>
-                <li>
-                  <a href="/bed-linen" className="hover:text-gray-500">
-                    Bed Linen
-                  </a>
-                </li>
-                <li>
-                  <a href="/cushions" className="hover:text-gray-500">
-                    Cushions
-                  </a>
-                </li>
-                <li>
-                  <a href="/table-linen" className="hover:text-gray-500">
-                    Table Linen
-                  </a>
-                </li>
-                <li>
-                  <a href="/gifting" className="hover:text-gray-500">
-                    Gifting
-                  </a>
-                </li>
-                <li>
-                  <a href="/personalization" className="hover:text-gray-500">
-                    Personalization
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <GiftFooter />
     </>
   );
 };
