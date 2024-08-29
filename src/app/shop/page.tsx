@@ -7,6 +7,9 @@ import { useState, useEffect } from "react";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import GiftFooter from "../components/GiftSection/GiftFooter";
 import VerticalCard from "../components/GiftSection/VerticalCard";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { IoMdHeart } from "react-icons/io";
+import { FiShoppingCart } from "react-icons/fi";
 
 type Category = "Table Linen" | "Bath Linen" | "Cushion & Throws" | "Bed Linen";
 
@@ -57,6 +60,16 @@ const additionalImages: Record<Category, string[]> = {
     "/assets/tableLinen/image8.png",
   ],
 };
+
+const productData = [
+  { name: "Product 1", amount: "₹20" },
+  { name: "Product 2", amount: "₹30" },
+  { name: "Product 3", amount: "₹25" },
+  { name: "Product 4", amount: "₹40" },
+  { name: "Product 5", amount: "₹50" },
+  { name: "Product 6", amount: "₹35" },
+  // Add more product data as needed
+];
 
 const AdornComponent = () => {
   const [mainImageIndex, setMainImageIndex] = useState<number>(0);
@@ -225,27 +238,45 @@ const AdornComponent = () => {
 
         {/* Display additional images if any image is selected */}
         {selectedCategory && showAdditionalImages && (
-          <div>
-            <div
-              className="flex flex-wrap justify-center px-80"
-              style={{
-                backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
-              }}
-            >
+          <div
+            className="bg-cover bg-center"
+            style={{
+              backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
+            }}
+          >
+            <div className="flex flex-wrap justify-center gap-4 px-80">
               {currentAdditionalImages.map((img, imgIndex) => (
-                <div
-                  key={imgIndex}
-                  className=" w-[30vh] h-[40vh] px-8 py-2 cursor-pointer"
-                  onClick={() => setShowAdditionalImages(false)}
-                >
-                  <Image
-                    src={img}
-                    alt={`Additional Image ${imgIndex + 1}`}
-                    className="object-cover"
-                    layout="responsive"
-                    width={300}
-                    height={300}
-                  />
+                <div key={imgIndex} className="relative w-[30vh] h-[40vh] mb-6">
+                  <div className="relative h-full bg-white shadow-lg overflow-hidden">
+                    <Image
+                      src={img}
+                      alt={`Additional Image ${imgIndex + 1}`}
+                      className="w-full h-[60%] object-cover"
+                      layout="responsive"
+                      width={300}
+                      height={300}
+                    />
+                    <div className="absolute top-2 right-2 flex space-x-2 z-10">
+                      <button className="bg-primaryrose text-white p-2 rounded-full shadow-md hover:bg-primaryrosedark">
+                        <FiShoppingCart />
+                      </button>
+                      <button className="bg-primaryrose text-white p-2 rounded-full shadow-md hover:bg-primaryrosedark">
+                        <IoMdHeartEmpty />
+                      </button>
+                    </div>
+                  </div>
+                    <div className="flex flex-col justify-between h-[40%]">
+                      <div className="flex flex-col h-full">
+                        <div className="flex justify-between items-center mt-1">
+                          <p className="text-lg font-semibold">
+                           {productData[imgIndex]?.name || "Product Name"}
+                          </p>
+                          <p className="text-lg font-semibold">
+                            {productData[imgIndex]?.amount || "₹Amount"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                 </div>
               ))}
             </div>
@@ -313,7 +344,7 @@ const AdornComponent = () => {
               <Image
                 src="/assets/dashboard/shop1.jpeg"
                 alt="First Image"
-                className="h-[50vh] w-full object-cover"
+                className="h-auto w-full object-cover"
                 width={1000}
                 height={1000}
               />
@@ -342,7 +373,7 @@ const AdornComponent = () => {
               <Image
                 src="/assets/dashboard/shop4.jpeg"
                 alt="Fourth Image"
-                className="h-[70vh] w-full object-cover mt-[-13.4rem]"
+                className="h-[81vh] w-full object-cover mt-[-13.6rem]"
                 width={1000}
                 height={1000}
               />
@@ -351,7 +382,7 @@ const AdornComponent = () => {
               <Image
                 src="/assets/dashboard/shop5.jpeg"
                 alt="Fifth Image"
-                className="h-[70vh] w-full object-cover mt-[-13.4rem]"
+                className="h-[81vh] w-full object-cover mt-[-13.6rem]"
                 width={1000}
                 height={1000}
               />
@@ -360,7 +391,7 @@ const AdornComponent = () => {
               <Image
                 src="/assets/dashboard/shop6.jpeg"
                 alt="Sixth Image"
-                className="h-[50vh] w-full object-cover"
+                className="h-auto w-full object-cover"
                 width={1000}
                 height={1000}
               />

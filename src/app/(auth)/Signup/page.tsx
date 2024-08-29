@@ -164,7 +164,7 @@ const Signup = () => {
         </form>
         <p className="text-center text-gray-400">
           Already have an account?{" "}
-          <Link href={"/login"} className="text-blue-700">
+          <Link href={"/login"} className="text-primaryrose">
             Sign In
           </Link>
         </p>

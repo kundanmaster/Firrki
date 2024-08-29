@@ -234,7 +234,7 @@ const TableLinen: FC = () => {
               <Image
                 src="/assets/tableLinen/image4.png"
                 alt="First Image"
-                className="h-[50vh] w-full object-cover"
+                className="h-auto w-full object-cover"
                 width={1000}
                 height={1000}
               />
@@ -263,7 +263,7 @@ const TableLinen: FC = () => {
               <Image
                 src="/assets/tableLinen/image1.png"
                 alt="Fourth Image"
-                className="h-[70vh] w-full object-cover mt-[-13.4rem]"
+                className="h-[70vh] w-full object-cover mt-[-11.4rem]"
                 width={1000}
                 height={1000}
               />
@@ -272,7 +272,7 @@ const TableLinen: FC = () => {
               <Image
                 src="/assets/tableLinen/image6.png"
                 alt="Fifth Image"
-                className="h-[70vh] w-full object-cover mt-[-13.4rem]"
+                className="h-[70vh] w-full object-cover mt-[-11.4rem]"
                 width={1000}
                 height={1000}
               />
