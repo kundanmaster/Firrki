@@ -14,6 +14,14 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        "goldlight":"#1D3563 ",
+        "primarygold":"#F27B21",
+        "primaryrose": "#C89D9E",
+        "primaryrosedark": "#bd7b7c",
+        "primarygreen": "#DBE1D3", /* Example color */
+        "primarytext": "#2A445D",
+      },
     },
   },
   darkMode: "class",

@@ -12,7 +12,7 @@ const Footer = () => {
         backgroundRepeat: 'no-repeat',
         
       }}
-      className="relative flex flex-col items-center h-auto min-h-[600px] sm:min-h-[2000px] md:min-h-[900px] lg:min-h-[1024px] xl:min-h-[1200px] 2xl:min-h-[1500px] py-12"
+      className="relative mt-auto flex flex-col items-center h-auto min-h-[600px] sm:min-h-[2000px] md:min-h-[900px] lg:min-h-[1024px] xl:min-h-[1200px] 2xl:min-h-[1500px] py-12"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 w-full max-w-6xl text-center sm:text-left px-4">
         <div className="space-y-5">
@@ -24,7 +24,7 @@ const Footer = () => {
                 alt="Logo"
                 width={220}
                 height={90}
-                className="h-28 w-25"
+                className="h-25 w-25"
               />
             </div>
 

@@ -22,7 +22,7 @@ const GiftSection = () => {
 - Handwoven */}
       {/* SHOP BY OCCASION & SHOP BY RECIPIENT */}
       <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">Technique (Category/Heading)</div>
+        <div className="font-semibold text-lg">Technique</div>
         <ul className="text-sm space-y-2">
           <li>Block Printing</li>
           <li>Quilting</li>

@@ -298,7 +298,14 @@ const HeaderLayout = ({
                     <DropdownItem key="signin" textValue="Signed in as">
                       <Link href="/login">
                         <p className="font-semibold text-[#AD8C87]">
-                          Please Sign in
+                          Log in/ Sign in
+                        </p>
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem key="signin" textValue="Signed in as">
+                      <Link href="/signup">
+                        <p className="font-semibold text-[#AD8C87]">
+                          Create your Account
                         </p>
                       </Link>
                     </DropdownItem>
