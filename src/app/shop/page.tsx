@@ -258,7 +258,7 @@ const AdornComponent = () => {
               <p className="text-white text-sm max-w-2xl mx-auto">
                 Lorem ipsum dolor amet, consectetur adipiscing elit. Nibh enim
                 finibus dignissim montes condimentum imperdiet eget? Torquent
-                tortor dolor bibendum dui purus. Etiam elit feugiat nisl
+                tortor dolor bibendum dui puruss. Etiam elit feugiat nisl
                 penatibus bibendum nam. Congue lobortis suspendisse rutrum
                 vestibulum vestibulum et fusce class. Orci habitant commodo
                 magna consectetur ultricies vestibulum dolor per.
