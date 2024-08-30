@@ -28,7 +28,7 @@ const VerticalCard = () => {
     <div className="py-2">
       <div className="relative flex h-[40vh] w-full bg-white shadow-lg overflow-hidden">
         {/* Image Slider Section */}
-        <div className="flex-none w-[30%] h-full overflow-hidden">
+        <div className="flex-none w-[50%] h-full overflow-hidden">
           <div
             className="flex flex-col h-full transition-transform duration-500 ease-in-out"
             style={{ transform: `translateY(-${currentIndex * 100}%)` }}
@@ -45,7 +45,7 @@ const VerticalCard = () => {
                   alt={`Image ${index + 1}`}
                   width={500}
                   height={500}
-                  className="w-[55vh] h-[40vh] object-cover"
+                  className="w-full object-cover"
                 />
               </div>
             ))}
@@ -53,7 +53,7 @@ const VerticalCard = () => {
         </div>
 
         {/* Information Section */}
-        <div className="flex flex-grow w-[70%] h-full bg-[#DBE1D3] p-4 justify-center text-left flex-col space-y-2 px-56">
+        <div className="flex flex-grow w-[50%] h-full bg-[#DBE1D3] p-4 justify-center text-left flex-col space-y-2 px-56">
           <p className="text-primaryrose text-md">Lorem ipsum</p>
           <p className="text-3xl">Lorem ipsum odor amet,</p>
           <p className="text-sm">

@@ -14,10 +14,10 @@ import { FiShoppingCart } from "react-icons/fi";
 type Category = "Table Linen" | "Bath Linen" | "Cushion & Throws" | "Bed Linen";
 
 const images = [
-  "/assets/dashboard/master17.jpeg",
-  "/assets/dashboard/master19.jpeg",
-  "/assets/dashboard/master20.jpeg",
   "/assets/dashboard/master21.jpeg",
+  "/assets/dashboard/master19.jpeg",
+  "/assets/dashboard/master17.jpeg",
+  "/assets/dashboard/master20.jpeg",
 ];
 
 const mainImages = [
@@ -196,100 +196,51 @@ const AdornComponent = () => {
       </div>
 
       {/* Master Image Section */}
-      <div>
-        <div
-          className="relative h-[450px]"
-          style={{ backgroundImage: `url('/assets/dashboard/master18.jpeg')` }}
-        >
-          <div className="flex justify-center space-x-16">
-            {images.map((image, index) => (
-              <div key={index}>
-                <div
-                  className={`relative cursor-pointer ${
-                    currentImage === index ? "opacity-100" : "opacity-100"
-                  }`}
-                  onClick={() => toggleImages(index)}
-                >
-                  <Image
-                    src={image}
-                    alt={`Master Image ${index + 1}`}
-                    className="rounded-full object-cover mt-10"
-                    layout="fixed"
-                    width={300}
-                    height={300}
-                  />
-                  <div className="absolute inset-x-0 bottom-[-60px] text-center mt-10">
-                    <p className="bg-primaryrose hover:bg-primaryrosedark text-white font-semibold py-3 mt-16">
-                      {
-                        [
-                          "Table Linen",
-                          "Bath Linen",
-                          "Cushion & Throws",
-                          "Bed Linen",
-                        ][index]
-                      }
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Display additional images if any image is selected */}
-        {selectedCategory && showAdditionalImages && (
-          <div
-            className="bg-cover bg-center"
-            style={{
-              backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
-            }}
-          >
-            <div className="flex flex-wrap justify-center gap-4 px-80">
-              {currentAdditionalImages.map((img, imgIndex) => (
-                <div key={imgIndex} className="relative w-[30vh] h-[40vh] mb-6">
-                  <div className="relative h-full bg-white shadow-lg overflow-hidden">
-                    <Image
-                      src={img}
-                      alt={`Additional Image ${imgIndex + 1}`}
-                      className="w-full h-[60%] object-cover"
-                      layout="responsive"
-                      width={300}
-                      height={300}
-                    />
-                    <div className="absolute top-2 right-2 flex space-x-2 z-10">
-                      <button className="bg-primaryrose text-white p-2 rounded-full shadow-md hover:bg-primaryrosedark">
-                        <FiShoppingCart />
-                      </button>
-                      <button className="bg-primaryrose text-white p-2 rounded-full shadow-md hover:bg-primaryrosedark">
-                        <IoMdHeartEmpty />
-                      </button>
-                    </div>
-                  </div>
-                    <div className="flex flex-col justify-between h-[40%]">
-                      <div className="flex flex-col h-full">
-                        <div className="flex justify-between items-center mt-1">
-                          <p className="text-lg font-semibold">
-                           {productData[imgIndex]?.name || "Product Name"}
-                          </p>
-                          <p className="text-lg font-semibold">
-                            {productData[imgIndex]?.amount || "₹Amount"}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
       <div
         className="pb-4"
         style={{
           backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
         }}
       >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-10 md:gap-y-0 justify-items-center pb-20">
+          {images.map((image, index) => (
+            <Link
+              href={`/${
+                ["bath-linen", "bed-linen", "tablelinen", "cushion-throws"][
+                  index
+                ]
+              }`}
+              key={index}
+            >
+              <div
+                className={`relative cursor-pointer items-center justify-center ${
+                  currentImage === index ? "opacity-100" : "opacity-100"
+                }`}
+              >
+                <Image
+                  src={image}
+                  alt={`Master Image ${index + 1}`}
+                  className="rounded-full object-cover mt-4 md:mt-10 lg:mt-16"
+                  width={300}
+                  height={300}
+                />
+                <div className="absolute inset-x-0 bottom-[-60px] text-center mt-10">
+                  <p className="bg-primaryrose hover:bg-primaryrosedark text-white font-semibold py-3 mt-16">
+                    {
+                      [
+                        "Bed Linen",
+                        "Bath Linen",
+                        "Table Linen",
+                        "Cushion & Throws",
+                      ][index]
+                    }
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
         <div className="py-2">
           <div className="flex items-center justify-center h-[50vh] bg-primaryrose">
             <div className="text-center">
