@@ -371,8 +371,15 @@ const AdornComponent = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto p-4">
-        <ImageDot images={imagess} relatedImages={relatedImages} />
+      <div
+        className="pb-4"
+        style={{
+          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
+        }}
+      >
+        <div className="container mx-auto p-4">
+          <ImageDot images={imagess} relatedImages={relatedImages} />
+        </div>
       </div>
       <GiftFooter />
     </>
