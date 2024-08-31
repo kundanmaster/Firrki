@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderLayout from "../components/HeaderLayout";
+import Footer from "../components/DashComponents/Footer";
 
 const DesignPage = () => {
   return (
@@ -92,6 +93,7 @@ const DesignPage = () => {
           </div>
         </div>
       </div> */}
+      <Footer />
     </>
   );
 };
