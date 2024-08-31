@@ -1,5 +1,3 @@
-
-
 "use client";
 import Image from "next/image";
 import Footer from "../../components/DashComponents/Footer";
@@ -86,7 +84,6 @@ const productData = [
   { name: "Product 4", amount: "₹40" },
   { name: "Product 5", amount: "₹50" },
   { name: "Product 6", amount: "₹35" },
-  // Add more product data as needed
 ];
 
 const CushionThrows: FC = () => {
@@ -121,9 +118,7 @@ const CushionThrows: FC = () => {
     : [];
   return (
     <div>
-      {/* Table Linen Section */}
       <HeaderLayout OtherPage={undefined}>s</HeaderLayout>
-      {/* Table Linen Section */}
       <div
         className="relative flex items-center justify-center"
         style={{
@@ -135,16 +130,15 @@ const CushionThrows: FC = () => {
         }}
       >
         <div className="relative w-full">
-          {/* Slider Container */}
           <div className="flex items-center justify-between">
-            {/* Left Navigation Button */}
             <button className="text-8xl text-gray-600 hover:text-gray-800 ml-4">
               &#x276E;
             </button>
 
-            {/* Center Content */}
             <div className="text-center flex-grow">
-              <h1 className="text-5xl font-bold text-[#2c4456]">CUSHION THROWS</h1>
+              <h1 className="text-5xl font-bold text-[#2c4456]">
+                CUSHION THROWS
+              </h1>
               <div className="flex justify-center mt-[-10px] mb-4">
                 <Image
                   src="/assets/dashboard/linenLogo.png"
@@ -162,7 +156,6 @@ const CushionThrows: FC = () => {
               </button>
             </div>
 
-            {/* Right Navigation Button */}
             <button className="text-8xl text-gray-600 hover:text-gray-800 mr-4">
               &#x276F;
             </button>
@@ -170,8 +163,7 @@ const CushionThrows: FC = () => {
         </div>
       </div>
 
-      {/* Bestsellers Section */}
-      <div
+      {/* <div
         className="py-12"
         style={{
           backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
@@ -195,7 +187,6 @@ const CushionThrows: FC = () => {
                     }`}
                     onClick={() => toggleImages(index)}
                   >
-                    {/* Image Container */}
                     <div className="h-[40vh] overflow-hidden">
                       <Image
                         src={image}
@@ -204,11 +195,9 @@ const CushionThrows: FC = () => {
                         layout="fill"
                       />
                     </div>
-                    {/* Text Container */}
                     <div className="absolute inset-x-0 bottom-0">
                       <p className="bg-primaryrose hover:bg-primaryrosedark text-white font-semibold text-center p-4">
                         {
-                          // Bed Linen, Bath Linen, Table Linen, Cushion & Throws
                           [
                             "PLACEMATS",
                             "NAPKINS",
@@ -225,7 +214,6 @@ const CushionThrows: FC = () => {
             </div>
           </div>
 
-          {/* Display additional images if any image is selected */}
           {selectedCategory && showAdditionalImages && (
             <div
               className="bg-cover bg-center"
@@ -275,7 +263,7 @@ const CushionThrows: FC = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
 
       <div
         className="text-center mt[-10px]"
@@ -373,4 +361,4 @@ const CushionThrows: FC = () => {
   );
 };
 
-export default CushionThrows
+export default CushionThrows;

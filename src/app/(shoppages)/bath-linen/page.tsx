@@ -10,12 +10,15 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 import { FiShoppingCart } from "react-icons/fi";
 
+// Bath Towel
+// Hand Towel
+// Face Towel
+
 type Category =
-  | "PLACEMATS"
-  | "NAPKINS"
-  | "RUNNERS"
-  | "TABLE CLOTH"
-  | "COASTERS";
+  | "BATH TOWEL"
+  | "HAND TOWEL"
+  | "FACE TOWEL"
+  
 
 interface ImageConfig {
   src: string;
@@ -31,7 +34,7 @@ interface ImageConfig {
 }
 
 const additionalImages: Record<Category, string[]> = {
-  PLACEMATS: [
+  "BATH TOWEL": [
     "/assets/tableLinen/image3.png",
     "/assets/tableLinen/image3.png",
     "/assets/tableLinen/image3.png",
@@ -39,7 +42,7 @@ const additionalImages: Record<Category, string[]> = {
     "/assets/tableLinen/image3.png",
     "/assets/tableLinen/image3.png",
   ],
-  NAPKINS: [
+  "HAND TOWEL": [
     "/assets/tableLinen/image2.png",
     "/assets/tableLinen/image6.png",
     "/assets/tableLinen/image2.png",
@@ -47,7 +50,7 @@ const additionalImages: Record<Category, string[]> = {
     "/assets/tableLinen/image2.png",
     "/assets/tableLinen/image6.png",
   ],
-  RUNNERS: [
+  "FACE TOWEL": [
     "/assets/tableLinen/image1.png",
     "/assets/tableLinen/image22.png",
     "/assets/tableLinen/image3.png",
@@ -55,30 +58,13 @@ const additionalImages: Record<Category, string[]> = {
     "/assets/tableLinen/image3.png",
     "/assets/tableLinen/image22.png",
   ],
-  "TABLE CLOTH": [
-    "/assets/tableLinen/image7.png",
-    "/assets/tableLinen/image8.png",
-    "/assets/tableLinen/image7.png",
-    "/assets/tableLinen/image8.png",
-    "/assets/tableLinen/image7.png",
-    "/assets/tableLinen/image8.png",
-  ],
-  COASTERS: [
-    "/assets/tableLinen/image3.png",
-    "/assets/tableLinen/image1.png",
-    "/assets/tableLinen/image7.png",
-    "/assets/tableLinen/image8.png",
-    "/assets/tableLinen/image22.png",
-    "/assets/tableLinen/image8.png",
-  ],
+  
 };
 
 const images = [
   "/assets/tableLinen/image.png",
   "/assets/tableLinen/image22.png",
   "/assets/tableLinen/image2.png",
-  "/assets/tableLinen/image3.png",
-  "/assets/tableLinen/image8.png",
 ];
 const productData = [
   { name: "Product 1", amount: "₹20" },
@@ -101,11 +87,9 @@ const BathLinant: FC = () => {
 
   const toggleImages = (index: number) => {
     const categories: Category[] = [
-      "PLACEMATS",
-      "NAPKINS",
-      "RUNNERS",
-      "TABLE CLOTH",
-      "COASTERS",
+      "BATH TOWEL",
+      "HAND TOWEL",
+      "FACE TOWEL",
     ];
 
     const category = categories[index];
@@ -211,11 +195,9 @@ const BathLinant: FC = () => {
                         {
                           // Bed Linen, Bath Linen, Table Linen, Cushion & Throws
                           [
-                            "PLACEMATS",
-                            "NAPKINS",
-                            "RUNNERS",
-                            "TABLE CLOTH",
-                            "COASTERS",
+                            "BATH TOWEL",
+                            "HAND TOWEL",
+                            "FACE TOWEL"
                           ][index]
                         }
                       </p>

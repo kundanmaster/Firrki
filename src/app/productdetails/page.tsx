@@ -18,7 +18,7 @@ const ProductDetail: React.FC = () => {
 
   return (
     <>
-    
+    <HeaderLayout  OtherPage={undefined} >s</HeaderLayout>
     <div className="flex flex-row items-start justify-center min-h-screen p-4">
       <div className="flex flex-col items-center justify-center w-1/2 p-4">
         <Image
@@ -86,13 +86,13 @@ const ProductDetail: React.FC = () => {
         </div>
 
         <div className="flex space-x-4">
-          <button className="flex-1 px-4 py-2 bg-blue-500 text-white rounded flex items-center justify-center">
+          <button className="flex-1 px-4 py-2 bg-primaryrose hover:bg-primaryrosedark text-white  flex items-center justify-center shadow-md">
             <FaShoppingCart className="mr-2" /> Add To Cart
           </button>
-          <button className="px-4 py-2 bg-gray-300 rounded flex items-center justify-center">
+          <button className="px-4 py-2 bg-gray-300  flex items-center justify-center shadow-md">
             <FaHeart className="text-gray-800" />
           </button>
-          <button className="flex-1 px-4 py-2 bg-green-500 text-white rounded flex items-center justify-center">
+          <button className="flex-1 px-4 py-2 bg-primaryrose hover:bg-primaryrosedark text-white  flex items-center justify-center shadow-md">
             Buy Now
           </button>
         </div>

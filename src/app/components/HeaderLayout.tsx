@@ -194,7 +194,7 @@ const HeaderLayout = ({
                 onMouseLeave={handleMouseLeaveImage}
               >
                 <a
-                  href="/shop"
+                  href="/firrbhet"
                   className="hover:text-[#AD8C87] font-bold flex items-center"
                 >
                   <Image
@@ -210,7 +210,7 @@ const HeaderLayout = ({
                   </div>
                 )}
               </div>
-              <a href="#" className="hover:text-[#AD8C87]">
+              <a href="/design" className="hover:text-[#AD8C87]">
                 Design
               </a>
               <a href="#" className="hover:text-[#AD8C87]">

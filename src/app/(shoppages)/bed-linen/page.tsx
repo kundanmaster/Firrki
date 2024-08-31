@@ -1,6 +1,3 @@
-
-
-
 "use client";
 import Image from "next/image";
 import Footer from "../../components/DashComponents/Footer";
@@ -10,13 +7,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 import { FiShoppingCart } from "react-icons/fi";
 
-type Category =
-  | "PLACEMATS"
-  | "NAPKINS"
-  | "RUNNERS"
-  | "TABLE CLOTH"
-  | "COASTERS";
-
+type Category = "RAZAI" | "BEDOVER" | "BEDSHEET" | "DOHAR";
 interface ImageConfig {
   src: string;
   alt: string;
@@ -31,7 +22,7 @@ interface ImageConfig {
 }
 
 const additionalImages: Record<Category, string[]> = {
-  PLACEMATS: [
+  "RAZAI": [
     "/assets/tableLinen/image3.png",
     "/assets/tableLinen/image3.png",
     "/assets/tableLinen/image3.png",
@@ -39,7 +30,7 @@ const additionalImages: Record<Category, string[]> = {
     "/assets/tableLinen/image3.png",
     "/assets/tableLinen/image3.png",
   ],
-  NAPKINS: [
+  "BEDOVER": [
     "/assets/tableLinen/image2.png",
     "/assets/tableLinen/image6.png",
     "/assets/tableLinen/image2.png",
@@ -47,7 +38,7 @@ const additionalImages: Record<Category, string[]> = {
     "/assets/tableLinen/image2.png",
     "/assets/tableLinen/image6.png",
   ],
-  RUNNERS: [
+  "BEDSHEET": [
     "/assets/tableLinen/image1.png",
     "/assets/tableLinen/image22.png",
     "/assets/tableLinen/image3.png",
@@ -55,20 +46,12 @@ const additionalImages: Record<Category, string[]> = {
     "/assets/tableLinen/image3.png",
     "/assets/tableLinen/image22.png",
   ],
-  "TABLE CLOTH": [
+  "DOHAR": [
     "/assets/tableLinen/image7.png",
     "/assets/tableLinen/image8.png",
     "/assets/tableLinen/image7.png",
     "/assets/tableLinen/image8.png",
     "/assets/tableLinen/image7.png",
-    "/assets/tableLinen/image8.png",
-  ],
-  COASTERS: [
-    "/assets/tableLinen/image3.png",
-    "/assets/tableLinen/image1.png",
-    "/assets/tableLinen/image7.png",
-    "/assets/tableLinen/image8.png",
-    "/assets/tableLinen/image22.png",
     "/assets/tableLinen/image8.png",
   ],
 };
@@ -78,7 +61,6 @@ const images = [
   "/assets/tableLinen/image22.png",
   "/assets/tableLinen/image2.png",
   "/assets/tableLinen/image3.png",
-  "/assets/tableLinen/image8.png",
 ];
 const productData = [
   { name: "Product 1", amount: "₹20" },
@@ -100,13 +82,7 @@ const BedLinen: FC = () => {
     useState<boolean>(false);
 
   const toggleImages = (index: number) => {
-    const categories: Category[] = [
-      "PLACEMATS",
-      "NAPKINS",
-      "RUNNERS",
-      "TABLE CLOTH",
-      "COASTERS",
-    ];
+    const categories: Category[] = ["RAZAI", "BEDOVER", "BEDSHEET", "DOHAR"];
 
     const category = categories[index];
     if (selectedCategory === category) {
@@ -209,14 +185,12 @@ const BedLinen: FC = () => {
                     <div className="absolute inset-x-0 bottom-0">
                       <p className="bg-primaryrose hover:bg-primaryrosedark text-white font-semibold text-center p-4">
                         {
-                          // Bed Linen, Bath Linen, Table Linen, Cushion & Throws
-                          [
-                            "PLACEMATS",
-                            "NAPKINS",
-                            "RUNNERS",
-                            "TABLE CLOTH",
-                            "COASTERS",
-                          ][index]
+                          // Bed Linen:
+                          // Razai
+                          // Bedover
+                          // Bedsheet
+                          // Dohar
+                          ["RAZAI", "BEDOVER", "BEDSHEET", "DOHAR"][index]
                         }
                       </p>
                     </div>
@@ -374,4 +348,4 @@ const BedLinen: FC = () => {
   );
 };
 
-export default BedLinen
+export default BedLinen;

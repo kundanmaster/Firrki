@@ -10,7 +10,8 @@ import VerticalCard from "../components/GiftSection/VerticalCard";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoMdHeart } from "react-icons/io";
 import { FiShoppingCart } from "react-icons/fi";
-
+import ImageDot from "../components/GiftSection/ImageDot";
+import { NextPage } from "next";
 type Category = "Table Linen" | "Bath Linen" | "Cushion & Throws" | "Bed Linen";
 
 const images = [
@@ -71,6 +72,26 @@ const productData = [
   // Add more product data as needed
 ];
 
+const imagess = [
+  { id: 1, src: "decore (1).jpg", alt: "Image 1" },
+  { id: 2, src: "decore (2).jpg", alt: "Image 2" },
+  { id: 3, src: "decore (3).jpg", alt: "Image 3" },
+];
+
+const relatedImages = {
+  1: [
+    { id: 11, src: "l1.png", alt: "Related Image 1-1" },
+    { id: 12, src: "l2.png", alt: "Related Image 1-2" },
+  ],
+  2: [
+    { id: 21, src: "l3.png", alt: "Related Image 2-1" },
+    { id: 22, src: "l4.png", alt: "Related Image 2-2" },
+  ],
+  3: [
+    { id: 31, src: "l2.png", alt: "Related Image 3-1" },
+    { id: 32, src: "l3.png", alt: "Related Image 3-2" },
+  ],
+};
 const AdornComponent = () => {
   const [mainImageIndex, setMainImageIndex] = useState<number>(0);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -206,7 +227,7 @@ const AdornComponent = () => {
           {images.map((image, index) => (
             <Link
               href={`/${
-                ["bath-linen", "bed-linen", "tablelinen", "cushion-throws"][
+                ["bed-linen", "bath-linen", "tablelinen", "cushion-throws"][
                   index
                 ]
               }`}
@@ -350,7 +371,9 @@ const AdornComponent = () => {
           </div>
         </div>
       </div>
-
+      <div className="container mx-auto p-4">
+        <ImageDot images={imagess} relatedImages={relatedImages} />
+      </div>
       <GiftFooter />
     </>
   );
