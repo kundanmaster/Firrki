@@ -4,127 +4,65 @@ import React from "react";
 
 const GiftSection = () => {
   return (
-    <div className="flex space-x-4 px-8 py-12">
-      {/* GIFTS FOR SEASON */}
-      <div className="flex flex-col w-1/5 space-y-4">
+    <div className="flex flex-wrap justify-center space-x-6 px-4 py-6">
+      <div className="flex flex-col w-full sm:w-1/4 md:w-1/5 space-y-4">
+        <div className="font-semibold text-lg text-center">Festival</div>
         <Image
-          src="/assets/dashboard/master6.jpeg"
-          alt="Block Printing"
+          src="/assets/firbhet/festival.jpg"
+          alt="Festival"
           width={500}
           height={500}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-cover rounded-lg"
         />
         <Link
           href="#"
-          className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200"
-        >
-          View All
-        </Link>
-      </div>
-      {/* SHOP BY OCCASION & SHOP BY RECIPIENT */}
-      <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">Frhibett</div>
-        <ul className="text-sm space-y-2">
-          <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
-            <Link href="#">Block Printing</Link>
-          </li>
-          <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
-            <Link href="#">Quilting</Link>
-          </li>
-          <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
-            <Link href="#">Hand Embroidery</Link>
-          </li>
-          <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
-            <Link href="#">Chikankari</Link>
-          </li>
-          <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
-            <Link href="#">Applique</Link>
-          </li>
-          <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
-            <Link href="#">Crochet</Link>
-          </li>
-          <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
-            <Link href="#">Lace</Link>
-          </li>
-          <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
-            <Link href="#">Cutwork</Link>
-          </li>
-          <li className="text-primaryrose hover:text-primaryrosedark hover:font-bold hover:scale-105 transition-transform duration-200">
-            <Link href="#">Handwoven</Link>
-          </li>
-        </ul>
+          className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200 text-center"
+        ></Link>
       </div>
 
-      {/* GIFTING */}
-      <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">Bed Linen</div>
+      <div className="flex flex-col w-full sm:w-1/4 md:w-1/5 space-y-4">
+        <div className="font-semibold text-lg text-center">Personalized</div>
         <Image
-          src="/assets/dashboard/master6.jpeg"
-          alt="Bed Linen"
+          src="/assets/firbhet/personalized.png"
+          alt="Personalized"
           width={500}
-          height={500}
-          className="w-full h-auto object-cover"
+          height={550}
+          className="w-full h-[455px] object-cover rounded-lg"
         />
         <Link
           href="#"
-          className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200"
-        >
-          Petite Giftables
-        </Link>
+          className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200 text-center"
+        ></Link>
       </div>
 
-      {/* GIFT CARDS */}
-      <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">Bath Linen</div>
+      <div className="flex flex-col w-full sm:w-1/4 md:w-1/5 space-y-4">
+        <div className="font-semibold text-lg text-center">Corporate</div>
         <Image
-          src="/assets/dashboard/master5.jpeg"
-          alt="Bath Linen"
+          src="/assets/firbhet/corporate.jpg"
+          alt="Corporate"
           width={500}
           height={500}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-cover rounded-lg"
         />
-        <a
+        <Link
           href="#"
-          className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200"
-        >
-          Discover Gift Cards &gt;
-        </a>
+          className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200 text-center"
+        ></Link>
       </div>
 
-      {/* CORPORATE GIFTING */}
-      <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">Table Linen</div>
+      <div className="flex flex-col w-full sm:w-1/4 md:w-1/5 space-y-4">
+        <div className="font-semibold text-lg text-center">Wedding</div>
         <Image
-          src="/assets/dashboard/master6.jpeg"
-          alt="Table Linen"
+          src="/assets/firbhet/wedding.jpg"
+          alt="Wedding"
           width={500}
           height={500}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-cover rounded-lg"
         />
-        <a
+        <Link
           href="#"
-          className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200"
-        >
-          Explore &gt;
-        </a>
-      </div>
-
-      {/* GIFT REGISTRY */}
-      <div className="flex flex-col w-1/5 space-y-4">
-        <div className="font-semibold text-lg">Cushion & Throws</div>
-        <Image
-          src="/assets/dashboard/master5.jpeg"
-          alt="Cushion & Throws"
-          width={500}
-          height={500}
-          className="w-full h-auto object-cover"
-        />
-        <a
-          href="#"
-          className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200"
-        >
-          Discover &gt;
-        </a>
+          className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200 text-center"
+        ></Link>
       </div>
     </div>
   );

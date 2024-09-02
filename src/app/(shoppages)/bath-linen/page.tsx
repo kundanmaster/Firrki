@@ -1,6 +1,3 @@
-
-
-
 "use client";
 import Image from "next/image";
 import Footer from "../../components/DashComponents/Footer";
@@ -14,11 +11,7 @@ import { FiShoppingCart } from "react-icons/fi";
 // Hand Towel
 // Face Towel
 
-type Category =
-  | "BATH TOWEL"
-  | "HAND TOWEL"
-  | "FACE TOWEL"
-  
+type Category = "BATH TOWEL" | "HAND TOWEL" | "FACE TOWEL";
 
 interface ImageConfig {
   src: string;
@@ -58,7 +51,6 @@ const additionalImages: Record<Category, string[]> = {
     "/assets/tableLinen/image3.png",
     "/assets/tableLinen/image22.png",
   ],
-  
 };
 
 const images = [
@@ -75,6 +67,18 @@ const productData = [
   { name: "Product 6", amount: "₹35" },
   // Add more product data as needed
 ];
+const secondRowImages = [
+  "/assets/dashboard/master10.jpeg",
+  "/assets/dashboard/master11.jpeg",
+  "/assets/dashboard/master12.jpeg",
+  "/assets/dashboard/master13.jpeg",
+];
+const thirdRowImages = [
+  "/assets/dashboard/master14.jpeg",
+  "/assets/dashboard/master15.jpeg",
+  "/assets/dashboard/master5.jpeg",
+  "/assets/dashboard/master6.jpeg",
+];
 
 const BathLinant: FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -86,11 +90,7 @@ const BathLinant: FC = () => {
     useState<boolean>(false);
 
   const toggleImages = (index: number) => {
-    const categories: Category[] = [
-      "BATH TOWEL",
-      "HAND TOWEL",
-      "FACE TOWEL",
-    ];
+    const categories: Category[] = ["BATH TOWEL", "HAND TOWEL", "FACE TOWEL"];
 
     const category = categories[index];
     if (selectedCategory === category) {
@@ -194,11 +194,7 @@ const BathLinant: FC = () => {
                       <p className="bg-primaryrose hover:bg-primaryrosedark text-white font-semibold text-center p-4">
                         {
                           // Bed Linen, Bath Linen, Table Linen, Cushion & Throws
-                          [
-                            "BATH TOWEL",
-                            "HAND TOWEL",
-                            "FACE TOWEL"
-                          ][index]
+                          ["BATH TOWEL", "HAND TOWEL", "FACE TOWEL"][index]
                         }
                       </p>
                     </div>
@@ -289,62 +285,64 @@ const BathLinant: FC = () => {
             backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
           }}
         >
-          <div className="grid grid-cols-4 gap-4">
-            {/* First Row */}
-            <div className="col-span-2 row-span-1">
+          <div className="grid grid-rows-3 grid-flow-col grid-cols-4 gap-4 p-4">
+            <div className="row-span-1 col-span-2 bg-slate-700 h-[34vh]">
               <Image
-                src="/assets/tableLinen/image4.png"
-                alt="First Image"
-                className="h-auto w-full object-cover"
-                width={1000}
-                height={1000}
-              />
-            </div>
-            <div className="col-span-1 row-span-1">
-              <Image
-                src="/assets/tableLinen/image3.png"
-                alt="Second Image"
-                className="h-[70vh] w-full object-cover"
-                width={1000}
-                height={1000}
-              />
-            </div>
-            <div className="col-span-1 row-span-1">
-              <Image
-                src="/assets/tableLinen/image88.png"
-                alt="Third Image"
-                className="h-[70vh] w-full object-cover"
-                width={1000}
-                height={1000}
+                src={secondRowImages[2]} // Image from secondRowImages array
+                alt="Image 3"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
               />
             </div>
 
-            {/* Second Row */}
-            <div className="col-span-1 row-span-1">
+            <div className="row-span-2 bg-slate-700 h-[70vh]">
               <Image
-                src="/assets/tableLinen/image1.png"
-                alt="Fourth Image"
-                className="h-[70vh] w-full object-cover mt-[-11.4rem]"
-                width={1000}
-                height={1000}
+                src={secondRowImages[2]} // Image from secondRowImages array
+                alt="Image 3"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
               />
             </div>
-            <div className="col-span-1 row-span-1">
+
+            <div className="row-span-2 bg-slate-700 h-[70vh]">
               <Image
-                src="/assets/tableLinen/image6.png"
-                alt="Fifth Image"
-                className="h-[70vh] w-full object-cover mt-[-11.4rem]"
-                width={1000}
-                height={1000}
+                src={secondRowImages[2]} // Image from secondRowImages array
+                alt="Image 3"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
               />
             </div>
-            <div className="col-span-2 row-span-1">
+
+            <div className="row-span-2 bg-slate-700 h-[70vh]">
               <Image
-                src="/assets/tableLinen/image2.png"
-                alt="Sixth Image"
-                className="h-[50vh] w-full object-cover"
-                width={1000}
-                height={1000}
+                src={thirdRowImages[3]} // Image from thirdRowImages array
+                alt="Image 8"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
+              />
+            </div>
+
+            <div className="row-span-1 col-span-2 bg-slate-700 h-[33.5vh]">
+              <Image
+                src={thirdRowImages[3]} // Image from thirdRowImages array
+                alt="Image 8"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
+              />
+            </div>
+
+            <div className="row-span-2 bg-slate-700 h-[70vh]">
+              <Image
+                src={thirdRowImages[3]} // Image from thirdRowImages array
+                alt="Image 8"
+                width={1200}
+                height={800}
+                className="object-cover w-full h-full"
               />
             </div>
           </div>
@@ -356,4 +354,4 @@ const BathLinant: FC = () => {
   );
 };
 
-export default BathLinant
+export default BathLinant;

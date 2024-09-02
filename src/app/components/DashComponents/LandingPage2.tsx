@@ -22,7 +22,6 @@ const HeroSection2: React.FC = () => {
   ];
   return (
     <>
-    
       <div className="px-2 pb-1 flex flex-col md:flex-row gap-x-2 ">
         <div className="relative h-96 w-full md:w-[70%] ">
           <div
@@ -39,7 +38,7 @@ const HeroSection2: React.FC = () => {
             width={1200}
             height={384}
             className="shadow-md"
-            style={{ objectFit: "cover", height: "24rem"}}
+            style={{ objectFit: "cover", height: "24rem" }}
           />
         </div>
       </div>
@@ -51,7 +50,7 @@ const HeroSection2: React.FC = () => {
             width={1200}
             height={384}
             className="shadow-md"
-            style={{ objectFit: "cover", height: "24rem" }} 
+            style={{ objectFit: "cover", height: "24rem" }}
           />
         </div>
 
@@ -120,32 +119,35 @@ const HeroSection2: React.FC = () => {
         </div>
       </div> */}
       <div
-        className="relative w-full bg-no-repeat text-center flex items-center justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[500px] "
+        className="pb-4"
         style={{
-          backgroundImage: "url(/assets/dashboard/master166.jpg)",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
         }}
       >
         <div
-          style={largeImageStyle}
-          className="relative flex items-center justify-center"
+          className="relative w-full bg-no-repeat text-center flex items-center justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[500px] "
+          style={{
+            backgroundImage: "url(/assets/dashboard/master166.jpg)",
+            backgroundSize: "100% auto",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
         >
-          <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
-            <span> CUSTOMIZED</span>
-            <span> DESIGN</span>
-          </h1>
+          <div
+            style={largeImageStyle}
+            className="relative flex items-center justify-center"
+          >
+            <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
+              <span> CUSTOMIZED</span>
+              <span> DESIGN</span>
+            </h1>
+          </div>
         </div>
       </div>
-
       <div
-        className=" w-full bg-no-repeat text-center md:h-auto sm:h-[20vh]"
+        className="pb-4"
         style={{
-          backgroundImage: "url(/assets/dashboard/master18.jpeg)",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
         }}
       >
         <div className="flex flex-col justify-center items-center h-auto">
@@ -206,22 +208,29 @@ const HeroSection2: React.FC = () => {
         </div>
       </div>
       <div
-        className="relative w-full bg-no-repeat text-center flex items-center justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[500px]"
+        className="pb-4"
         style={{
-          backgroundImage: "url(/assets/dashboard/master166.jpg)",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
         }}
       >
         <div
-          style={largeImageStyle}
-          className="relative flex items-center justify-center"
+          className="relative w-full bg-no-repeat text-center flex items-center justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[500px]"
+          style={{
+            backgroundImage: "url(/assets/dashboard/master166.jpg)",
+            backgroundSize: "100% auto",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
         >
-          <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
-            <span> FEATURED</span>
-            <span> PRODUCTS</span>
-          </h1>
+          <div
+            style={largeImageStyle}
+            className="relative flex items-center justify-center"
+          >
+            <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
+              <span> FEATURED</span>
+              <span> PRODUCTS</span>
+            </h1>
+          </div>
         </div>
       </div>
     </>

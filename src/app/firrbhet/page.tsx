@@ -4,26 +4,51 @@ import Image from "next/image";
 import HeaderLayout from "../components/HeaderLayout";
 import { SetStateAction, useState } from "react";
 import Footer from "../components/DashComponents/Footer";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { MdArrowForwardIos } from "react-icons/md";
+import { MdArrowBackIos } from "react-icons/md";
 
 export default function GiftSection() {
-  const handleTabClick = (tab: SetStateAction<string>) => {
+  const [activeTab, setActiveTab] = useState<string>("FESTIVE");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const images = [
+    { src: "/assets/firbhet/Vector (5).png", alt: "Vector 5", label: "Lorem" },
+    { src: "/assets/firbhet/Vector (4).png", alt: "Vector 4", label: "Lorem" },
+    { src: "/assets/firbhet/Vector (6).png", alt: "Vector 6", label: "Lorem" },
+    { src: "/assets/firbhet/Vector (5).png", alt: "Vector 7", label: "Lorem" },
+    { src: "/assets/firbhet/Vector (4).png", alt: "Vector 8", label: "Lorem" },
+  ];
+
+  const handleTabClick = (tab: string) => {
     setActiveTab(tab);
   };
-  const [activeTab, setActiveTab] = useState("FESTIVE");
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleLeftArrowClick = () => {
-    // Decrease index to show previous item
-    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+    // If at the first image, loop to the last image
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 3 : prevIndex - 1
+    );
   };
 
   const handleRightArrowClick = () => {
-    // Increase index to show next item
-    setCurrentIndex(
-      (prevIndex) => (prevIndex < 2 ? prevIndex + 1 : prevIndex) // Assuming you have 3 items
+    // If at the last visible image set, loop to the first image
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 3 ? 0 : prevIndex + 1
     );
   };
+
+  const secondRowImages = [
+    "/assets/dashboard/master10.jpeg",
+    "/assets/dashboard/master11.jpeg",
+    "/assets/dashboard/master12.jpeg",
+    "/assets/dashboard/master13.jpeg",
+  ];
+  const thirdRowImages = [
+    "/assets/dashboard/master14.jpeg",
+    "/assets/dashboard/master15.jpeg",
+    "/assets/dashboard/master5.jpeg",
+    "/assets/dashboard/master6.jpeg",
+  ];
   return (
     <div>
       <HeaderLayout OtherPage={undefined}>s</HeaderLayout>
@@ -43,16 +68,70 @@ export default function GiftSection() {
               style={{ marginRight: "10px" }}
             />
           </div>
-
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-center items-center">
             <Image
               src="/assets/firbhet/image (1).png"
               alt="Gift2"
               width={500} // Increased size
               height={500} // Increased size
               className=""
-              style={{ zIndex: 10 }}
+              style={{ zIndex: 1 }}
             />
+
+            <div
+              className="absolute flex flex-col justify-center items-center text-center rounded-b-full rounded-t-full"
+              style={{
+                zIndex: 2,
+                backgroundColor: "#c89d9ee8", // Adjust opacity for semi-transparency
+                padding: "20px",
+                width: "340px",
+                height: "420px", // Increased height to match the design
+                top: "50%", // Centering vertically
+                left: "50%", // Centering horizontally
+                transform: "translate(-50%, -50%)", // Adjust positioning
+                border: "", // Outer Border similar to the UI
+              }}
+            >
+              <div
+                className="rounded-b-full rounded-t-full"
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  left: "10px",
+                  right: "10px",
+                  bottom: "10px",
+                  // borderRadius: "50%", // Inner rounded border
+                  border: "3px solid rgba(255, 255, 255, 0.5)",
+                }}
+              ></div>
+
+              <Image
+                src="/assets/firbhet/flower.png" // Replace this with the correct path to your flower image (flr.png)
+                alt="Flower"
+                width={90}
+                height={90}
+                className="mb-4 mt-8" // Adds margin above and below the flower image
+              />
+
+              <hr
+                style={{
+                  width: "102%",
+                  borderTop: "2px solid rgba(255, 255, 255, 0.8)",
+                  marginBottom: "16px", // Margin below the line
+                }}
+              />
+
+              <h2 className="text-3xl font-bold mb-8 text-white">
+                Cherished Gems
+              </h2>
+              <p className="text-lg text-white mb-8">
+                Crafted with care, our designs offer timeless elegance and
+                allure.
+              </p>
+              <a href="#" className="text-white font-semibold mb-12">
+                DISCOVER GIFTING
+              </a>
+            </div>
           </div>
 
           <div className="relative flex justify-center sm:justify-start">
@@ -68,112 +147,6 @@ export default function GiftSection() {
         </div>
       </div>
 
-      {/* <div
-        className="w-full bg-no-repeat text-center md:h-auto sm:h-[100vh] mt-0"
-        style={{
-          backgroundColor: "#c89d9e",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          height: "100vh",
-        }}
-      >
-        <div className="flex flex-col justify-center items-center h-auto">
-        
-          <div className="font-bold text-white text-4xl mt-12">
-            Shop by Occasion
-          </div>
-          <div className="font-semibold text-white text-xl mt-6 mb-6">
-            <a
-              href="#"
-              onClick={() => handleTabClick("FESTIVE")}
-              className={`inline-block mx-2 px-4 py-2 ${
-                activeTab === "FESTIVE" ? "underline" : ""
-              }`}
-            >
-              FESTIVE
-            </a>
-            <a
-              href="#"
-              onClick={() => handleTabClick("HOUSEWARMING")}
-              className={`inline-block mx-2 px-4 py-2 ${
-                activeTab === "HOUSEWARMING" ? "underline" : ""
-              }`}
-            >
-              HOUSEWARMING
-            </a>
-            <a
-              href="#"
-              onClick={() => handleTabClick("BIRTHDAY")}
-              className={`inline-block mx-2 px-4 py-2 ${
-                activeTab === "BIRTHDAY" ? "underline" : ""
-              }`}
-            >
-              BIRTHDAY
-            </a>
-            <a
-              href="#"
-              onClick={() => handleTabClick("WEDDING")}
-              className={`inline-block mx-2 px-4 py-2 ${
-                activeTab === "WEDDING" ? "underline" : ""
-              }`}
-            >
-              WEDDING
-            </a>
-          </div>
-
-          <div className="flex flex-col md:flex-row space-x-0 md:space-x-6">
-            
-            <div className="flex flex-col items-center justify-center w-full md:w-1/3 lg:h-[30rem] md:h-[20rem] mt-4">
-              <Image
-                src="/assets/firbhet/Vector (5).png"
-                alt="Vector 5"
-                width={500}
-                height={500}
-                className="w-full h-full object-cover rounded-t-full border-4 border-white"
-                style={{
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
-              />
-              <div className="text-white text-center mt-2 text-2xl">Lorem</div>
-            </div>
-
-         
-            <div className="flex flex-col items-center justify-center w-full md:w-1/3 lg:h-[30rem] md:h-[20rem] mt-4">
-              <Image
-                src="/assets/firbhet/Vector (4).png"
-                alt="Vector 4"
-                width={500}
-                height={500}
-                className="w-full h-full object-cover rounded-t-full border-4 border-white"
-                style={{
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
-              />
-              <div className="text-white text-center text-2xl mt-2">Lorem</div>
-            </div>
-
-          
-            <div className="flex flex-col items-center justify-center w-full md:w-1/3 lg:h-[31.3rem] md:h-[25rem] mt-4">
-              <Image
-                src="/assets/firbhet/Vector (6).png"
-                alt="Vector 6"
-                width={500}
-                height={530}
-                className="w-full h-full object-cover rounded-t-full border-4 border-white"
-                style={{
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
-              />
-              <div className="text-white text-2xl text-center mt-2">Lorem</div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
       <div
         className="w-full bg-no-repeat text-center md:h-auto sm:h-[100vh] mt-0"
         style={{
@@ -181,7 +154,6 @@ export default function GiftSection() {
           backgroundSize: "100% auto",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          height: "100vh",
         }}
       >
         <div className="flex flex-col justify-center items-center h-auto">
@@ -227,154 +199,145 @@ export default function GiftSection() {
             </a>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center space-x-0 md:space-x-6 relative">
+          <div className="relative w-full flex items-center justify-center overflow-hidden">
+            {/* Left Arrow */}
             <button
-              className="absolute left-[-30px] top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-200"
+              className="absolute left-0 h-[100vh] top-1/2 transform -translate-y-1/2 z-10 bg-[#c89d9e] p-3"
               onClick={handleLeftArrowClick}
             >
-              <FaArrowLeft className="text-[#c89d9e] text-2xl" />
+              <MdArrowBackIos className="text-white text-2xl" size={100} />
             </button>
 
-            <div className="flex flex-col items-center justify-center w-full md:w-1/3 lg:h-[30rem] md:h-[20rem] mt-4">
-              <Image
-                src="/assets/firbhet/Vector (5).png"
-                alt="Vector 5"
-                width={500}
-                height={500}
-                className="w-full h-full object-cover rounded-t-full border-4 border-white"
-                style={{
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
-              />
-              <div className="text-white text-center mt-2 text-2xl">Lorem</div>
+            {/* Carousel Images */}
+            <div
+              className="flex transition-transform duration-500 ease-in-out w-full mx-20"
+              style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+            >
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-full md:w-1/3 lg:h-[40rem] md:h-[20rem] sm:h-[30rem] mt-4 py-10 flex flex-col items-center justify-center"
+                  style={{
+                    flex: "0 0 33.3333%", // Take up one-third of the container
+                  }}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={500}
+                    height={500}
+                    className="w-full h-full object-cover rounded-t-full px-10"
+                    style={{
+                      borderBottomLeftRadius: 0,
+                      borderBottomRightRadius: 0,
+                    }}
+                  />
+                  <div className="text-white text-center mt-2 text-2xl">
+                    {image.label}
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="flex flex-col items-center justify-center w-full md:w-1/3 lg:h-[30rem] md:h-[20rem] mt-4">
-              <Image
-                src="/assets/firbhet/Vector (4).png"
-                alt="Vector 4"
-                width={500}
-                height={500}
-                className="w-full h-full object-cover rounded-t-full border-4 border-white"
-                style={{
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
-              />
-              <div className="text-white text-center text-2xl mt-2">Lorem</div>
-            </div>
-
-            <div className="flex flex-col items-center justify-center w-full md:w-1/3 lg:h-[31.3rem] md:h-[25rem] mt-4">
-              <Image
-                src="/assets/firbhet/Vector (6).png"
-                alt="Vector 6"
-                width={500}
-                height={530}
-                className="w-full h-full object-cover rounded-t-full border-4 border-white"
-                style={{
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
-              />
-              <div className="text-white text-2xl text-center mt-2">Lorem</div>
-            </div>
-
+            {/* Right Arrow */}
             <button
-              className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-200"
+              className="absolute right-0 h-[100vh] top-1/2 transform -translate-y-1/2 z-10 bg-[#c89d9e] p-3"
               onClick={handleRightArrowClick}
             >
-              <FaArrowRight className="text-[#c89d9e] text-2xl" />
+              <MdArrowForwardIos className="text-white text-2xl" size={100} />
             </button>
           </div>
         </div>
       </div>
 
-      <div>
-        <div
-          className="pb-4"
-          style={{
-            backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
-          }}
-        >
-          <div className="grid grid-cols-4 gap-4">
-            {/* First Row */}
-            <div className="col-span-2 row-span-1">
-              <Image
-                src="/assets/dashboard/shop1.jpeg"
-                alt="First Image"
-                className="h-[60vh] w-full object-cover"
-                width={1000}
-                height={1000}
-              />
-            </div>
-            <div className="col-span-1 row-span-1">
-              <Image
-                src="/assets/dashboard/shop2.jpeg"
-                alt="Second Image"
-                className="h-[40vh] w-full object-cover"
-                width={1000}
-                height={1000}
-              />
-            </div>
-            <div className="col-span-1 row-span-1">
-              <Image
-                src="/assets/dashboard/shop3.jpeg"
-                alt="Third Image"
-                className="h-[40vh] w-full object-cover"
-                width={1000}
-                height={1000}
-              />
-            </div>
+      <div
+        className="pb-4"
+        style={{
+          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
+        }}
+      >
+        <div className="grid grid-rows-3 grid-flow-col grid-cols-4 gap-4 p-4">
+          <div className="row-span-2 col-span-2 bg-slate-700 h-[70vh]">
+            <Image
+              src={secondRowImages[2]} // Image from secondRowImages array
+              alt="Image 3"
+              width={1200}
+              height={800}
+              className="object-cover w-full h-full"
+            />
+          </div>
 
-            {/* Second Row */}
-            <div className="col-span-1 row-span-1">
-              <Image
-                src="/assets/dashboard/shop4.jpeg"
-                alt="Fourth Image"
-                className="h-[40vh] w-full object-cover "
-                width={1000}
-                height={1000}
-              />
-            </div>
-            <div className="col-span-1 row-span-1 ">
-              <Image
-                src="/assets/dashboard/shop5.jpeg"
-                alt="Fifth Image"
-                className="h-[40vh] w-full object-cover "
-                width={1000}
-                height={1000}
-              />
-            </div>
-            <div className="col-span-1 row-span-1 mt-[-11rem]">
-              <Image
-                src="/assets/dashboard/shop6.jpeg"
-                alt="Sixth Image"
-                className="h-[60vh] w-full object-cover"
-                width={1000}
-                height={1000}
-              />
-            </div>
-            <div className="col-span-1 row-span-1 mt-[-11rem]">
-              <Image
-                src="/assets/dashboard/shop5.jpeg"
-                alt="Fifth Image"
-                className="h-[30vh] w-full object-cover pb-6"
-                width={1000}
-                height={1000}
-              />
-              <Image
-                src="/assets/dashboard/shop5.jpeg"
-                alt="Fifth Image"
-                className="h-[30vh] w-full object-cover "
-                width={1000}
-                height={1000}
-              />
-            </div>
+          <div className="bg-slate-700 h-[34vh]">
+            <Image
+              src={secondRowImages[2]} // Image from secondRowImages array
+              alt="Image 3"
+              width={1200}
+              height={800}
+              className="object-cover w-full h-full"
+            />
+          </div>
+
+          <div className="bg-slate-700 h-[34vh]">
+            <Image
+              src={secondRowImages[2]} // Image from secondRowImages array
+              alt="Image 3"
+              width={1200}
+              height={800}
+              className="object-cover w-full h-full"
+            />
+          </div>
+
+          <div className="row-span-1 bg-slate-700 h-[34vh]">
+            <Image
+              src={thirdRowImages[3]} // Image from thirdRowImages array
+              alt="Image 8"
+              width={1200}
+              height={800}
+              className="object-cover w-full h-full"
+            />
+          </div>
+
+          <div className="row-span-2 bg-slate-700 h-[70vh]">
+            <Image
+              src={thirdRowImages[3]} // Image from thirdRowImages array
+              alt="Image 8"
+              width={1200}
+              height={800}
+              className="object-cover w-full h-full"
+            />
+          </div>
+
+          <div className="row-span-1 bg-slate-700 h-[34vh]">
+            <Image
+              src={thirdRowImages[3]}
+              alt="Image 8"
+              width={1200}
+              height={800}
+              className="object-cover w-full h-full"
+            />
+          </div>
+
+          <div className="bg-slate-700 h-[34vh]">
+            <Image
+              src={thirdRowImages[3]}
+              alt="Image 8"
+              width={1200}
+              height={800}
+              className="object-cover w-full h-full"
+            />
+          </div>
+
+          <div className="bg-slate-700 h-[34vh]">
+            <Image
+              src={thirdRowImages[3]}
+              alt="Image 8"
+              width={1200}
+              height={800}
+              className="object-cover w-full h-full"
+            />
           </div>
         </div>
       </div>
-
       <div className="bg-[#c89d9e] h-auto flex items-center justify-center py-12">
         <div className="container mx-auto flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2">

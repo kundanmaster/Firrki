@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { CiCirclePlus } from "react-icons/ci";
+import Hotspot from "../DashComponents/Hotspot";
 
 // Extend the Image interface to include hotspots
 interface Hotspot {
@@ -25,6 +26,18 @@ interface DesignProps {
   relatedImages: Record<number, Image[]>;
 }
 
+const secondRowImages = [
+  "/assets/dashboard/master10.jpeg",
+  "/assets/dashboard/master11.jpeg",
+  "/assets/dashboard/master12.jpeg",
+  "/assets/dashboard/master13.jpeg",
+];
+const thirdRowImages = [
+  "/assets/decore (1).jpg",
+  "/assets/decore (2).jpg",
+  "/assets/decore (3).jpg",
+  "/assets/decore (4).jpg",
+];
 const Design: React.FC<DesignProps> = ({ images, relatedImages }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [relatedSlideIndex, setRelatedSlideIndex] = useState(0);
@@ -51,9 +64,10 @@ const Design: React.FC<DesignProps> = ({ images, relatedImages }) => {
     setRelatedSlideIndex((prev) => Math.min(prev + 1, maxIndex));
   };
 
-  const handleHotspotClick = (hotspot: Hotspot) => {
-    alert(`Hotspot clicked: ${hotspot.tooltip}`);
-    // Here you can handle the click event, e.g., show more information or navigate to a product page.
+  const handleHotspotClick = (spot: string) => {
+    // alert(`Hotspot ${spot} clicked!`);
+    console.log(`some event ${spot}`);
+    
   };
 
   return (
@@ -70,34 +84,32 @@ const Design: React.FC<DesignProps> = ({ images, relatedImages }) => {
         {/* Main Slider */}
         <div className="w-2/3 flex flex-col justify-center items-center">
           <div className="overflow-hidden relative h-[70vh]">
-            <Image
-              src={`/assets/${images[currentIndex].src}`}
-              alt={images[currentIndex].alt}
-              className="w-full h-full object-cover"
-              width={1000}
-              height={1000}
-            />
-
-            {/* Render Hotspots */}
-            {images[currentIndex].hotspots?.map((hotspot) => (
-              <button
-                key={hotspot.id}
-                className="absolute bg-white rounded-full w-4 h-4 shadow-lg transition-transform transform hover:scale-125"
-                style={{
-                  top: hotspot.top,
-                  left: hotspot.left,
-                }}
-                onClick={() => handleHotspotClick(hotspot)}
-              >
-                <CiCirclePlus />
-              </button>
-            ))}
-
-            {/* Other UI Elements */}
-            <div className="absolute top-32 left-1/2 transform -translate-x-1/2 flex space-x-2 text-white shadow-lg duration-100 transition-transform">
-              <button className="bg-white text-black rounded-full">
-                <CiCirclePlus />
-              </button>
+            <div className="relative w-full h-[50vh]">
+              <Image
+                src={thirdRowImages[1]}
+                alt="Image with Hotspots"
+                width={1200}
+                height={800}
+                className=" h-[60vh]"
+              />
+              <Hotspot
+                top={55}
+                left={32}
+                content="1"
+                onClick={() => handleHotspotClick("1")}
+              />
+              <Hotspot
+                top={50}
+                left={70}
+                content="2"
+                onClick={() => handleHotspotClick("2")}
+              />
+              <Hotspot
+                top={80}
+                left={40}
+                content="3"
+                onClick={() => handleHotspotClick("3")}
+              />
             </div>
           </div>
           {/* Centered Dot Buttons */}

@@ -92,6 +92,19 @@ const relatedImages = {
     { id: 32, src: "l3.png", alt: "Related Image 3-2" },
   ],
 };
+
+const secondRowImages = [
+  "/assets/dashboard/master10.jpeg",
+  "/assets/dashboard/master11.jpeg",
+  "/assets/dashboard/master12.jpeg",
+  "/assets/dashboard/master13.jpeg",
+];
+const thirdRowImages = [
+  "/assets/dashboard/master14.jpeg",
+  "/assets/dashboard/master15.jpeg",
+  "/assets/dashboard/master5.jpeg",
+  "/assets/dashboard/master6.jpeg",
+];
 const AdornComponent = () => {
   const [mainImageIndex, setMainImageIndex] = useState<number>(0);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -303,7 +316,7 @@ const AdornComponent = () => {
           />
         </div>
       </div>
-      <div>
+      {/* <div>
         <div
           className="pb-4"
           style={{
@@ -311,7 +324,6 @@ const AdornComponent = () => {
           }}
         >
           <div className="grid grid-cols-4 gap-4">
-            {/* First Row */}
             <div className="col-span-2 row-span-1">
               <Image
                 src="/assets/dashboard/shop1.jpeg"
@@ -340,7 +352,6 @@ const AdornComponent = () => {
               />
             </div>
 
-            {/* Second Row */}
             <div className="col-span-1 row-span-1">
               <Image
                 src="/assets/dashboard/shop4.jpeg"
@@ -370,14 +381,76 @@ const AdornComponent = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div
         className="pb-4"
         style={{
           backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
         }}
       >
-        <div className="container mx-auto p-4">
+      <div className="grid grid-rows-3 grid-flow-col grid-cols-4 gap-4 p-4">
+        <div className="row-span-1 col-span-2 bg-slate-700 h-[34vh]">
+          <Image
+            src={secondRowImages[2]} // Image from secondRowImages array
+            alt="Image 3"
+            width={1200}
+            height={800}
+            className="object-cover w-full h-full"
+          />
+        </div>
+
+        <div className="row-span-2 bg-slate-700 h-[70vh]">
+          <Image
+            src={secondRowImages[2]} // Image from secondRowImages array
+            alt="Image 3"
+            width={1200}
+            height={800}
+            className="object-cover w-full h-full"
+          />
+        </div>
+
+        <div className="row-span-2 bg-slate-700 h-[70vh]">
+          <Image
+            src={secondRowImages[2]} // Image from secondRowImages array
+            alt="Image 3"
+            width={1200}
+            height={800}
+            className="object-cover w-full h-full"
+          />
+        </div>
+
+        <div className="row-span-2 bg-slate-700 h-[70vh]">
+          <Image
+            src={thirdRowImages[3]} // Image from thirdRowImages array
+            alt="Image 8"
+            width={1200}
+            height={800}
+            className="object-cover w-full h-full"
+          />
+        </div>
+
+        <div className="row-span-1 col-span-2 bg-slate-700 h-[34vh]">
+          <Image
+            src={thirdRowImages[3]} // Image from thirdRowImages array
+            alt="Image 8"
+            width={1200}
+            height={800}
+            className="object-cover w-full h-full"
+          />
+        </div>
+
+        <div className="row-span-2 bg-slate-700 h-[70vh]">
+          <Image
+            src={thirdRowImages[3]} // Image from thirdRowImages array
+            alt="Image 8"
+            width={1200}
+            height={800}
+            className="object-cover w-full h-full"
+          />
+        </div>
+      </div>
+      
+         <div className="container mx-auto p-4">
           <ImageDot images={imagess} relatedImages={relatedImages} />
         </div>
       </div>

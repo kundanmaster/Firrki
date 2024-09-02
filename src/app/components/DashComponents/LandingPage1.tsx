@@ -113,19 +113,26 @@ const LandingPage1: React.FC = () => {
   return (
     <>
       <div
-        className="relative w-full bg-no-repeat text-center flex items-center justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[500px]"
+        className="pb-4"
         style={{
-          backgroundImage: "url(/assets/dashboard/master166.jpg)",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
         }}
       >
-        <div className="relative flex items-center justify-center h-20">
-          <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
-            <span>INSTAGRAM</span>
-            <span>HIGHLIGHTS</span>
-          </h1>
+        <div
+          className="relative w-full bg-no-repeat text-center flex items-center justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[500px]"
+          style={{
+            backgroundImage: "url(/assets/dashboard/master166.jpg)",
+            backgroundSize: "100% auto",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="relative flex items-center justify-center h-20">
+            <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
+              <span>INSTAGRAM</span>
+              <span>HIGHLIGHTS</span>
+            </h1>
+          </div>
         </div>
       </div>
       {/* <div className="relative bg-gray-100 p-4">
