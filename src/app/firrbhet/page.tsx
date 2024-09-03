@@ -443,7 +443,7 @@ export default function GiftSection() {
               style={{ marginRight: "10px" }}
             />
           </div>
-          <div className="relative flex justify-center items-center">
+          {/* <div className="relative flex justify-center items-center">
             <Image
               src="/assets/firbhet/image (1).png"
               alt="Gift2"
@@ -453,61 +453,34 @@ export default function GiftSection() {
               style={{ zIndex: 1 }}
             />
 
-            <div
-              className="absolute flex flex-col justify-center items-center text-center rounded-b-full rounded-t-full"
-              style={{
-                zIndex: 2,
-                backgroundColor: "#c89d9ee8", // Adjust opacity for semi-transparency
-                padding: "20px",
-                width: "340px",
-                height: "420px", // Increased height to match the design
-                top: "50%", // Centering vertically
-                left: "50%", // Centering horizontally
-                transform: "translate(-50%, -50%)", // Adjust positioning
-                border: "", // Outer Border similar to the UI
-              }}
-            >
-              <div
-                className="rounded-b-full rounded-t-full"
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  left: "10px",
-                  right: "10px",
-                  bottom: "10px",
-                  // borderRadius: "50%", // Inner rounded border
-                  border: "3px solid rgba(255, 255, 255, 0.5)",
-                }}
-              ></div>
+            <div className="absolute flex flex-col justify-center items-center text-center ">
+              <Image src="/assets/firbhet/discoverGift.png" alt="alt" width={100} height={200} />
 
-              <Image
-                src="/assets/firbhet/flower.png" // Replace this with the correct path to your flower image (flr.png)
-                alt="Flower"
-                width={90}
-                height={90}
-                className="mb-4 mt-8" // Adds margin above and below the flower image
-              />
-
-              <hr
-                style={{
-                  width: "102%",
-                  borderTop: "2px solid rgba(255, 255, 255, 0.8)",
-                  marginBottom: "16px", // Margin below the line
-                }}
-              />
-
-              <h2 className="text-3xl font-bold mb-8 text-white">
-                Cherished Gems
-              </h2>
-              <p className="text-lg text-white mb-8">
-                Crafted with care, our designs offer timeless elegance and
-                allure.
-              </p>
-              <a href="#" className="text-white font-semibold mb-12">
-                DISCOVER GIFTING
-              </a>
             </div>
-          </div>
+
+         
+          </div> */}
+          <div className="relative flex justify-center items-center">
+  <Image
+    src="/assets/firbhet/image (1).png"
+    alt="Gift2"
+    width={500}
+    height={500}
+    className="relative"
+    style={{ zIndex: 1 }} // Background image
+  />
+
+  <div className="absolute flex flex-col justify-center items-center text-center" style={{ zIndex: 2 }}>
+    <Image
+      src="/assets/firbhet/discoverGift.png"
+      alt="Discover Gift"
+      width={300}
+      height={300}
+    />
+  </div>
+</div>
+
+
 
           <div className="relative flex justify-center sm:justify-start">
             <Image
