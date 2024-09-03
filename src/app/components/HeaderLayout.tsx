@@ -182,7 +182,8 @@ const HeaderLayout = ({
                   Shop
                 </a>
                 {showShopDropdown && (
-                  <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-screen max-w-screen-2xl bg-white shadow-lg border-t border-gray-200 z-50">
+                  <div className="absolute left-1/2  ml-24 transform -translate-x-1/2 top-full mt-2
+                   w-screen max-w-screen-2xl bg-white shadow-lg border-t border-gray-200 z-50">
                     <GiftShop />
                   </div>
                 )}
@@ -197,13 +198,13 @@ const HeaderLayout = ({
                   href="/firrbhet"
                   className="hover:text-[#AD8C87] font-bold flex items-center"
                 >
-                  <Image
+                  {/* <Image
                     src="/assets/dashboard/gift-box-2.png"
                     alt="Firbhet Logo"
                     width={35}
                     height={35}
-                  />
-                  Firbhet
+                  /> */}
+                  FirBhet
                 </a>
                 {showImageDropdown && (
                   <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-screen max-w-screen-2xl bg-white shadow-lg border-t border-gray-200 z-50">
