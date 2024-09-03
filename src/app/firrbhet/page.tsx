@@ -381,6 +381,7 @@ import { SetStateAction, useState } from "react";
 import Footer from "../components/DashComponents/Footer";
 import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIos } from "react-icons/md";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 export default function GiftSection() {
   const [activeTab, setActiveTab] = useState<string>("FESTIVE");
@@ -472,7 +473,7 @@ export default function GiftSection() {
 
   <div className="absolute flex flex-col justify-center items-center text-center" style={{ zIndex: 2 }}>
     <Image
-      src="/assets/firbhet/discoverGift.png"
+      src="/assets/firbhet/Group 45 (2).png"
       alt="Discover Gift"
       width={300}
       height={300}
@@ -505,8 +506,8 @@ export default function GiftSection() {
         }}
       >
         <div className="flex flex-col justify-center items-center h-auto">
-          <div className="font-bold text-white text-4xl mt-12">
-            Shop by Occasion
+          <div className="font-['Times New Roman'] font-bold text-white text-4xl mt-12">
+          Curate for Occasion
           </div>
           <div className="font-semibold text-white text-xl mt-6 mb-6">
             <a
@@ -748,6 +749,7 @@ export default function GiftSection() {
     ></div>
 
       <Footer />
+      <ScrollToTopButton/>
     </div>
   );
 }

@@ -516,6 +516,7 @@ import { IoMdHeart } from "react-icons/io";
 import { FiShoppingCart } from "react-icons/fi";
 import ImageDot from "../components/GiftSection/ImageDot";
 import { NextPage } from "next";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 type Category = "Table Linen" | "Bath Linen" | "Cushion & Throws" | "Bed Linen";
 
 const images = [
@@ -891,6 +892,7 @@ const AdornComponent = () => {
         </div>
       </div>
       <GiftFooter />
+      <ScrollToTopButton/>
     </>
   );
 };
