@@ -467,7 +467,7 @@ export default Design;
 //               <Image
 //                 src={
 //                   isShowingMainImage
-//                     ? "/assets/dashboard/mainImagepoint.jpg"
+                    // ? "/assets/dashboard/mainImagepoint.jpg"
 //                     : thirdRowImages[currentIndex]
 //                 }
 //                 alt="Image with Hotspots"
