@@ -1,5 +1,6 @@
 import React from "react";
 
+// Define the props for the Hotspot component
 interface HotspotProps {
   top: number; // Top position as a percentage
   left: number; // Left position as a percentage
@@ -7,14 +8,15 @@ interface HotspotProps {
   onClick: () => void; // Function to handle click events
 }
 
+// The Hotspot component
 const Hotspot: React.FC<HotspotProps> = ({ top, left, content, onClick }) => {
   return (
     <div
-      onClick={onClick}
+      onClick={onClick} // Event handler for clicks
       className="absolute p-2 cursor-pointer bg-red-500 text-white rounded-full transform -translate-x-1/2 -translate-y-1/2"
-      style={{ top: `${top}%`, left: `${left}%` }}
+      style={{ top: `${top}%`, left: `${left}%` }} // Positioning using inline styles
     >
-      {/* {content} */}
+      {content}
     </div>
   );
 };

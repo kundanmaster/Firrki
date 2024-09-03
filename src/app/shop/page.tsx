@@ -73,9 +73,9 @@ const productData = [
 ];
 
 const imagess = [
-  { id: 1, src: "decore (1).jpg", alt: "Image 1" },
-  { id: 2, src: "decore (2).jpg", alt: "Image 2" },
-  { id: 3, src: "decore (3).jpg", alt: "Image 3" },
+  { id: 1, src: "/assets/dashboard/decore (1).jpg", alt: "Image 1" },
+  { id: 2, src: "/assets/dashboard/decore (2).jpg", alt: "Image 2" },
+  { id: 3, src: "/assets/dashboard/decore (3).jpg", alt: "Image 3" },
 ];
 
 const relatedImages = {
@@ -93,6 +93,50 @@ const relatedImages = {
   ],
 };
 
+// const imagess = [
+//   {
+//     id: 1,
+//     src: "/assets/dashboard/sofa.jpg",
+//     alt: "Image 1",
+//     hotspots: [
+//       { id: 1, top: 70, left: 25, tooltip: "" },
+//       { id: 2, top: 65, left: 55, tooltip: "" },
+//     ],
+//   },
+//   {
+//     id: 2,
+//     src: "/assets/dashboard/decore (2).jpg",
+//     alt: "Image 2",
+//     hotspots: [
+//       { id: 3, top: 55, left: 32, tooltip: "" },
+//       { id: 4, top: 80, left: 30, tooltip: "" },
+//     ],
+//   },
+//   {
+//     id: 3,
+//     src: "/assets/dashboard/candle.jpg",
+//     alt: "Image 3",
+//     hotspots: [
+//       { id: 5, top: 25, left: 95, tooltip: "" },
+//       { id: 6, top: 45, left: 55, tooltip: "" },
+//     ],
+//   },
+// ];
+
+// const relatedImages = {
+//   1: [
+//     { id: 4, src: "chair.jpg", alt: "Related Image 1" },
+//     { id: 5, src: "sofa2.jpg", alt: "Related Image 2" },
+//   ],
+//   2: [
+//     { id: 6, src: "vast.png", alt: "Related Image 3" },
+//     { id: 7, src: "bed.png", alt: "Related Image 4" },
+//   ],
+//   3: [
+//     { id: 8, src: "candlestand.jpg", alt: "Related Image 5" },
+//     { id: 9, src: "lamp.jpg", alt: "Related Image 6" },
+//   ],
+// };
 const secondRowImages = [
   "/assets/dashboard/master10.jpeg",
   "/assets/dashboard/master11.jpeg",
@@ -290,12 +334,7 @@ const AdornComponent = () => {
 
               {/* Description */}
               <p className="text-white text-sm max-w-2xl mx-auto">
-                Lorem ipsum dolor amet, consectetur adipiscing elit. Nibh enim
-                finibus dignissim montes condimentum imperdiet eget? Torquent
-                tortor dolor bibendum dui puruss. Etiam elit feugiat nisl
-                penatibus bibendum nam. Congue lobortis suspendisse rutrum
-                vestibulum vestibulum et fusce class. Orci habitant commodo
-                magna consectetur ultricies vestibulum dolor per.
+              Explore our newest arrivals. Each piece is meticulously handcrafted by skilled artisans, blending timeless craftsmanship with contemporary design. Transform your home with exclusive, one-of-a-kind décor that speaks to your unique style.
               </p>
             </div>
           </div>

@@ -189,7 +189,7 @@ const HeaderLayout = ({
               </div>
               {/* Image with Separate Hover Events */}
               <div
-                className="relative pb-4"
+                className="relative "
                 onMouseEnter={handleMouseEnterImage}
                 onMouseLeave={handleMouseLeaveImage}
               >
@@ -198,11 +198,12 @@ const HeaderLayout = ({
                   className="hover:text-[#AD8C87] font-bold flex items-center"
                 >
                   <Image
-                    src="/assets/dashboard/newfirbhetlogo.png"
+                    src="/assets/dashboard/gift-box-2.png"
                     alt="Firbhet Logo"
-                    width={54}
-                    height={78}
+                    width={35}
+                    height={35}
                   />
+                  Firbhet
                 </a>
                 {showImageDropdown && (
                   <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 w-screen max-w-screen-2xl bg-white shadow-lg border-t border-gray-200 z-50">

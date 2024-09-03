@@ -69,7 +69,7 @@ const GiftSection = () => {
             href="#"
             className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200"
           >
-            Petite Giftables
+            
           </Link>
         </div>
 
@@ -86,7 +86,7 @@ const GiftSection = () => {
             href="#"
             className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200"
           >
-            Discover Gift Cards &gt;
+            
           </a>
         </div>
 
@@ -103,7 +103,7 @@ const GiftSection = () => {
             href="#"
             className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200"
           >
-            Explore &gt;
+            
           </a>
         </div>
 
@@ -120,7 +120,7 @@ const GiftSection = () => {
             href="#"
             className="text-sm mt-2 text-primaryrose hover:text-primaryrosedark hover:scale-105 transition-transform duration-200"
           >
-            Discover &gt;
+            
           </a>
         </div>
       </div>
