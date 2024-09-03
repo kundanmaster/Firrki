@@ -603,7 +603,8 @@ const HeaderLayout = ({
                   Shop
                 </a>
                 {showShopDropdown && (
-                  <div className="absolute left-1/2 ml-32 transform -translate-x-1/2 top-full mt-2 w-screen max-w-screen-2xl bg-white shadow-lg border-t border-gray-200 z-50">
+                  <div className="absolute left-1/2 ml-32 transform -translate-x-1/2 top-full mt-8
+                  w-screen max-w-screen-2xl bg-white shadow-lg border-t border-gray-200 z-50">
                     <GiftShop />
                   </div>
                 )}
