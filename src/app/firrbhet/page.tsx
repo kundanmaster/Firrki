@@ -3,40 +3,30 @@
 
 "use client";
 
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import HeaderLayout from "../components/HeaderLayout";
 import { SetStateAction, useState } from "react";
 import Footer from "../components/DashComponents/Footer";
-import { MdArrowForwardIos } from "react-icons/md";
-import { MdArrowBackIos } from "react-icons/md";
+
 import ScrollToTopButton from "../components/ScrollToTopButton";
 
 export default function GiftSection() {
 
+
+
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const router = useRouter();
 
   const images = [
-    { src: "/assets/firbhet/Vector (5).png", alt: "Vector 5", label: "  Festival" },
+    { src: "/assets/firbhet/Vector (5).png", alt: "Vector 5", label: "Festival" },
     { src: "/assets/firbhet/Vector (4).png", alt: "Vector 4", label: "Personalized" },
     { src: "/assets/firbhet/Vector (6).png", alt: "Vector 6", label: "Corporate" },
     { src: "/assets/firbhet/Vector (5).png", alt: "Vector 7", label: "Wedding" },
-    
   ];
 
-
-
-  const handleLeftArrowClick = () => {
-    // If at the first image, loop to the last image
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 3 : prevIndex - 1
-    );
-  };
-
-  const handleRightArrowClick = () => {
-    // If at the last visible image set, loop to the first image
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 3 ? 0 : prevIndex + 1
-    );
+  const handleImageClick = (index: number) => {
+    router.push(`/firrbhet/${index}`);
   };
 
   const secondRowImages = [
@@ -91,8 +81,6 @@ export default function GiftSection() {
   </div>
 </div>
 
-
-
           <div className="relative flex justify-center sm:justify-start">
             <Image
               src="/assets/firbhet/image (2).png"
@@ -115,15 +103,12 @@ export default function GiftSection() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="flex flex-col justify-center items-center h-auto">
+      <div className="flex flex-col justify-center items-center h-auto">
           <div className="font-['Times New Roman'] font-bold text-white text-6xl mt-12">
-          Curate for Occasion
+            Curate for Occasion
           </div>
-         
 
           <div className="relative w-full flex items-center justify-center overflow-hidden">
-            
-
             <div
               className="flex transition-transform duration-500 ease-in-out w-full mx-20"
               style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
@@ -135,6 +120,7 @@ export default function GiftSection() {
                   style={{
                     flex: "0 0 25%", // Take up one-third of the container
                   }}
+                  onClick={() => handleImageClick(index)}
                 >
                   <Image
                     src={image.src}
@@ -153,7 +139,6 @@ export default function GiftSection() {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       </div>
@@ -166,7 +151,7 @@ export default function GiftSection() {
       >  
        
         <div
-          className="relative w-full bg-no-repeat text-center flex items-center  justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[310px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[280px] "
+          className=" w-full bg-no-repeat text-center flex items-center   justify-center min-h-[140px] sm:min-h-[50rem] md:min-h-[310px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[38rem] "
           style={{
             backgroundImage: "url(/assets/dashboard/master166.jpg)",
             backgroundSize: "100% auto",
@@ -334,3 +319,148 @@ export default function GiftSection() {
     </div>
   );
 }
+
+// "use client"; // Ensures this file is treated as a Client Component
+
+// import Image from "next/image";
+// import HeaderLayout from "../components/HeaderLayout";
+// import { useState } from "react";
+// import { useRouter } from "next/navigation";
+// import Footer from "../components/DashComponents/Footer";
+// import ScrollToTopButton from "../components/ScrollToTopButton";
+
+// export default function GiftSection() {
+//   const [currentIndex, setCurrentIndex] = useState<number>(0);
+//   const router = useRouter();
+
+//   const images = [
+//     { src: "/assets/firbhet/Vector (5).png", alt: "Vector 5", label: "Festival" },
+//     { src: "/assets/firbhet/Vector (4).png", alt: "Vector 4", label: "Personalized" },
+//     { src: "/assets/firbhet/Vector (6).png", alt: "Vector 6", label: "Corporate" },
+//     { src: "/assets/firbhet/Vector (5).png", alt: "Vector 7", label: "Wedding" },
+//   ];
+
+//   const handleImageClick = (index: number) => {
+//     router.push(`/firrbhet/${index}`);
+//   };
+
+//   const secondRowImages = [
+//     "/assets/firbhet/Vector (6).png",
+//     "/assets/dashboard/master11.jpeg",
+//     "/assets/dashboard/master12.jpeg",
+//     "/assets/dashboard/master13.jpeg",
+//   ];
+//   const thirdRowImages = [
+//     "/assets/dashboard/master14.jpeg",
+//     "/assets/dashboard/master15.jpeg",
+//     "/assets/dashboard/master5.jpeg",
+//     "/assets/dashboard/master6.jpeg",
+//   ];
+
+//   return (
+//     <div>
+//       <HeaderLayout OtherPage={undefined}>s</HeaderLayout>
+
+//       <div
+//         className="relative flex justify-center items-center w-full bg-cover bg-center"
+//         style={{ backgroundImage: `url('/assets/dashboard/master18.jpeg')` }}
+//       >
+//         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 px-4 py-6">
+//           <div className="relative flex justify-center sm:justify-end">
+//             <Image
+//               src="/assets/firbhet/image.png"
+//               alt="Decorative Plate"
+//               width={500} // Increased size
+//               height={500} // Increased size
+//               className=""
+//               style={{ marginRight: "10px" }}
+//             />
+//           </div>
+
+//           <div className="relative flex justify-center items-center">
+//             <Image
+//               src="/assets/firbhet/image (1).png"
+//               alt="Gift2"
+//               width={500}
+//               height={500}
+//               className="relative"
+//               style={{ zIndex: 1 }} // Background image
+//             />
+
+//             <div className="absolute flex flex-col justify-center items-center text-center" style={{ zIndex: 2 }}>
+//               <Image
+//                 src="/assets/firbhet/Group 45 (3).png"
+//                 alt="Discover Gift"
+//                 width={300}
+//                 height={300}
+//               />
+//             </div>
+//           </div>
+
+//           <div className="relative flex justify-center sm:justify-start">
+//             <Image
+//               src="/assets/firbhet/image (2).png"
+//               alt="Gift Box"
+//               width={500} // Increased size
+//               height={500} // Increased size
+//               className=""
+//               style={{ marginLeft: "10px" }}
+//             />
+//           </div>
+//         </div>
+//       </div>
+
+//       <div
+//         className="w-full bg-no-repeat text-center md:h-auto sm:h-[100vh] mt-0"
+//         style={{
+//           backgroundColor: "#c89d9e",
+//           backgroundSize: "100% auto",
+//           backgroundPosition: "center",
+//           backgroundRepeat: "no-repeat",
+//         }}
+//       >
+//         <div className="flex flex-col justify-center items-center h-auto">
+//           <div className="font-['Times New Roman'] font-bold text-white text-6xl mt-12">
+//             Curate for Occasion
+//           </div>
+
+//           <div className="relative w-full flex items-center justify-center overflow-hidden">
+//             <div
+//               className="flex transition-transform duration-500 ease-in-out w-full mx-20"
+//               style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+//             >
+//               {images.map((image, index) => (
+//                 <div
+//                   key={index}
+//                   className="flex-shrink-0 w-full md:w-1/3 lg:h-[37rem] md:h-[20rem] sm:h-[27rem] mt-4 py-10 flex flex-col items-center justify-center"
+//                   style={{
+//                     flex: "0 0 25%", // Take up one-third of the container
+//                   }}
+//                   onClick={() => handleImageClick(index)}
+//                 >
+//                   <Image
+//                     src={image.src}
+//                     alt={image.alt}
+//                     width={500}
+//                     height={500}
+//                     className="w-full h-full object-cover rounded-t-full px-10"
+//                     style={{
+//                       borderBottomLeftRadius: 0,
+//                       borderBottomRightRadius: 0,
+//                     }}
+//                   />
+//                   <div className="text-white text-center mt-2 text-2xl">
+//                     {image.label}
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       <Footer />
+//       <ScrollToTopButton />
+//     </div>
+//   );
+// }

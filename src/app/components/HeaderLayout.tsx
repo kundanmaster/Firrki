@@ -637,7 +637,7 @@ const HeaderLayout = ({
               <a href="/design" className="hover:text-[#AD8C87]">
                 Design
               </a>
-              <a href="#" className="hover:text-[#AD8C87]">
+              <a href="/ourStory" className="hover:text-[#AD8C87]">
                 Our Story
               </a>
             </nav>
