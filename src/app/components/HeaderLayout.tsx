@@ -656,7 +656,7 @@ const HeaderLayout = ({
                           placeholder="Search"
                           value={searchTerm}
                           onChange={handleSearchChange}
-                          className="pl-8 pr-4 py-2 rounded-full text-sm border border-gray-300 focus:outline-none focus:border-pink-500 bg-[#d9e2d6] w-full"
+                          className="pl-8 pr-4 py-2 rounded-full text-sm border border-gray-300 focus:outline-none focus:border-pink-500 bg-gray-300 w-full"
                         />
                         {searchTerm && (
                           <FiX

@@ -166,7 +166,7 @@ export default function GiftSection() {
       >  
        
         <div
-          className="relative w-full bg-no-repeat text-center flex items-center mt-[px] justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[310px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[280px] "
+          className="relative w-full bg-no-repeat text-center flex items-center  justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[310px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[280px] "
           style={{
             backgroundImage: "url(/assets/dashboard/master166.jpg)",
             backgroundSize: "100% auto",
@@ -176,7 +176,7 @@ export default function GiftSection() {
         >
           <div
             
-            className="relative flex items-center mt-[-110px] justify-center"
+            className="relative flex items-center mt-[-10px] justify-center"
           >
             <h1 className="  flex flex-col items-center justify-center 
                 text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl text-[The Nautigal] font-bold">
@@ -327,6 +327,7 @@ export default function GiftSection() {
         </a>
       </div>
     </div>
+    <br/>
 
       <Footer />
       <ScrollToTopButton/>

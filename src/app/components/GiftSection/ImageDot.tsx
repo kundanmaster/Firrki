@@ -321,7 +321,7 @@ const Design: React.FC<DesignProps> = ({ images, relatedImages }) => {
               <p className="text-gray-600 text-center mt-2">
                 {rightSideImage.busy ? "Busy Now" : "Available"}
               </p>
-              <button className="bg-blue-500 text-white px-4 py-2 mt-2 rounded">
+              <button className="bg-[#AD8C87] text-white px-4 py-2 mt-2 rounded">
                 Add to Cart
               </button>
             </>
