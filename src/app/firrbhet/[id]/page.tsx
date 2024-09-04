@@ -41,15 +41,7 @@ const GiftDetail = () => {
         backgroundPosition: 'center',
       }}
     >
-      <div className="flex flex-col md:flex-row items-center   p-6 max-w-4xl w-full"
-       style={{
-        backgroundImage: `url('/assets/dashboard/master18.jpefg')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-      
-      
-      >
+      <div className="flex flex-col md:flex-row items-center   p-6 max-w-4xl w-full"  >
         <div className="relative flex-shrink-0 md:w-1/2">
           <div className="rounded-tl-full rounded-tr-full  overflow-hidden  p-2 bg-[#AD8C87] shadow-md">
             <Image
