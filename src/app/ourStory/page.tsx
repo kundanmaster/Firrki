@@ -11,14 +11,14 @@ const Page = () => {
     <div className='flex flex-col min-h-screen'>
       <HeaderLayout OtherPage={undefined}>s</HeaderLayout>
 
-      <div className='flex-1 flex items-center justify-center bg-[#AD8C87]'>
-        <div className='relative w-[96vw] h-[70vh]'>
+      <div className='flex-1 flex items-center justify-center '>
+        <div className=' relative w-full h-[70vh]'>
           <Image
-            src="/assets/story/Group 22 (1).png"
+            src="/assets/story/Group 27.png"
             alt="alt"
             layout="fill"
-            objectFit="contain"
-            className='absolute inset-0'
+            
+            className='absolute inset-0 h-[100vh] w-[100vw] '
           />
         </div>
       </div>
