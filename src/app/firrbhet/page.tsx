@@ -1,6 +1,5 @@
 
 
-
 // "use client";
 
 // import { useRouter } from "next/navigation";
@@ -149,7 +148,7 @@
 //           backgroundImage: `url('/assets/dashboard/master188.jpg')`,
 //         }}
 //       >  
-       
+
 //         <div
 //           className=" w-full bg-no-repeat text-center flex items-center   justify-center min-h-[140px] sm:min-h-[50rem] md:min-h-[310px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[38rem] "
 //           style={{
@@ -160,7 +159,7 @@
 //           }}
 //         >
 //           <div
-            
+
 //             className="relative flex items-center mt-[-10px] justify-center"
 //           >
 //             <h1 className="  flex flex-col items-center justify-center 
@@ -191,8 +190,8 @@
 //             />
 //           </div>
 
-         
-         
+
+
 //           <div className="bg-[#dce4d4] flex items-center justify-center">
 //                   <p className="text-[#2a445d] text-2xl text-center font-semibold">
 //                   Brighten your loved ones days with surprise gifts that fill their lives with joy and magic.
@@ -220,8 +219,8 @@
 //             />
 //           </div>
 
-        
-        
+
+
 //             <div className="bg-[#c89d9e] flex items-center justify-center">
 //                   <p className="text-white text-2xl text-center font-semibold">
 //                   Surprise your loved ones with thoughtful gifts that add a touch of magic and happiness to their everyday moments
@@ -252,9 +251,9 @@
 //       <div className="bg-[#c89d9e] h-auto flex items-center mt-[-200px] justify-center py-12 ">
 
 //         <div className="container mx-auto flex flex-col lg:flex-row items-center"
-        
-        
-        
+
+
+
 //         >
 //           <div className="w-full lg:w-1/2">
 //             <Image
@@ -306,7 +305,7 @@
 //         <span className="block">Connect with our</span>
 //         <span className="block">Gifting Specialist</span>  
 //              </h1>
-       
+
 //         <a href="/contact-us" className="text-lg text-white underline">
 //           Contact Us
 //         </a>
@@ -320,19 +319,18 @@
 //   );
 // }
 
+
+
 "use client";
 
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import HeaderLayout from "../components/HeaderLayout";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import Footer from "../components/DashComponents/Footer";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 
 export default function GiftSection() {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [selectedImage, setSelectedImage] = useState<number | null>(null); // Add state for selected image
-  const router = useRouter();
+  const [clickedImage, setClickedImage] = useState<{ src: string; alt: string } | null>(null);
 
   const images = [
     { src: "/assets/firbhet/Vector (5).png", alt: "Vector 5", label: "Festival" },
@@ -341,22 +339,9 @@ export default function GiftSection() {
     { src: "/assets/firbhet/Vector (5).png", alt: "Vector 7", label: "Wedding" },
   ];
 
-  const handleImageClick = (index: number) => {
-    setSelectedImage(index); // Set selected image index
+  const handleImageClick = (image: { src: string; alt: string }) => {
+    setClickedImage(image);
   };
-
-  const secondRowImages = [
-    "/assets/firbhet/Vector (6).png",
-    "/assets/dashboard/master11.jpeg",
-    "/assets/dashboard/master12.jpeg",
-    "/assets/dashboard/master13.jpeg",
-  ];
-  const thirdRowImages = [
-    "/assets/dashboard/master14.jpeg",
-    "/assets/dashboard/master15.jpeg",
-    "/assets/dashboard/master5.jpeg",
-    "/assets/dashboard/master6.jpeg",
-  ];
 
   return (
     <div>
@@ -387,7 +372,6 @@ export default function GiftSection() {
               className="relative"
               style={{ zIndex: 1 }} // Background image
             />
-
             <div className="absolute flex flex-col justify-center items-center text-center" style={{ zIndex: 2 }}>
               <Image
                 src="/assets/firbhet/Group 45 (4).png"
@@ -428,7 +412,6 @@ export default function GiftSection() {
           <div className="relative w-full flex items-center justify-center overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out w-full mx-20"
-              style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
             >
               {images.map((image, index) => (
                 <div
@@ -437,7 +420,7 @@ export default function GiftSection() {
                   style={{
                     flex: "0 0 25%", // Take up one-third of the container
                   }}
-                  onClick={() => handleImageClick(index)}
+                  onClick={() => handleImageClick(image)}
                 >
                   <Image
                     src={image.src}
@@ -457,26 +440,28 @@ export default function GiftSection() {
               ))}
             </div>
           </div>
+
+          {/* Display the clicked image and dummy text */}
+          {clickedImage && (
+            <div className="flex w-full mt-8">
+              <div className="w-1/2 p-4 flex justify-center">
+                <Image
+                  src={clickedImage.src}
+                  alt={clickedImage.alt}
+                  width={500}
+                  height={500}
+                  className="object-contain"
+                />
+              </div>
+              <div className="w-1/2 p-4 flex justify-center items-center">
+                <p className="text-white text-lg">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel eros et orci euismod pharetra. Curabitur sit amet dui orci. Vivamus vitae ipsum nec est faucibus congue in eu nisl. Aenean vel sapien dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
-
-        {/* Display the selected image below the carousel */}
-        {selectedImage !== null && (
-          <div className="flex flex-col items-center justify-center mt-12">
-            <Image
-              src={images[selectedImage].src}
-              alt={images[selectedImage].alt}
-              width={600}
-              height={600}
-              className="w-full h-full object-cover rounded-lg"
-            />
-            <p className="text-white text-center mt-4 text-xl max-w-2xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula arcu in enim tempor, ac varius erat euismod.
-            </p>
-          </div>
-        )}
       </div>
-
-      {/* Remaining code stays the same... */}
 
       <Footer />
       <ScrollToTopButton />
