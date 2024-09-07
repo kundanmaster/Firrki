@@ -76,7 +76,7 @@ const HeroSection2: React.FC = () => {
                 🎉 Diwali Special Offer 🎉
               </h2>
               <p className="text-center text-white mt-2">
-                Get up to 50% off on all products! Limited time offer. Don't miss out!
+                Get up to 50% off on all products! Limited time offer. Dont miss out!
               </p>
             </div>
           </div>
