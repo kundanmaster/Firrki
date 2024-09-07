@@ -28,7 +28,7 @@ const GiftSection = () => {
       <div className="flex flex-col w-full sm:w-1/4 md:w-1/5 space-y-4">
         <Link href="/personalized">
           <Image
-            src="/assets/firbhet/Group 3.png"
+            src="/assets/firbhet/Group 3 (1).png"
             alt="Personalized"
             width={500}
             height={550}

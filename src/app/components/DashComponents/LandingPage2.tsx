@@ -10,29 +10,10 @@ import { AiOutlineClose } from "react-icons/ai"; // Close Icon
 
 const HeroSection2: React.FC = () => {
   // State to manage popup visibility
-  const [showPopup, setShowPopup] = useState<boolean>(true);
 
-  useEffect(() => {
-    // Show the popup for the first 3 seconds on component render
-    const firstPopupTimeout = setTimeout(() => {
-      setShowPopup(true);
-    }, 3000);
 
-    // Show the popup again after 1 minute
-    const secondPopupTimeout = setTimeout(() => {
-      setShowPopup(true);
-    }, 500000);
 
-    return () => {
-      clearTimeout(firstPopupTimeout);
-      clearTimeout(secondPopupTimeout);
-    };
-  }, []);
 
-  // Function to close the popup when cross button is clicked
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
 
   const largeImageStyle: React.CSSProperties = {
     position: "relative",
@@ -54,34 +35,7 @@ const HeroSection2: React.FC = () => {
 
   return (
     <>
-      {/* Popup Modal */}
-      {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black  mt-32 bg-opacity-50">
-          <div className="relative bg-[#002244] p-8 w-[90%] max-w-md h-[34rem] rounded-lg shadow-lg">
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-              onClick={handleClosePopup}
-            >
-              <AiOutlineClose size={20} color="white" />
-            </button>
-            <div className="flex flex-col items-center">
-              <Image
-                src="/assets/dashboard/giftpop2.png" // Diwali Offer Banner
-                alt="Diwali Offer"
-                width={500}
-                height={300}
-                className="object-cover h-[25rem]  mb-4"
-              />
-              <h2 className="text-2xl font-bold text-center text-white">
-                🎉 Diwali Special Offer 🎉
-              </h2>
-              <p className="text-center text-white mt-2">
-                Get up to 50% off on all products! Limited time offer. Dont miss out!
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+     
 
       {/* Main Content */}
       <div className="px-2 pb-1 flex flex-col md:flex-row gap-x-2 ">

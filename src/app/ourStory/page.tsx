@@ -56,7 +56,7 @@ const Page = () => {
       </div>
 
       <div
-        className="flex items-center justify-center bg-[#c89d9e] h-[50rem] w-full"
+        className="flex items-center justify-center bg-[#c89d9e] h-[44rem] w-full"
       >
         <div className="flex flex-col md:flex-row items-center p-6 m-96 w-full">
           <div className="md:w-1/2 md:pl-6 mt-6 md:mt-0 mr-32">
@@ -76,7 +76,7 @@ const Page = () => {
               alt="alt"
               width={600}
               height={600}
-              className='h-[52rem] mr-[60rem] mt-[-95px]'
+              className='h-[40rem] mr-[50rem] mt-[-110px] w-[27rem] ml-[12rem]'
             />
           </div>
         </div>
