@@ -199,7 +199,7 @@ const TableLinen: FC = () => {
           >
             <div className="flex flex-wrap justify-center gap-8">
               {images.map((image, index) => (
-                <div key={index} className="w-[300px]">
+                <div key={index} className="w-[200px]">
                   <div
                     className={`relative cursor-pointer border-4 border-primaryrose hover:border-primaryrosedark ${
                       currentImage === index ? "opacity-100" : "opacity-100"
@@ -244,7 +244,7 @@ const TableLinen: FC = () => {
                 backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
               }}
             >
-              <div className="flex flex-wrap justify-center gap-4 px-80">
+              <div className="flex flex-wrap justify-center gap-4 px-80 ">
                 {currentAdditionalImages.map((img, imgIndex) => (
                   <div
                     key={imgIndex}

@@ -1,9 +1,39 @@
+
+
+
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import ImageSlider from "../ImageSlider";
+import { AiOutlineClose } from "react-icons/ai"; // Close Icon
+
 const HeroSection2: React.FC = () => {
+  // State to manage popup visibility
+  const [showPopup, setShowPopup] = useState<boolean>(true);
+
+  useEffect(() => {
+    // Show the popup for the first 3 seconds on component render
+    const firstPopupTimeout = setTimeout(() => {
+      setShowPopup(true);
+    }, 3000);
+
+    // Show the popup again after 1 minute
+    const secondPopupTimeout = setTimeout(() => {
+      setShowPopup(true);
+    }, 500000);
+
+    return () => {
+      clearTimeout(firstPopupTimeout);
+      clearTimeout(secondPopupTimeout);
+    };
+  }, []);
+
+  // Function to close the popup when cross button is clicked
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   const largeImageStyle: React.CSSProperties = {
     position: "relative",
     height: "7rem",
@@ -11,6 +41,7 @@ const HeroSection2: React.FC = () => {
     overflow: "hidden",
     transition: "transform 0.3s ease",
   };
+
   const images = [
     "/assets/dashboard/master1.jpeg",
     "/assets/dashboard/master4.jpeg",
@@ -20,8 +51,39 @@ const HeroSection2: React.FC = () => {
     "/assets/dashboard/master8.jpeg",
     "/assets/dashboard/master10.jpeg",
   ];
+
   return (
     <>
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black  mt-32 bg-opacity-50">
+          <div className="relative bg-[#002244] p-8 w-[90%] max-w-md h-[34rem] rounded-lg shadow-lg">
+            <button
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+              onClick={handleClosePopup}
+            >
+              <AiOutlineClose size={20} color="white" />
+            </button>
+            <div className="flex flex-col items-center">
+              <Image
+                src="/assets/dashboard/giftpop2.png" // Diwali Offer Banner
+                alt="Diwali Offer"
+                width={500}
+                height={300}
+                className="object-cover h-[25rem]  mb-4"
+              />
+              <h2 className="text-2xl font-bold text-center text-white">
+                🎉 Diwali Special Offer 🎉
+              </h2>
+              <p className="text-center text-white mt-2">
+                Get up to 50% off on all products! Limited time offer. Don't miss out!
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Main Content */}
       <div className="px-2 pb-1 flex flex-col md:flex-row gap-x-2 ">
         <div className="relative h-96 w-full md:w-[70%] ">
           <div
@@ -42,6 +104,7 @@ const HeroSection2: React.FC = () => {
           />
         </div>
       </div>
+
       <div className="px-2 pb-1 pt-1 flex flex-col md:flex-row gap-x-2 ">
         <div className="relative h-96 w-full md:w-[30%] ">
           <Image
@@ -80,44 +143,6 @@ const HeroSection2: React.FC = () => {
         <ImageSlider images={images} />
       </div>
 
-      {/* <div className="py-1 px-2 flex flex-col md:flex-row gap-1">
-        <div className="relative h-[70vh] w-full md:w-[25%] mt-2 md:mt-0">
-          <Image
-            src="/assets/dashboard/master5.jpeg"
-            alt="New Section Image 6"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-b-lg shadow-md"
-          />
-        </div>
-        <div className="relative h-[70vh] w-full md:w-[25%] mt-2 md:mt-0">
-          <Image
-            src="/assets/dashboard/master6.jpeg"
-            alt="New Section Image 7"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-b-lg shadow-md"
-          />
-        </div>
-        <div className="relative h-[70vh] w-full md:w-[25%] mt-2 md:mt-0">
-          <Image
-            src="/assets/dashboard/master7.jpeg"
-            alt="New Section Image 8"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-b-lg shadow-md"
-          />
-        </div>
-        <div className="relative h-[70vh] w-full md:w-[25%] mt-2 md:mt-0">
-          <Image
-            src="/assets/dashboard/master8.jpeg"
-            alt="New Section Image 9"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-b-lg shadow-md"
-          />
-        </div>
-      </div> */}
       <div
         className="pb-4"
         style={{
@@ -144,95 +169,8 @@ const HeroSection2: React.FC = () => {
           </div>
         </div>
       </div>
-      <div
-        className="pb-4"
-        style={{
-          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
-        }}
-      >
-        <div className="flex flex-col justify-center items-center h-auto">
-          <div className="flex flex-col md:flex-row space-x-0 md:space-x-6 mt-8">
-            {/* First Item */}
-            <div className="relative flex flex-col items-center justify-center w-full md:w-1/3 lg:h-[30rem] md:h-[20rem] mt-20">
-              <Image
-                src="/assets/dashboard/master6.jpeg"
-                alt="alt"
-                width={500}
-                height={500}
-                className="w-full h-full object-cover rounded-t-full border-4 border-white"
-                style={{
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button className="text-white text-4xl">
-                  <i className="fas fa-play"></i>
-                </button>
-              </div>
-            </div>
 
-            {/* Center Text */}
-            <div
-              className="relative flex flex-col items-center justify-center w-full md:w-1/3 lg:h-[35rem] md:h-[25rem] rounded-t-full border-4 border-white text-white p-6 mx-6"
-              style={{ backgroundColor: "#CCBA78" }}
-            >
-              <h2 className="text-2xl font-bold mb-4 text-center">
-                Your Vision, Our Craftsmanship
-              </h2>
-              <h2 className="text-2xl font-bold mb-4 text-center">
-                Customized Design for YOU
-              </h2>
-            </div>
-
-            {/* Second Item */}
-            <div className="relative flex flex-col items-center justify-center w-full md:w-1/3 lg:h-[30rem] md:h-[20rem] mt-20">
-              <Image
-                src="/assets/dashboard/master2.jpeg"
-                alt="alt"
-                width={500}
-                height={500}
-                className="w-full h-full object-cover rounded-t-full border-4 border-white"
-                style={{
-                  borderBottomLeftRadius: 0,
-                  borderBottomRightRadius: 0,
-                }}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button className="text-white text-4xl">
-                  <span>Design Here</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="pb-4"
-        style={{
-          backgroundImage: `url('/assets/dashboard/master18.jpeg')`,
-        }}
-      >
-        <div
-          className="relative w-full bg-no-repeat text-center flex items-center justify-center min-h-[140px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[300px] xl:min-h-[420px] 2xl:min-h-[500px]"
-          style={{
-            backgroundImage: "url(/assets/dashboard/master166.jpg)",
-            backgroundSize: "100% auto",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <div
-            style={largeImageStyle}
-            className="relative flex items-center justify-center"
-          >
-            <h1 className="absolute inset-0 flex flex-col items-center justify-center text-center text-[#2C4456] lg:text-6xl md:text-4xl sm:text-2xl  font-bold ">
-              <span> FEATURED</span>
-              <span> PRODUCTS</span>
-            </h1>
-          </div>
-        </div>
-      </div>
+      
     </>
   );
 };

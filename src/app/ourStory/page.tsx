@@ -56,7 +56,7 @@ const Page = () => {
       </div>
 
       <div
-        className="flex items-center justify-center bg-[#AD8C87] h-[50rem] w-full"
+        className="flex items-center justify-center bg-[#c89d9e] h-[50rem] w-full"
       >
         <div className="flex flex-col md:flex-row items-center p-6 m-96 w-full">
           <div className="md:w-1/2 md:pl-6 mt-6 md:mt-0 mr-32">
@@ -76,7 +76,7 @@ const Page = () => {
               alt="alt"
               width={600}
               height={600}
-              className='h-[43rem] mr-[60rem] mt-[-165px]'
+              className='h-[52rem] mr-[60rem] mt-[-95px]'
             />
           </div>
         </div>
@@ -147,7 +147,7 @@ const Page = () => {
 
     </div>
 
-    <div className="w-full mx-auto p-4 bg-[#AD8C87]  ">
+    <div className="w-full mx-auto p-4 bg-[#c89d9e]  ">
       {/* First row */}
       <div className="flex w-full mb-4 gap-3">
         <div className="w-1/2 pr-2">
@@ -212,7 +212,7 @@ const Page = () => {
 
     </div>
 
-    <div className="bg-[#AD8C87] p-16 rounded-lg h-52 w-full mx-auto flex items-center">
+    <div className="bg-[#c89d9e] p-16 rounded-lg h-52 w-full mx-auto flex items-center">
   <div className="w-full">
     <div className="flex flex-center   text-white text-2xl leading-tight">
      <p className=''>At the heart of our collection lies a meticulous dedication to design and quality
@@ -259,7 +259,7 @@ const Page = () => {
 
 
 
-      <div className="bg-[#AD8C87] p-16 rounded-lg h-[31rem] w-full mx-auto flex items-center"
+      <div className="bg-[#c89d9e] p-16 rounded-lg h-[31rem] w-full mx-auto flex items-center"
       
       >
   <div className="w-full"   >
